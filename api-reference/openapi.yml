@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: 'Kausanna API'
+  title: "Kausanna API"
   description: |
     Bienvenido a Kausana, el servicio ofrecido por SONQO, dedicado a procesar los contracargos de tus clientes en tiempo real, 
     brindando una solución integral que te permite concentrarte en tu negocio sin preocuparte por la complejidad de las redes de 
@@ -21,8 +21,8 @@ info:
   contact:
     email: ongoing-processes@sonqo.io
   x-logo:
-    url: 'https://www.naranjax.com/assets/img/logo-nx.svg'
-    altText: 'SONQO Logo'
+    url: "https://www.naranjax.com/assets/img/logo-nx.svg"
+    altText: "SONQO Logo"
 servers:
   - url: http://e1-kausana.sonqo.io
   - url: http://e3-kausana.sonqo.io
@@ -70,9 +70,9 @@ paths:
             type: integer
           required: true
           description: The ID of the partner registered to receive webhooks
-          example: '006837'
+          example: "006837"
       responses:
-        '200':
+        "200":
           description: OK
           headers:
             Date:
@@ -155,16 +155,16 @@ paths:
                           example: chargeback.created
                       partnerId:
                         type: string
-                        example: '006837'
+                        example: "006837"
                       isActive:
                         type: boolean
                         example: true
                       createdAt:
                         type: string
-                        example: '2023-07-26T18:37:01.334Z'
+                        example: "2023-07-26T18:37:01.334Z"
                       updatedAt:
                         type: string
-                        example: '2023-07-26T18:37:01.334Z'
+                        example: "2023-07-26T18:37:01.334Z"
               example:
                 success: true
                 data:
@@ -173,11 +173,11 @@ paths:
                   secret: sq_2Wn5QwBo8x3RTOF-az0_f52e5TUzwh0waOAqAtwtht4
                   subscribedEvents:
                     - chargeback.created
-                  partnerId: '006837'
+                  partnerId: "006837"
                   isActive: true
-                  createdAt: '2023-07-26T18:37:01.334Z'
-                  updatedAt: '2023-07-26T18:37:01.334Z'
-        '400':
+                  createdAt: "2023-07-26T18:37:01.334Z"
+                  updatedAt: "2023-07-26T18:37:01.334Z"
+        "400":
           description: Bad Request
           headers:
             Date:
@@ -191,7 +191,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: '209'
+                example: "209"
             Connection:
               schema:
                 type: string
@@ -245,3 +245,1210 @@ paths:
                       allowed.
                     path:
                       - url
+    get:
+      tags:
+        - partner > {partnerId}
+      summary: Obtener subscripciones webhook
+      parameters:
+        - name: isActive
+          in: query
+          schema:
+            type: boolean
+          example: "true"
+        - name: partnerId
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: The ID of the partner registered to receive webhooks
+          example: "006837"
+      responses:
+        "200":
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Wed, 26 Jul 2023 18:40:46 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-amzn-RequestId:
+              schema:
+                type: string
+                example: 3079bcef-75d5-40fc-b158-03fde34ac2ab
+            x-amz-apigw-id:
+              schema:
+                type: string
+                example: Ir1LMGhloAMEG_g=
+            X-Amzn-Trace-Id:
+              schema:
+                type: string
+                example: >-
+                  Root=1-64c168ad-4dd802e8780ef9a507e264b9;Sampled=0;lineage=b476f86a:0
+            CF-Cache-Status:
+              schema:
+                type: string
+                example: DYNAMIC
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            Server:
+              schema:
+                type: string
+                example: cloudflare
+            CF-RAY:
+              schema:
+                type: string
+                example: 7ecec5dd1ebea795-EZE
+            Content-Encoding:
+              schema:
+                type: string
+                example: gzip
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: "200"
+                  value:
+                    success: true
+                    count: 1
+                    data:
+                      - id: 01H69QY2PXZS6RV33JRZF20PZ1
+                        url: https://google.com
+                        secret: sq_ArYi9JZLmTtIGtMBOGBzGb27yiLOQI4suQM1DxTCwMM
+                        subscribedEvents:
+                          - chargeback.created
+                        partnerId: "006837"
+                        isActive: true
+                        createdAt: "2023-07-26T18:38:43.941Z"
+                        updatedAt: "2023-07-26T18:38:43.942Z"
+                example-1:
+                  summary: "200: no subscriptions"
+                  value:
+                    success: true
+                    count: 0
+                    data: []
+  /partner/{partnerId}/subscriptions/{subscriptionId}:
+    delete:
+      tags:
+        - partner > {partnerId}
+      summary: Eliminar una subscripción webhook
+      parameters:
+        - name: partnerId
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: The ID of the partner registered to receive webhooks
+          example: "006837"
+        - name: subscriptionId
+          in: path
+          schema:
+            type: string
+          required: true
+          description: The ID of the webhook subscription
+          example: 01H9V3F4XJF0PBS2PEVBF01ZA9
+      responses:
+        "200":
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Wed, 26 Jul 2023 20:58:18 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: "16"
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-amzn-RequestId:
+              schema:
+                type: string
+                example: fe334da4-efbf-4980-bdcb-de67b8f3b357
+            x-amz-apigw-id:
+              schema:
+                type: string
+                example: IsJUjFYNIAMEa2g=
+            X-Amzn-Trace-Id:
+              schema:
+                type: string
+                example: >-
+                  Root=1-64c188e9-72968e9346d8cc7c5b7ec701;Sampled=0;lineage=b6bff95c:0
+            CF-Cache-Status:
+              schema:
+                type: string
+                example: DYNAMIC
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            Server:
+              schema:
+                type: string
+                example: cloudflare
+            CF-RAY:
+              schema:
+                type: string
+                example: 7ecf8f512d471e98-EZE
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+        "404":
+          description: Not Found
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Wed, 26 Jul 2023 21:05:50 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-amzn-RequestId:
+              schema:
+                type: string
+                example: 3d920b91-2671-428b-9f6d-f2968f1e7d53
+            x-amz-apigw-id:
+              schema:
+                type: string
+                example: IsKbIFhsIAMEsWA=
+            X-Amzn-Trace-Id:
+              schema:
+                type: string
+                example: >-
+                  Root=1-64c18aad-49d85eda32053cc50f7abcd1;Sampled=0;lineage=b6bff95c:0
+            CF-Cache-Status:
+              schema:
+                type: string
+                example: DYNAMIC
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            Server:
+              schema:
+                type: string
+                example: cloudflare
+            CF-RAY:
+              schema:
+                type: string
+                example: 7ecf9a57cd0e1e98-EZE
+            Content-Encoding:
+              schema:
+                type: string
+                example: gzip
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: false
+                exception: Not Found
+                code: PARTNER.PARTNER_SUBSCRIPTION_NOT_FOUND
+                message: Subscription not found in your account
+  /partner/{partnerId}/subscriptions/test:
+    post:
+      tags:
+        - partner > {partnerId}
+      summary: Probar las subscripciones webhook
+      description: Test the webhook integration by sending a JSON test message.
+      requestBody:
+        content: {}
+      parameters:
+        - name: partnerId
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: The ID of the partner registered to receive webhooks
+          example: "006837"
+      responses:
+        "200":
+          description: Successful test
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+        "409":
+          description: Conflict
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Wed, 26 Jul 2023 20:18:07 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: "127"
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-amzn-RequestId:
+              schema:
+                type: string
+                example: 8a29d917-5b18-44ad-b2c0-dc842ca4bdf5
+            x-amz-apigw-id:
+              schema:
+                type: string
+                example: IsDbtHyXIAMEY9Q=
+            X-Amzn-Trace-Id:
+              schema:
+                type: string
+                example: >-
+                  Root=1-64c17f7d-489d70e13b6cf04940598c98;Sampled=0;lineage=73312fd5:0
+            CF-Cache-Status:
+              schema:
+                type: string
+                example: DYNAMIC
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            Server:
+              schema:
+                type: string
+                example: cloudflare
+            CF-RAY:
+              schema:
+                type: string
+                example: 7ecf5471a980c813-EZE
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: false
+                code: PARTNER.TEST_PARTNER_SUBSCRIPTION_ERROR
+                message: Error sending test webhook to some subscriptions
+  /claims/{claimId}/status:
+    put:
+      tags:
+        - claims > {claimId}
+      summary: Actualizar el estado de una reclamación
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: REJECTED
+      parameters:
+        - name: claimId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: "200002031927"
+      responses:
+        "400":
+          description: Bad Request
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Thu, 10 Aug 2023 20:51:55 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: "303"
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-amzn-RequestId:
+              schema:
+                type: string
+                example: 75576d0e-a496-49ee-9229-5c25ee64d79e
+            x-amz-apigw-id:
+              schema:
+                type: string
+                example: JdkctH-6IAMEo4w=
+            X-Amzn-Trace-Id:
+              schema:
+                type: string
+                example: >-
+                  Root=1-64d54dea-09efd39b149803b83301d069;Sampled=0;lineage=50ff9de7:0
+            CF-Cache-Status:
+              schema:
+                type: string
+                example: DYNAMIC
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            Server:
+              schema:
+                type: string
+                example: cloudflare
+            CF-RAY:
+              schema:
+                type: string
+                example: 7f4b1e99ff690ec2-EZE
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: "400: Validation Error"
+                  value:
+                    success: false
+                    exception: Bad Request
+                    code: VALIDATION_ERROR
+                    message: Validation error
+                    issues:
+                      - received: ACCEPTED-1
+                        code: invalid_enum_value
+                        options:
+                          - ACCEPTED
+                          - REJECTED
+                        path:
+                          - status
+                        message: >-
+                          Invalid enum value. Expected 'ACCEPTED' | 'REJECTED',
+                          received 'ACCEPTED-1'
+                example-1:
+                  summary: "400: Not pending action"
+                  value:
+                    success: false
+                    exception: Bad Request
+                    code: KAUSANA.CLAIM_NOT_PENDING_MERCHANT_ACTION
+                    message: Claim is not pending merchant action
+        "403":
+          description: Forbidden
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Thu, 10 Aug 2023 20:53:10 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-amzn-RequestId:
+              schema:
+                type: string
+                example: 58447a81-9161-4a27-8d12-9d5e07ecaf97
+            x-amz-apigw-id:
+              schema:
+                type: string
+                example: JdkocFAoIAMEegQ=
+            X-Amzn-Trace-Id:
+              schema:
+                type: string
+                example: >-
+                  Root=1-64d54e35-6c0946cc747f4f78435db657;Sampled=0;lineage=50ff9de7:0
+            CF-Cache-Status:
+              schema:
+                type: string
+                example: DYNAMIC
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            Server:
+              schema:
+                type: string
+                example: cloudflare
+            CF-RAY:
+              schema:
+                type: string
+                example: 7f4b206f4bf10ec2-EZE
+            Content-Encoding:
+              schema:
+                type: string
+                example: gzip
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: false
+                exception: Forbidden
+                code: KAUSANA.REJECTED_CLAIMS_NOT_IMPLEMENTED
+                message: Rejected claims are not implemented yet
+        "404":
+          description: Not Found
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Thu, 10 Aug 2023 20:44:36 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-amzn-RequestId:
+              schema:
+                type: string
+                example: 64bbbf1d-5a29-4887-b6f5-4b71fd385b51
+            x-amz-apigw-id:
+              schema:
+                type: string
+                example: JdjX9HsNoAMEsOA=
+            X-Amzn-Trace-Id:
+              schema:
+                type: string
+                example: >-
+                  Root=1-64d54c32-7a0f8aaf737c76687e8928ee;Sampled=0;lineage=50ff9de7:0
+            CF-Cache-Status:
+              schema:
+                type: string
+                example: DYNAMIC
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            Server:
+              schema:
+                type: string
+                example: cloudflare
+            CF-RAY:
+              schema:
+                type: string
+                example: 7f4b13d97db10ec2-EZE
+            Content-Encoding:
+              schema:
+                type: string
+                example: gzip
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: false
+                exception: Not Found
+                code: KAUSANA.CLAIM_NOT_FOUND
+                message: Claim not found
+  /claims/{claimId}/documentation:
+    post:
+      tags:
+        - claims > {claimId}
+      summary: Subir documentación de una reclamación
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                extension: png
+      parameters:
+        - name: claimId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: "207779219414"
+      responses:
+        "200":
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Wed, 18 Oct 2023 13:41:48 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-amzn-RequestId:
+              schema:
+                type: string
+                example: bb888a0b-d621-4800-b73e-6641c715c52c
+            x-amz-apigw-id:
+              schema:
+                type: string
+                example: NAAIPFnCoAMEqbQ=
+            X-Amzn-Trace-Id:
+              schema:
+                type: string
+                example: >-
+                  Root=1-652fe09a-5e786f1f7a67f48e6432976c;Sampled=0;lineage=1b13e5ea:0
+            X-Cache:
+              schema:
+                type: string
+                example: Miss from cloudfront
+            Via:
+              schema:
+                type: string
+                example: >-
+                  1.1 6e1462e022bea1c291050d7c8b4e098c.cloudfront.net
+                  (CloudFront)
+            X-Amz-Cf-Pop:
+              schema:
+                type: string
+                example: GRU3-P5
+            X-Amz-Cf-Id:
+              schema:
+                type: string
+                example: uFYrzKGPkQ3zSF1OH_jWUmVQkO1O_sklVnGSc0vamHuSd13baOanYA==
+            CF-Cache-Status:
+              schema:
+                type: string
+                example: DYNAMIC
+            Set-Cookie:
+              schema:
+                type: string
+                example: >-
+                  _cfuvid=XBK_nw8ghmEATcRxtS1O5COtgxvRVeZLfjqmplEctGc-1697636508988-0-604800000;
+                  path=/; domain=.sonqo.io; HttpOnly; Secure; SameSite=None
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            Server:
+              schema:
+                type: string
+                example: cloudflare
+            CF-RAY:
+              schema:
+                type: string
+                example: 81813366dcc608f1-EZE
+            Content-Encoding:
+              schema:
+                type: string
+                example: gzip
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                url: >-
+                  https://first-presentation-document-bucket-develop.s3.us-east-1.amazonaws.com/1234567890/01HD1GAS6CCWKN5DBCZE0P5YKA?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAYQWCYQEWUTFNZZXC%2F20231018%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231018T134148Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEI7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIGcegBc3bwzXrh8HgUchcxPp41pphGQwRQz%2FU3z4nHXzAiEAwlZXuWfblwNh5Zmskn79k%2F1%2FONt4wa9rah9SYmxOz5UqqAMIp%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw1ODU1OTc3NDc1MDEiDHv0rs%2BZ19it0KeUySr8AkTEyEGwGPjeMXgMXBIcjac3WZEKuLOzBp6twC3gwAcMaFqPOsBlqOb5D8u5HGBnA1NReH8CtWST%2FGxv70FlY2KuSKw1bNJWuXfZ%2FsJQ5bDa%2BD2IOIl5ckHwHkiieJFRiJAYlFFXBIgXoMDGZ2cjdkMpB9Wj4aZH7wgQtVTrWjPMaWYlWsMebrLCqwSVdCrxXUUNLt0m32F75vP6SDcTFNB0YH90%2BIGAhVhfJ5cJHeRUCBiz2UlEYKvoPim5Bb2MbBB%2FUcjAN9k2kKwV7NILkq%2F9ABoR%2FUYCt1UG%2FNemUCl2vM1cXvS2KN%2B9z%2FL8%2F8ADWNiJwqyNbUe8Q70kPKhcgRfxt3y2IKW8F1dRhkbL1QXibAaRlekevnSYpq1KYJuEiuGB2JP8BerunexSTgTsGP8Jamyi4io4S4CS4CB7VsL%2F5%2BHSiwgFM%2FSNG0uSNXSBvmXIjDnyelCKnRyB4W8MbaXvoMBf3pc8Yoa4wKm1DIY3QAtQb9kj%2F5cABIMBMJrBv6kGOp0Bylibc7JT4ty31mjZsXPyavneKBDn0I%2BOiSupyzVtfyYU6cS%2BNty5U0JlcVAwGkbc9lKHt6JAas77Sy%2F%2F6%2BtOq%2F4nFCAewmJIwCad8WXUwc2713zRR0jGQHi2wTzZzTdmYobxod3ip6HRgc9GlDKII%2Bmvl4yCGvTjX4vzUEEkdKmWS9GKdCHcSG1SdJqa0vp9sEifXmJZ7tWGsUzbDA%3D%3D&X-Amz-Signature=802d09a524ff27c9f438ed86e85def7457ee8e75d340d949dbcbaf98081372de&X-Amz-SignedHeaders=host&x-id=PutObject
+  /claims/{claimId}/:
+    get:
+      tags:
+        - claims > {claimId}
+      summary: Obtener información de una reclamación
+      parameters:
+        - name: Access-Control-Allow-Credentials
+          in: header
+          schema:
+            type: boolean
+          example: "true"
+        - name: Access-Control-Allow-Origin
+          in: header
+          schema:
+            type: string
+          example: "*"
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: "{{apiKey}}"
+        - name: claimId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: "1706540942200"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /claims/acquirer/{acquirerId}/:
+    get:
+      tags:
+        - claims > acquirer
+      summary: Obtener reclamaciónes usando el ID del adquirente
+      parameters:
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: "{{apiKey}}"
+        - name: acquirerId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: "006355"
+      responses:
+        "200":
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Wed, 16 Aug 2023 17:35:16 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: "26"
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-amzn-RequestId:
+              schema:
+                type: string
+                example: 88ff7c30-7568-4de6-9a17-8bce04711559
+            x-amz-apigw-id:
+              schema:
+                type: string
+                example: Jw5RAGQeoAMECBA=
+            X-Amzn-Trace-Id:
+              schema:
+                type: string
+                example: >-
+                  Root=1-64dd08d2-56162df8579172eb6001f8a3;Sampled=0;lineage=87791b36:0
+            CF-Cache-Status:
+              schema:
+                type: string
+                example: DYNAMIC
+            Set-Cookie:
+              schema:
+                type: string
+                example: >-
+                  _cfuvid=Qo3AgpvsM6zVFHtwrRzyXs9UbEmQpCAH7PjQL67L72g-1692207316437-0-604800000;
+                  path=/; domain=.sonqo.io; HttpOnly; Secure; SameSite=None
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            Server:
+              schema:
+                type: string
+                example: cloudflare
+            CF-RAY:
+              schema:
+                type: string
+                example: 7f7b6ec31a4a0ec2-EZE
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: "200: no claims"
+                  value:
+                    success: true
+                    data: []
+                example-1:
+                  summary: "200: with claims"
+                  value:
+                    success: true
+                    data:
+                      - id: "207779219414"
+                        origin: mastercard
+                        merchantId: "000000000010377"
+                        partnerId: "006355"
+                        seen: false
+                        data:
+                          lastModifiedDate: "2024-01-10T15:30:00Z"
+                          lastModifedBy: admin_user
+                          refundReversalCurrency: ARS
+                          primaryAccountNumber: "1234567890123456"
+                          claimId: CLM123456789
+                          transactionId: TX123456789ABCDE
+                          rrn: RRN123456789
+                          issuerId: ISS12345
+                          chargebackReferenceNumber: CHBK123456789
+                          createdAt: "2023-12-25T10:00:00Z"
+                          isOpen: true
+                          merchantId: MER98765
+                          claimValue: "150.00"
+                          currency: ARS
+                          acquirerId: ACQ54321
+                          issuerResponseCode: "05"
+                          issuerRejectReasonCode: "13"
+                        status: COLLABORATION_REJECTED
+                        mcData:
+                          primaryAccountNum: "5200535335702520"
+                          clearingNetwork: GCMS
+                          dueDate: "2023-12-23"
+                          standardClaims: null
+                          chargebackDetails: null
+                          mastercardRetrievalRequestId: ""
+                          claimType: Standard
+                          issuerId: "012385"
+                          merchantId: "000000000010377"
+                          isAccurate: "true"
+                          acquirerId: "032314"
+                          caseFilingDetails: null
+                          createDate: "2023-12-20"
+                          retrievalDetails:
+                            cancelDate: null
+                            retrievalRequestReason: "6342"
+                            chargebackRefNum: "9202958551"
+                            acquirerResponseCd: null
+                            collaborationExpirationDateTime: "2023-12-23T12:10:57"
+                            acquirerResponseNotificationStatus: null
+                            issuerMemo: null
+                            rejectReason: null
+                            rejectDate: null
+                            requestId: "307779219651"
+                            reverseDate: null
+                            acquirerResponseDt: null
+                            instructionsForHealthcare: null
+                            currency: ARS
+                            imageReviewDt: null
+                            createDate: "2023-12-20"
+                            issuerResponseDt: null
+                            amount: "138500.00"
+                            acquirerRefNum: "08032053309002100003662"
+                            imageReviewDecision: null
+                            claimId: "207779219414"
+                            acquirerMemo: null
+                            issuerResponseCd: null
+                            docNeeded: NONE
+                            primaryAcctNum: "5200535335702520"
+                            issuerRejectRsnCd: null
+                          authCode: "682190"
+                          lastModifiedDate: "2023-12-20"
+                          isIssuer: "false"
+                          lastModifiedBy: MCOMAPI
+                          acquirerRefNum: "08032053309002100003662"
+                          claimId: "207779219414"
+                          retrievalDetailsList:
+                            - cancelDate: null
+                              retrievalRequestReason: "6342"
+                              chargebackRefNum: "9202958551"
+                              acquirerResponseCd: null
+                              collaborationExpirationDateTime: "2023-12-23T12:10:57"
+                              acquirerResponseNotificationStatus: null
+                              issuerMemo: null
+                              rejectReason: null
+                              rejectDate: null
+                              requestId: "307779219651"
+                              reverseDate: null
+                              acquirerResponseDt: null
+                              instructionsForHealthcare: null
+                              currency: ARS
+                              imageReviewDt: null
+                              createDate: "2023-12-20"
+                              issuerResponseDt: null
+                              amount: "138500.00"
+                              acquirerRefNum: "08032053309002100003662"
+                              imageReviewDecision: null
+                              claimId: "207779219414"
+                              acquirerMemo: null
+                              issuerResponseCd: null
+                              docNeeded: NONE
+                              primaryAcctNum: "5200535335702520"
+                              issuerRejectRsnCd: null
+                          transactionId: >-
+                            TI:wRICVszz2hmGh6wVszrLLmyxMbNmuNBt4L1sudb90OqQgu5cMhQn5FA92qasIa8L_JeWjNeZJERtVAgeOD06JnmvqcoS55tFnmou7Pqeg4k=##ACQ
+                          isAcquirer: "true"
+                          clearingDueDate: "2023-12-23"
+                          isOpen: "true"
+                          queueName: Acquirer Collaboration Unworked
+                          feeDetails: null
+                          clearingDetails:
+                            programRegistrationId: null
+                            acquiringInstitutionIdCode: null
+                            installmentPlanType: null
+                            pinCaptureCapability: "1"
+                            businessCycle: "05"
+                            processingCode: "00"
+                            cardholderBillingAmount: null
+                            primaryAccountNumber: 520053******2520
+                            currencyCodeCardholderBilling: "032"
+                            cardholderAuthenticationEntity: "9"
+                            cardAcceptorBusinessCode: "5732"
+                            localTax1IVA: null
+                            dataRecord: null
+                            cardAcceptorPostalCode: C1425FOC
+                            walletIdentifierMdes: null
+                            installmentPaymentDataInterestRate: null
+                            cardAcceptorTerminalId: "49696258"
+                            transactionCategoryIndicator: null
+                            partnerIdCode: null
+                            currencyExponentCardholderBilling: "2"
+                            cardCaptureCapability: "0"
+                            settlementData: null
+                            cardAcceptorUrl: null
+                            receivingInstitutionIdCode: "012699"
+                            cardAcceptorCity: CIUDAD AUTONO
+                            cardAcceptorClassificationOverrideIndicator: null
+                            cardDataOutputCapability: "0"
+                            forwardingInstitutionIdCode: "032314"
+                            terminalOperatingEnvironment: "4"
+                            cardProgramIdentifier: MCC
+                            integratedCircuitCardRelatedData: null
+                            transactionOriginatorInstitutionIdCode: "032314"
+                            legalCorporateName: LUCAS ROMERO
+                            specialConditionsIndicator: "N"
+                            installmentFee: null
+                            originatingMessageFormat: "2"
+                            serviceCode: null
+                            japanCommonMerchantCode: null
+                            rateIndicator: "N"
+                            cardholderToAccountCode: "00"
+                            qpsPaypassEligibilityIndicator: null
+                            tokenRequestorId: null
+                            installmentPaymentDataSubsequentInstallmentAmount: null
+                            remotePaymentsProgramData: null
+                            settlementIndicator: M
+                            mastercardAssignedIdOverrideIndicator: "N"
+                            transactionDestinationInstitutionIdCode: "012385"
+                            accountLevelManagementAccountCategoryCode: "N"
+                            cardAcceptorName: MUEBLES-TIENDANUBE
+                            cardDataInputCapability: "6"
+                            cardholderPresentData: "5"
+                            terminalDataOutputCapability: "0"
+                            reconciliationCurrencyCode: null
+                            cardAcceptorCountry: ARG
+                            interchangeRateDesignator: "05"
+                            flexCode: null
+                            gcmsProductIndentifier: MCS
+                            transactionType: Clearing
+                            transactionAmountLocal: "13850000"
+                            numberOfInstallments: null
+                            transitProgramCode: null
+                            cardAcceptorIdCode: "000000000010377"
+                            businessServiceArrangementTypeCode: "4"
+                            cardAcceptorStreetAddress: SANTA MARIA DE ORO
+                            currencyConversionAssessmentAmount: null
+                            approvalCode: "682190"
+                            functionCode: "200"
+                            licensedProductIndentifier: MCS
+                            currencyCodeTransaction: "032"
+                            productOverrideIndicator: null
+                            electronicCommerceSecurityLevelIndicator: "9"
+                            originalInformationInstallments: null
+                            electronicCommerceUcafCollectionIndicator: "0"
+                            mastercardAssignedId: null
+                            currencyCodeReconciliation: "032"
+                            localTransactionDateTime: "231105022701"
+                            cardholderFromAccountCode: "00"
+                            cardholderAuthenticationCapability: "9"
+                            installmentPaymentData: null
+                            terminalType: CT6
+                            installmentNumber: null
+                            installmentPaymentDataNumberInstallments: null
+                            cardIssuerReferenceData: null
+                            reconciliationAmount: null
+                            masterPassIncentiveIndicator: "N"
+                            cardholderBillingCurrencyCode: null
+                            installmentAmount: null
+                            installmentPaymentDataInstallmentFee: null
+                            messageReversalIndicator: null
+                            businessServiceIdCode: "032001"
+                            transactionLifeCycleId: " MCS425WCD1104  "
+                            totalTransactionAmount: null
+                            cardholderAuthenticationMethod: "9"
+                            cardPresentData: "0"
+                            currencyExponentTransaction: "2"
+                            electronicCommerceCardAuth: "1"
+                            installmentData: null
+                            transactionCurrencyCode: "032"
+                            cardDataInputMode: S
+                            additionalAmountDataCode: null
+                            installmentPaymentDataBrazil: null
+                            installmentParameters: null
+                            installmentPaymentDataAnnualPercentageRate: null
+                            installmentPaymentDataFirstInstallmentAmount: null
+                            mastercardMappingServiceAccountNumber: null
+                            messageReasonCode: "1401"
+                            centralSiteProcessingDateOriginalMessage: null
+                            currencyExponentReconciliation: "2"
+                            localMessageReasonCode: null
+                            cardAcceptorState: C
+                            centralSiteBusinessDate: "231105"
+                            acquirerReferenceData: "08032053309002100003662"
+                          switchSerialNumber: null
+                          claimValue: 0.00 USD
+                        createdAt: "2023-12-22T17:13:30.379Z"
+                        updatedAt: "2024-01-11T19:56:57.069Z"
+  /claims/acquirer/{acquirerId}/seen/:
+    post:
+      tags:
+        - claims > acquirer
+      summary: Marcar una reclamación como vista
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                claims:
+                  - "200002087418"
+      parameters:
+        - name: acquirerId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: "006355"
+      responses:
+        "200":
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Wed, 16 Aug 2023 17:35:16 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: "26"
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-amzn-RequestId:
+              schema:
+                type: string
+                example: 88ff7c30-7568-4de6-9a17-8bce04711559
+            x-amz-apigw-id:
+              schema:
+                type: string
+                example: Jw5RAGQeoAMECBA=
+            X-Amzn-Trace-Id:
+              schema:
+                type: string
+                example: >-
+                  Root=1-64dd08d2-56162df8579172eb6001f8a3;Sampled=0;lineage=87791b36:0
+            CF-Cache-Status:
+              schema:
+                type: string
+                example: DYNAMIC
+            Set-Cookie:
+              schema:
+                type: string
+                example: >-
+                  _cfuvid=Qo3AgpvsM6zVFHtwrRzyXs9UbEmQpCAH7PjQL67L72g-1692207316437-0-604800000;
+                  path=/; domain=.sonqo.io; HttpOnly; Secure; SameSite=None
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            Server:
+              schema:
+                type: string
+                example: cloudflare
+            CF-RAY:
+              schema:
+                type: string
+                example: 7f7b6ec31a4a0ec2-EZE
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: "200: no claims"
+                  value:
+                    success: true
+                    data: []
+                example-1:
+                  summary: "200: marked as seen"
+                  value:
+                    message: Claims marked as seen
+                    data:
+                      total: 1
+  /merchants/{merchantId}/claims:
+    get:
+      tags:
+        - claims > merchants
+      summary: Obtener reclamaciónes usando el ID del comercio
+      parameters:
+        - name: Access-Control-Allow-Credentials
+          in: header
+          schema:
+            type: boolean
+          example: "true"
+        - name: Access-Control-Allow-Origin
+          in: header
+          schema:
+            type: string
+          example: "*"
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: "{{apiKey}}"
+        - name: merchantId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: "200002087418"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /claims/{claimId}/actions/email:
+    post:
+      tags:
+        - claims > actions
+      summary: Enviar una notificación de nueva reclamación a un merchant
+      description: Necesitarás un plan que contenga la funcionalidad de `mailing` para usar este endpoint.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: eze.calonge@naranjax.com
+      parameters:
+        - name: claimId
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: The claim id
+          example: "207779219414"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /security-ms/api/security/auth0/b2b/m2ms:
+    post:
+      tags:
+        - Security
+      summary: Token dev
+      requestBody:
+        content:
+          "*/*":
+            schema:
+              type: string
+              example: >-
+                "{\n    \"client_id\":
+                \"X3Grw6s1W034tZhy7nAmWFlHRAly7nLa\",\n    \"client_secret\":
+                \"fR0JLTOxAYumdVORREEexxYNGvI7sceKqILP8roWAR59HzGQCKHEvIlWNw6ZDSNP\",\n   
+                \"audience\": \"https://naranja.com/b2bKausanna/api\",\n   
+                \"grant_type\": \"client_credentials\",\n    \"cache\" :
+                true\n}"
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer {{accessToken}}
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: >-
+            __cf_bm=PFHNduSo53cg96VD3FcAUna.pQN8RU9QAdzdCuoT_7Y-1699993234-0-AZ3byV51chhDGwOkM812C10CGXFZ2Gxl+6vDFDV6L+aaHcOy3cJLIqf5zXJ3mFisqeJwGf7uJCxwMRmrcOBtsFA=;
+            _cfuvid=CU6MKOEcg1tlKMlN3p8MDvlhv6PuEud68MbeifpQRJo-1699993234305-0-604800000
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
