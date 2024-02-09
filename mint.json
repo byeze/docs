@@ -19,7 +19,7 @@
   "topbarLinks": [
     {
       "name": "Soporte",
-      "url": "mailto:ongoing-processes-sonqo@naranjax.com"
+      "url": "mailto:sonqo-ongoing-processes@naranjax.com"
     }
   ],
   "tabs": [
@@ -43,7 +43,7 @@
   "navigation": [
     {
       "group": "Empezando",
-      "pages": ["introduction", "quickstart"]
+      "pages": ["introduction", "quickstart", "usage"]
     },
     {
       "group": "API Documentation",

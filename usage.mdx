@@ -1,0 +1,33 @@
+# Medición de Consumo en la API Kausanna
+
+La API Kausanna de NaranjaX implementa un modelo de facturación basado en el consumo que se ajusta a la actividad específica del cliente y al plan seleccionado. Este documento describe cómo se mide el consumo, los parámetros que influyen en el costo, y cómo se calcula el cobro final para cada período de facturación.
+
+## Consumo Basado en Requests
+
+El consumo se mide principalmente por el número de requests (solicitudes) hechas a la API dentro de un ciclo de facturación mensual. Cada plan tiene asignado un límite de requests gratuitos, tras los cuales se aplicará un cargo adicional por cada request adicional según las condiciones comerciales de su contrato con NaranjaX.
+
+### Tipos de Requests y Ponderación
+
+- **Requests de Lectura (GET):** Solicitudes para obtener datos. Tienen un menor costo en comparación con las requests de escritura.
+- **Requests de Escritura (POST, PUT, DELETE):** Solicitudes para crear, actualizar o eliminar datos. Debido a la mayor carga de procesamiento, estas requests tienen un costo mayor.
+
+## Otros Parámetros Considerados
+
+Además del número de requests, otros parámetros pueden influir en el costo final:
+
+- **Tamaño de Datos Transferidos:** El volumen de datos enviados o recibidos durante el mes.
+- **Uso de Recursos Específicos:** Algunas operaciones pueden requerir recursos adicionales o el acceso a datos premium, lo cual puede incurrir en cargos adicionales.
+
+## Planes y Condiciones Comerciales
+
+Cada cliente elige un plan al suscribirse a la API Kausanna. Los detalles específicos del plan, incluyendo el número de requests gratuitos, el costo por request adicional, y otros posibles cargos, se definen en las condiciones comerciales del contrato con NaranjaX.
+
+## Monitoreo y Notificaciones
+
+Los clientes pueden monitorear su consumo actual a través del Dashboard de Cliente proporcionado por NaranjaX. Además, se enviarán notificaciones por email al acercarse al límite de su plan o al alcanzarlo.
+
+## Ajustes y Optimización del Consumo
+
+Recomendamos revisar regularmente el patrón de consumo para elegir el plan más adecuado o ajustar el uso de la API para optimizar costos.
+
+Para más información sobre los planes disponibles y cómo cambiar de plan, por favor contacte a sonqo-ongoing-processes@naranjax.com.
