@@ -11,3 +11,38 @@ Para usar la API es necesarió contar con:
 
 1. Un bearer token (tipo JWT) que se debe enviar en el header `Authorization` de cada petición.
 2. Un header `x-api-key` con el valor correspondiente a la llave de tu aplicación. Lo obtenés al crear una aplicación con nosotros.
+
+### Content-Type
+
+La API acepta y retorna JSON. Por lo que es necesario enviar el header `Content-Type: application/json` en cada petición.
+En caso de que la petición no sea correcta, se retornará un error.
+
+### Errores
+
+Todos los errores de la API tienen un formato definido. El código de estado HTTP siempre será 4xx o 5xx. El cuerpo de la respuesta siempre será un JSON con la siguiente estructura:
+
+```json
+{
+  "code": "CODIGO_DEL_ERROR",
+  "exception": "Bad Request",
+  "issues": [
+    {
+      "code": "invalid_enum_value",
+      "message": "Invalid enum value. Expected 'ACCEPTED' | 'REJECTED', received 'ACCEPTED-1'",
+      "options": ["ACCEPTED", "REJECTED"],
+      "path": ["status"],
+      "received": "ACCEPTED-1"
+    }
+  ],
+  "message": "Validation error",
+  "success": false
+}
+```
+
+| Campo       | Descripción                                                                                                     |
+| ----------- | --------------------------------------------------------------------------------------------------------------- |
+| `code`      | Código del error.                                                                                               |
+| `exception` | Nombre del error.                                                                                               |
+| `issues`    | Lista de problemas encontrados. En caso de que hayas enviado un body, se retornará los problemas de validación. |
+| `message`   | Mensaje del error.                                                                                              |
+| `success`   | Indica si la petición fue exitosa o no.                                                                         |
