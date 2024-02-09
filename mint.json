@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "openapi": "api-reference/openapi.yml",
+  "openapi": ["/openapi.yml", "api-reference/openapi.yml", "/api-reference/openapi.yml"],
   "name": "Kausanna API",
   "logo": {
     "dark": "https://www.naranjax.com/assets/images/navbar-isologo-naranjax.png",
@@ -30,12 +30,12 @@
   ],
   "anchors": [
     {
-      "name": "Documentation",
+      "name": "Documentación",
       "icon": "book-open-cover",
       "url": "https://naranjax.mintlify.app/api-reference"
     },
     {
-      "name": "Community",
+      "name": "Comunidad de Slack",
       "icon": "slack",
       "url": "https://naranjax.slack.com/"
     }
