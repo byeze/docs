@@ -37,19 +37,9 @@ components:
         `Bearer `.
 security:
   - bearerAuth: []
-tags:
-  - name: partner
-  - name: partner > {partnerId}
-  - name: claims > {claimId}
-  - name: claims > acquirer
-  - name: claims > merchants
-  - name: claims > actions
-  - name: Security
 paths:
   /partner/{partnerId}/subscriptions:
     post:
-      tags:
-        - partner > {partnerId}
       summary: Crear una subscripción webhook
       requestBody:
         content:
