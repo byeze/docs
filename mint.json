@@ -59,7 +59,6 @@
         "api-reference/claims/mark-as-seen",
         "api-reference/claims/put-status",
         "api-reference/claims/upload-docs",
-        "api-reference/security/token-dev",
         "api-reference/webhooks/create",
         "api-reference/webhooks/delete",
         "api-reference/webhooks/get",
