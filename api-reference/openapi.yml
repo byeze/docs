@@ -1616,6 +1616,9 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                email:
+                  type: string
               example:
                 email: eze.calonge@naranjax.com
       parameters:
