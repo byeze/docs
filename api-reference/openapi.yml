@@ -130,6 +130,39 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 01H69QTYGPZCFWJJMQC9HDC9PC
+                      url:
+                        type: string
+                        example: https://google.com
+                      secret:
+                        type: string
+                        example: sq_2Wn5QwBo8x3RTOF-az0_f52e5TUzwh0waOAqAtwtht4
+                      subscribedEvents:
+                        type: array
+                        items:
+                          type: string
+                          example: chargeback.created
+                      partnerId:
+                        type: string
+                        example: '006837'
+                      isActive:
+                        type: boolean
+                        example: true
+                      createdAt:
+                        type: string
+                        example: '2023-07-26T18:37:01.334Z'
+                      updatedAt:
+                        type: string
+                        example: '2023-07-26T18:37:01.334Z'
               example:
                 success: true
                 data:
