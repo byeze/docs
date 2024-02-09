@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "openapi": ["/openapi.yml", "api-reference/openapi.yml", "/api-reference/openapi.yml"],
+  "openapi": ["/api-reference/openapi.yml"],
   "name": "Kausanna API",
   "logo": {
     "dark": "https://www.naranjax.com/assets/images/navbar-isologo-naranjax.png",
@@ -12,8 +12,8 @@
     "light": "#efe2d2",
     "dark": "#0e0e0e",
     "anchors": {
-      "from": "#efe2d2",
-      "to": "#efe2d2"
+      "from": "#8d785c",
+      "to": "#8d785c"
     }
   },
   "topbarLinks": [
