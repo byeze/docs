@@ -1119,13 +1119,14 @@ paths:
     get:
       tags:
         - claims > merchants
-      summary: Obtener reclamaciónes usando el ID del comercio
+      summary: Obtener reclamaciones usando el ID del comercio
       parameters:
         - name: x-api-key
           in: header
           schema:
             type: string
-          example: "{{apiKey}}"
+          example: "key_bd90853656fadc507077e15b4d78d4a989aa8f92287d3ae80ad7d2cea6ace3c1"
+          required: true
         - name: merchantId
           in: path
           schema:

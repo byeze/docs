@@ -54,7 +54,7 @@
       "pages": [
         "api-reference/claims/get-claim",
         "api-reference/claims/get-claim-by-acquirer",
-        "api-reference/claims/get-claim-by-merchant",
+        "api-reference/claims/get-claims-by-merchant",
         "api-reference/claims/put-status",
         "api-reference/claims/mark-as-seen",
         "api-reference/claims/email"
