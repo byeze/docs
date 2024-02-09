@@ -1121,16 +1121,6 @@ paths:
         - claims > merchants
       summary: Obtener reclamaciónes usando el ID del comercio
       parameters:
-        - name: Access-Control-Allow-Credentials
-          in: header
-          schema:
-            type: boolean
-          example: "true"
-        - name: Access-Control-Allow-Origin
-          in: header
-          schema:
-            type: string
-          example: "*"
         - name: x-api-key
           in: header
           schema:
@@ -1146,7 +1136,9 @@ paths:
         "200":
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
   /claims/{claimId}/actions/email:
     post:
       tags:
