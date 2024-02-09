@@ -17,7 +17,7 @@ info:
     complejidad de las redes de Visa y Mastercard para que puedas enfocarte en lo que realmente importa: hacer crecer tu negocio.
 
     Verificá el estado de nuestras APIs en [Kausana Status](https://kausana.instatus.com/)
-  version: 4.0.0
+  version: 4.0.10
   contact:
     email: ongoing-processes@sonqo.io
   x-logo:
@@ -75,59 +75,10 @@ paths:
         "200":
           description: OK
           headers:
-            Date:
-              schema:
-                type: string
-                example: Wed, 26 Jul 2023 18:37:01 GMT
             Content-Type:
               schema:
                 type: string
                 example: application/json
-            Transfer-Encoding:
-              schema:
-                type: string
-                example: chunked
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            x-amzn-RequestId:
-              schema:
-                type: string
-                example: def8be4d-d63d-499d-8df3-d8652d2d32b9
-            x-amz-apigw-id:
-              schema:
-                type: string
-                example: Ir0oIFL6IAMFkRQ=
-            X-Amzn-Trace-Id:
-              schema:
-                type: string
-                example: >-
-                  Root=1-64c167cd-0b2ad9a979be1ff56fb19c99;Sampled=0;lineage=650b6202:0
-            CF-Cache-Status:
-              schema:
-                type: string
-                example: DYNAMIC
-            Strict-Transport-Security:
-              schema:
-                type: string
-                example: max-age=15552000; includeSubDomains
-            X-Content-Type-Options:
-              schema:
-                type: string
-                example: nosniff
-            Server:
-              schema:
-                type: string
-                example: cloudflare
-            CF-RAY:
-              schema:
-                type: string
-                example: 7ecec06299cba795-EZE
-            Content-Encoding:
-              schema:
-                type: string
-                example: gzip
           content:
             application/json:
               schema:
@@ -180,55 +131,10 @@ paths:
         "400":
           description: Bad Request
           headers:
-            Date:
-              schema:
-                type: string
-                example: Wed, 26 Jul 2023 18:37:19 GMT
             Content-Type:
               schema:
                 type: string
                 example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: "209"
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            x-amzn-RequestId:
-              schema:
-                type: string
-                example: a60407c8-354f-4625-b193-133d2c771f6e
-            x-amz-apigw-id:
-              schema:
-                type: string
-                example: Ir0q6HUIoAMFXHQ=
-            X-Amzn-Trace-Id:
-              schema:
-                type: string
-                example: >-
-                  Root=1-64c167df-205d9a1315e26e38692e472b;Sampled=0;lineage=650b6202:0
-            CF-Cache-Status:
-              schema:
-                type: string
-                example: DYNAMIC
-            Strict-Transport-Security:
-              schema:
-                type: string
-                example: max-age=15552000; includeSubDomains
-            X-Content-Type-Options:
-              schema:
-                type: string
-                example: nosniff
-            Server:
-              schema:
-                type: string
-                example: cloudflare
-            CF-RAY:
-              schema:
-                type: string
-                example: 7ecec0d22fa4a795-EZE
           content:
             application/json:
               schema:
@@ -266,59 +172,10 @@ paths:
         "200":
           description: OK
           headers:
-            Date:
-              schema:
-                type: string
-                example: Wed, 26 Jul 2023 18:40:46 GMT
             Content-Type:
               schema:
                 type: string
                 example: application/json
-            Transfer-Encoding:
-              schema:
-                type: string
-                example: chunked
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            x-amzn-RequestId:
-              schema:
-                type: string
-                example: 3079bcef-75d5-40fc-b158-03fde34ac2ab
-            x-amz-apigw-id:
-              schema:
-                type: string
-                example: Ir1LMGhloAMEG_g=
-            X-Amzn-Trace-Id:
-              schema:
-                type: string
-                example: >-
-                  Root=1-64c168ad-4dd802e8780ef9a507e264b9;Sampled=0;lineage=b476f86a:0
-            CF-Cache-Status:
-              schema:
-                type: string
-                example: DYNAMIC
-            Strict-Transport-Security:
-              schema:
-                type: string
-                example: max-age=15552000; includeSubDomains
-            X-Content-Type-Options:
-              schema:
-                type: string
-                example: nosniff
-            Server:
-              schema:
-                type: string
-                example: cloudflare
-            CF-RAY:
-              schema:
-                type: string
-                example: 7ecec5dd1ebea795-EZE
-            Content-Encoding:
-              schema:
-                type: string
-                example: gzip
           content:
             application/json:
               schema:
@@ -369,55 +226,10 @@ paths:
         "200":
           description: OK
           headers:
-            Date:
-              schema:
-                type: string
-                example: Wed, 26 Jul 2023 20:58:18 GMT
             Content-Type:
               schema:
                 type: string
                 example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: "16"
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            x-amzn-RequestId:
-              schema:
-                type: string
-                example: fe334da4-efbf-4980-bdcb-de67b8f3b357
-            x-amz-apigw-id:
-              schema:
-                type: string
-                example: IsJUjFYNIAMEa2g=
-            X-Amzn-Trace-Id:
-              schema:
-                type: string
-                example: >-
-                  Root=1-64c188e9-72968e9346d8cc7c5b7ec701;Sampled=0;lineage=b6bff95c:0
-            CF-Cache-Status:
-              schema:
-                type: string
-                example: DYNAMIC
-            Strict-Transport-Security:
-              schema:
-                type: string
-                example: max-age=15552000; includeSubDomains
-            X-Content-Type-Options:
-              schema:
-                type: string
-                example: nosniff
-            Server:
-              schema:
-                type: string
-                example: cloudflare
-            CF-RAY:
-              schema:
-                type: string
-                example: 7ecf8f512d471e98-EZE
           content:
             application/json:
               schema:
@@ -427,59 +239,10 @@ paths:
         "404":
           description: Not Found
           headers:
-            Date:
-              schema:
-                type: string
-                example: Wed, 26 Jul 2023 21:05:50 GMT
             Content-Type:
               schema:
                 type: string
                 example: application/json
-            Transfer-Encoding:
-              schema:
-                type: string
-                example: chunked
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            x-amzn-RequestId:
-              schema:
-                type: string
-                example: 3d920b91-2671-428b-9f6d-f2968f1e7d53
-            x-amz-apigw-id:
-              schema:
-                type: string
-                example: IsKbIFhsIAMEsWA=
-            X-Amzn-Trace-Id:
-              schema:
-                type: string
-                example: >-
-                  Root=1-64c18aad-49d85eda32053cc50f7abcd1;Sampled=0;lineage=b6bff95c:0
-            CF-Cache-Status:
-              schema:
-                type: string
-                example: DYNAMIC
-            Strict-Transport-Security:
-              schema:
-                type: string
-                example: max-age=15552000; includeSubDomains
-            X-Content-Type-Options:
-              schema:
-                type: string
-                example: nosniff
-            Server:
-              schema:
-                type: string
-                example: cloudflare
-            CF-RAY:
-              schema:
-                type: string
-                example: 7ecf9a57cd0e1e98-EZE
-            Content-Encoding:
-              schema:
-                type: string
-                example: gzip
           content:
             application/json:
               schema:
@@ -517,55 +280,10 @@ paths:
         "409":
           description: Conflict
           headers:
-            Date:
-              schema:
-                type: string
-                example: Wed, 26 Jul 2023 20:18:07 GMT
             Content-Type:
               schema:
                 type: string
                 example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: "127"
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            x-amzn-RequestId:
-              schema:
-                type: string
-                example: 8a29d917-5b18-44ad-b2c0-dc842ca4bdf5
-            x-amz-apigw-id:
-              schema:
-                type: string
-                example: IsDbtHyXIAMEY9Q=
-            X-Amzn-Trace-Id:
-              schema:
-                type: string
-                example: >-
-                  Root=1-64c17f7d-489d70e13b6cf04940598c98;Sampled=0;lineage=73312fd5:0
-            CF-Cache-Status:
-              schema:
-                type: string
-                example: DYNAMIC
-            Strict-Transport-Security:
-              schema:
-                type: string
-                example: max-age=15552000; includeSubDomains
-            X-Content-Type-Options:
-              schema:
-                type: string
-                example: nosniff
-            Server:
-              schema:
-                type: string
-                example: cloudflare
-            CF-RAY:
-              schema:
-                type: string
-                example: 7ecf5471a980c813-EZE
           content:
             application/json:
               schema:
@@ -604,55 +322,10 @@ paths:
         "400":
           description: Bad Request
           headers:
-            Date:
-              schema:
-                type: string
-                example: Thu, 10 Aug 2023 20:51:55 GMT
             Content-Type:
               schema:
                 type: string
                 example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: "303"
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            x-amzn-RequestId:
-              schema:
-                type: string
-                example: 75576d0e-a496-49ee-9229-5c25ee64d79e
-            x-amz-apigw-id:
-              schema:
-                type: string
-                example: JdkctH-6IAMEo4w=
-            X-Amzn-Trace-Id:
-              schema:
-                type: string
-                example: >-
-                  Root=1-64d54dea-09efd39b149803b83301d069;Sampled=0;lineage=50ff9de7:0
-            CF-Cache-Status:
-              schema:
-                type: string
-                example: DYNAMIC
-            Strict-Transport-Security:
-              schema:
-                type: string
-                example: max-age=15552000; includeSubDomains
-            X-Content-Type-Options:
-              schema:
-                type: string
-                example: nosniff
-            Server:
-              schema:
-                type: string
-                example: cloudflare
-            CF-RAY:
-              schema:
-                type: string
-                example: 7f4b1e99ff690ec2-EZE
           content:
             application/json:
               schema:
@@ -725,59 +398,10 @@ paths:
         "403":
           description: Forbidden
           headers:
-            Date:
-              schema:
-                type: string
-                example: Thu, 10 Aug 2023 20:53:10 GMT
             Content-Type:
               schema:
                 type: string
                 example: application/json
-            Transfer-Encoding:
-              schema:
-                type: string
-                example: chunked
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            x-amzn-RequestId:
-              schema:
-                type: string
-                example: 58447a81-9161-4a27-8d12-9d5e07ecaf97
-            x-amz-apigw-id:
-              schema:
-                type: string
-                example: JdkocFAoIAMEegQ=
-            X-Amzn-Trace-Id:
-              schema:
-                type: string
-                example: >-
-                  Root=1-64d54e35-6c0946cc747f4f78435db657;Sampled=0;lineage=50ff9de7:0
-            CF-Cache-Status:
-              schema:
-                type: string
-                example: DYNAMIC
-            Strict-Transport-Security:
-              schema:
-                type: string
-                example: max-age=15552000; includeSubDomains
-            X-Content-Type-Options:
-              schema:
-                type: string
-                example: nosniff
-            Server:
-              schema:
-                type: string
-                example: cloudflare
-            CF-RAY:
-              schema:
-                type: string
-                example: 7f4b206f4bf10ec2-EZE
-            Content-Encoding:
-              schema:
-                type: string
-                example: gzip
           content:
             application/json:
               schema:
@@ -803,59 +427,10 @@ paths:
         "404":
           description: Not Found
           headers:
-            Date:
-              schema:
-                type: string
-                example: Thu, 10 Aug 2023 20:44:36 GMT
             Content-Type:
               schema:
                 type: string
                 example: application/json
-            Transfer-Encoding:
-              schema:
-                type: string
-                example: chunked
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            x-amzn-RequestId:
-              schema:
-                type: string
-                example: 64bbbf1d-5a29-4887-b6f5-4b71fd385b51
-            x-amz-apigw-id:
-              schema:
-                type: string
-                example: JdjX9HsNoAMEsOA=
-            X-Amzn-Trace-Id:
-              schema:
-                type: string
-                example: >-
-                  Root=1-64d54c32-7a0f8aaf737c76687e8928ee;Sampled=0;lineage=50ff9de7:0
-            CF-Cache-Status:
-              schema:
-                type: string
-                example: DYNAMIC
-            Strict-Transport-Security:
-              schema:
-                type: string
-                example: max-age=15552000; includeSubDomains
-            X-Content-Type-Options:
-              schema:
-                type: string
-                example: nosniff
-            Server:
-              schema:
-                type: string
-                example: cloudflare
-            CF-RAY:
-              schema:
-                type: string
-                example: 7f4b13d97db10ec2-EZE
-            Content-Encoding:
-              schema:
-                type: string
-                example: gzip
           content:
             application/json:
               schema:
@@ -1155,61 +730,10 @@ paths:
         "200":
           description: OK
           headers:
-            Date:
-              schema:
-                type: string
-                example: Wed, 16 Aug 2023 17:35:16 GMT
             Content-Type:
               schema:
                 type: string
                 example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: "26"
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            x-amzn-RequestId:
-              schema:
-                type: string
-                example: 88ff7c30-7568-4de6-9a17-8bce04711559
-            x-amz-apigw-id:
-              schema:
-                type: string
-                example: Jw5RAGQeoAMECBA=
-            X-Amzn-Trace-Id:
-              schema:
-                type: string
-                example: >-
-                  Root=1-64dd08d2-56162df8579172eb6001f8a3;Sampled=0;lineage=87791b36:0
-            CF-Cache-Status:
-              schema:
-                type: string
-                example: DYNAMIC
-            Set-Cookie:
-              schema:
-                type: string
-                example: >-
-                  _cfuvid=Qo3AgpvsM6zVFHtwrRzyXs9UbEmQpCAH7PjQL67L72g-1692207316437-0-604800000;
-                  path=/; domain=.sonqo.io; HttpOnly; Secure; SameSite=None
-            Strict-Transport-Security:
-              schema:
-                type: string
-                example: max-age=15552000; includeSubDomains
-            X-Content-Type-Options:
-              schema:
-                type: string
-                example: nosniff
-            Server:
-              schema:
-                type: string
-                example: cloudflare
-            CF-RAY:
-              schema:
-                type: string
-                example: 7f7b6ec31a4a0ec2-EZE
           content:
             application/json:
               schema:
@@ -1561,61 +1085,10 @@ paths:
         "200":
           description: OK
           headers:
-            Date:
-              schema:
-                type: string
-                example: Wed, 16 Aug 2023 17:35:16 GMT
             Content-Type:
               schema:
                 type: string
                 example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: "26"
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            x-amzn-RequestId:
-              schema:
-                type: string
-                example: 88ff7c30-7568-4de6-9a17-8bce04711559
-            x-amz-apigw-id:
-              schema:
-                type: string
-                example: Jw5RAGQeoAMECBA=
-            X-Amzn-Trace-Id:
-              schema:
-                type: string
-                example: >-
-                  Root=1-64dd08d2-56162df8579172eb6001f8a3;Sampled=0;lineage=87791b36:0
-            CF-Cache-Status:
-              schema:
-                type: string
-                example: DYNAMIC
-            Set-Cookie:
-              schema:
-                type: string
-                example: >-
-                  _cfuvid=Qo3AgpvsM6zVFHtwrRzyXs9UbEmQpCAH7PjQL67L72g-1692207316437-0-604800000;
-                  path=/; domain=.sonqo.io; HttpOnly; Secure; SameSite=None
-            Strict-Transport-Security:
-              schema:
-                type: string
-                example: max-age=15552000; includeSubDomains
-            X-Content-Type-Options:
-              schema:
-                type: string
-                example: nosniff
-            Server:
-              schema:
-                type: string
-                example: cloudflare
-            CF-RAY:
-              schema:
-                type: string
-                example: 7f7b6ec31a4a0ec2-EZE
           content:
             application/json:
               schema:
