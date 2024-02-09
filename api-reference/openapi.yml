@@ -1132,13 +1132,6 @@ paths:
             type: integer
           required: true
           example: "200002087418"
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
   /claims/{claimId}/actions/email:
     post:
       tags:
