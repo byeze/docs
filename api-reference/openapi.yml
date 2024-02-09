@@ -584,8 +584,6 @@ paths:
           application/json:
             schema:
               type: object
-              example:
-                status: REJECTED
               properties:
                 status:
                   type: string
@@ -593,6 +591,8 @@ paths:
                   enum:
                     - ACCEPTED
                     - REJECTED
+              example:
+                status: REJECTED
       parameters:
         - name: claimId
           in: path
