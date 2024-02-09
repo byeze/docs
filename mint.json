@@ -48,6 +48,23 @@
     {
       "group": "API Documentation",
       "pages": ["api-reference/introduction"]
+    },
+    {
+      "group": "Endpoints",
+      "pages": [
+        "api-reference/claims/email",
+        "api-reference/claims/get-claim-by-acquirer",
+        "api-reference/claims/get-claim",
+        "api-reference/claims/get-claim-by-merchant",
+        "api-reference/claims/mark-as-seen",
+        "api-reference/claims/put-status",
+        "api-reference/claims/upload-docs",
+        "api-reference/security/token-dev",
+        "api-reference/webhooks/create",
+        "api-reference/webhooks/delete",
+        "api-reference/webhooks/get",
+        "api-reference/webhooks/test"
+      ]
     }
   ],
   "footerSocials": {
