@@ -586,6 +586,13 @@ paths:
               type: object
               example:
                 status: REJECTED
+              properties:
+                status:
+                  type: string
+                  example: REJECTED
+                  enum:
+                    - ACCEPTED
+                    - REJECTED
       parameters:
         - name: claimId
           in: path
@@ -818,6 +825,14 @@ paths:
               type: object
               example:
                 extension: png
+              properties:
+                extension:
+                  type: string
+                  example: png
+                  enum:
+                    - png
+                    - jpg
+                    - jpeg
       parameters:
         - name: claimId
           in: path
@@ -945,7 +960,110 @@ paths:
         "200":
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      openClaims:
+                        type: string
+                        example: "200002020654, 200002020654"
+                      amount:
+                        type: string
+                        example: 1000.00 ARS
+                      lastModifiedDate:
+                        type: string
+                        example: "Thu Feb 08 2024 12:27:23 GMT+0000 (Coordinated Universal Time)"
+                      refundReversalCurrency:
+                        type: string
+                        example: USD
+                      lastModifiedBy:
+                        type: string
+                        example: system
+                      claimId:
+                        type: string
+                        example: "1707395243157"
+                      transactionId:
+                        type: string
+                        example: >-
+                          TI:FIEaEgnM3bwPijwZgjc3Te+Y0ieLbN9ijUugqNSvJmVbO1xs6Jh5iIlmpOpkbax79L8Yj1rBOWBACx+Vj17rzvOepWobpgWNJNdsgHB4ag=#hqCnaMDqmto4wnL+BSUKSdzROqGJ7YELoKhEvluycwKNg3XTzSfaIJhFDkl9hW081B5tTqFFiAwCpcocPdB2My4t7DtSTk63VXDl1CySA8Y=
+                      retrievalRequestId:
+                        type: string
+                        example: "25859113"
+                      issuerId:
+                        type: string
+                        example: 00000006195
+                      chargebackReferenceNumber:
+                        type: string
+                        example: "9000000006"
+                      isOpen:
+                        type: string
+                        example: OPEN
+                      currency:
+                        type: string
+                        example: USD
+                      issuerResponseCode:
+                        type: string
+                        example: APPROVE
+                      issuerRejectReasonCode:
+                        type: string
+                        example: A
+                      origin:
+                        type: string
+                        example: mastercard
+                      authCode:
+                        type: string
+                        example: ab3285c5
+                      merchant:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            example: Elves Boutique
+                          mcc:
+                            type: integer
+              example:
+                success: true
+                data:
+                  openClaims: "200002020654, 200002020654"
+                  amount: 1000.00 ARS
+                  lastModifiedDate: "Thu Feb 08 2024 12:27:23 GMT+0000 (Coordinated Universal Time)"
+                  refundReversalCurrency: USD
+                  lastModifiedBy: system
+                  claimId: "1707395243157"
+                  transactionId: >-
+                    TI:FIEaEgnM3bwPijwZgjc3Te+Y0ieLbN9ijUugqNSvJmVbO1xs6Jh5iIlmpOpkbax79L8Yj1rBOWBACx+Vj17rzvOepWobpgWNJNdsgHB4ag=#hqCnaMDqmto4wnL+BSUKSdzROqGJ7YELoKhEvluycwKNg3XTzSfaIJhFDkl9hW081B5tTqFFiAwCpcocPdB2My4t7DtSTk63VXDl1CySA8Y=
+                  retrievalRequestId: "25859113"
+                  issuerId: 00000006195
+                  chargebackReferenceNumber: "9000000006"
+                  isOpen: OPEN
+                  currency: USD
+                  issuerResponseCode: APPROVE
+                  issuerRejectReasonCode: A
+                  origin: mastercard
+                  authCode: ab3285c5
+                  merchant:
+                    name: Elves Boutique
+                    mcc: 5611
+                    cuit: 30-12345678-9
+                    paymentData:
+                      paymentMethod: Credit Card
+                      QRName: ElvesBoutiqueQR
+                    contact:
+                      email: contact@elvesboutique.com
+                      phone: +54 9 11 2345-6789
+                    address:
+                      street: Elm Street
+                      number: "42"
+                      notes: Second Floor
+                      country: ARS
+                  flow:
+                    currentStep: PENDING_REVIEW
   /claims/acquirer/{acquirerId}/:
     get:
       tags:
@@ -1026,6 +1144,97 @@ paths:
             application/json:
               schema:
                 type: object
+              properties:
+                success:
+                  type: boolean
+                  example: true
+                data:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: "207779219414"
+                      origin:
+                        type: string
+                        example: mastercard
+                      merchantId:
+                        type: string
+                        example: "000000000010377"
+                      partnerId:
+                        type: string
+                        example: "006355"
+                      seen:
+                        type: boolean
+                        example: false
+                      data:
+                        type: object
+                        properties:
+                          lastModifiedDate:
+                            type: string
+                            example: "2024-01-10T15:30:00Z"
+                          lastModifedBy:
+                            type: string
+                            example: admin_user
+                          refundReversalCurrency:
+                            type: string
+                            example: ARS
+                          primaryAccountNumber:
+                            type: string
+                            example: "1234567890123456"
+                          claimId:
+                            type: string
+                            example: CLM123456789
+                          transactionId:
+                            type: string
+                            example: TX123456789ABCDE
+                          rrn:
+                            type: string
+                            example: RRN123456789
+                          issuerId:
+                            type: string
+                            example: ISS12345
+                          chargebackReferenceNumber:
+                            type: string
+                            example: CHBK123456789
+                          createdAt:
+                            type: string
+                            example: "2023-12-25T10:00:00Z"
+                          isOpen:
+                            type: boolean
+                            example: true
+                          merchantId:
+                            type: string
+                            example: MER98765
+                          claimValue:
+                            type: string
+                            example: "150.00"
+                          currency:
+                            type: string
+                            example: ARS
+                          acquirerId:
+                            type: string
+                            example: ACQ54321
+                          issuerResponseCode:
+                            type: string
+                            example: "05"
+                          issuerRejectReasonCode:
+                            type: string
+                            example: "13"
+                        required:
+                          - lastModifiedDate
+                          - lastModifedBy
+                          - refundReversalCurrency
+                          - primaryAccountNumber
+                          - claimId
+                          - transactionId
+                          - rrn
+                          - issuerId
+                          - chargebackReferenceNumber
+                          - createdAt
+                          - isOpen
+                          -
               examples:
                 example-0:
                   summary: "200: no claims"
@@ -1342,6 +1551,16 @@ paths:
             application/json:
               schema:
                 type: object
+              properties:
+                success:
+                  type: boolean
+                  example: true
+                data:
+                  type: object
+                  properties:
+                    total:
+                      type: integer
+                      example: 1
               examples:
                 example-0:
                   summary: "200: no claims"
@@ -1411,44 +1630,20 @@ paths:
         "200":
           description: Successful response
           content:
-            application/json: {}
-  /security-ms/api/security/auth0/b2b/m2ms:
-    post:
-      tags:
-        - Security
-      summary: Token dev
-      requestBody:
-        content:
-          "*/*":
-            schema:
-              type: string
-              example: >-
-                "{\n    \"client_id\":
-                \"X3Grw6s1W034tZhy7nAmWFlHRAly7nLa\",\n    \"client_secret\":
-                \"fR0JLTOxAYumdVORREEexxYNGvI7sceKqILP8roWAR59HzGQCKHEvIlWNw6ZDSNP\",\n   
-                \"audience\": \"https://naranja.com/b2bKausanna/api\",\n   
-                \"grant_type\": \"client_credentials\",\n    \"cache\" :
-                true\n}"
-      parameters:
-        - name: Content-Type
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: Authorization
-          in: header
-          schema:
-            type: string
-          example: Bearer {{accessToken}}
-        - name: Cookie
-          in: header
-          schema:
-            type: string
-          example: >-
-            __cf_bm=PFHNduSo53cg96VD3FcAUna.pQN8RU9QAdzdCuoT_7Y-1699993234-0-AZ3byV51chhDGwOkM812C10CGXFZ2Gxl+6vDFDV6L+aaHcOy3cJLIqf5zXJ3mFisqeJwGf7uJCxwMRmrcOBtsFA=;
-            _cfuvid=CU6MKOEcg1tlKMlN3p8MDvlhv6PuEud68MbeifpQRJo-1699993234305-0-604800000
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  meta:
+                    type: object
+                    properties:
+                      claimId:
+                        type: string
+                        example: "207779219414"
+              example:
+                success: true
+                meta:
+                  claimId: "207779219414"
