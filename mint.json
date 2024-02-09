@@ -52,29 +52,29 @@
     {
       "group": "Claims",
       "pages": [
-        "api-reference/claims/email",
-        "api-reference/claims/get-claim-by-acquirer",
         "api-reference/claims/get-claim",
+        "api-reference/claims/get-claim-by-acquirer",
         "api-reference/claims/get-claim-by-merchant",
+        "api-reference/claims/put-status",
         "api-reference/claims/mark-as-seen",
-        "api-reference/claims/put-status"
+        "api-reference/claims/email"
       ]
     },
     {
       "group": "Documentación de claim",
       "pages": [
-        "api-reference/claims/finish-docs",
+        "api-reference/claims/get-docs",
         "api-reference/claims/upload-docs",
-        "api-reference/claims/get-docs"
+        "api-reference/claims/finish-docs"
       ]
     },
     {
       "group": "Webhooks",
       "pages": [
         "api-reference/webhooks/create",
-        "api-reference/webhooks/delete",
         "api-reference/webhooks/get",
-        "api-reference/webhooks/test"
+        "api-reference/webhooks/test",
+        "api-reference/webhooks/delete"
       ]
     }
   ],
