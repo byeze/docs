@@ -879,6 +879,100 @@ paths:
                 code: KAUSANA.CLAIM_NOT_FOUND
                 message: Claim not found
   /claims/{claimId}/documentation:
+    get:
+      summary: Obtener documentación subida de un reclamo
+      parameters:
+        - name: claimId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: "207779219414"
+      responses:
+        "200":
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Wed, 18 Oct 2023 13:41:48 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-amzn-RequestId:
+              schema:
+                type: string
+                example: bb888a0b-d621-4800-b73e-6641c715c52c
+            x-amz-apigw-id:
+              schema:
+                type: string
+                example: NAAIPFnCoAMEqbQ=
+            X-Amzn-Trace-Id:
+              schema:
+                type: string
+                example: >-
+                  Root=1-652fe09a-5e786f1f7a67f48e6432976c;Sampled=0;lineage=1b13e5ea:0
+            X-Cache:
+              schema:
+                type: string
+                example: Miss from cloudfront
+            Via:
+              schema:
+                type: string
+                example: >-
+                  1.1 6e1462e022bea1c291050d7c8b4e098c.cloudfront.net
+                  (CloudFront)
+            X-Amz-Cf-Pop:
+              schema:
+                type: string
+                example: GRU3-P5
+            X-Amz-Cf-Id:
+              schema:
+                type: string
+                example: uFYrzKGPkQ3zSF1OH_jWUmVQkO1O_sklVnGSc0vamHuSd13baOanYA==
+            CF-Cache-Status:
+              schema:
+                type: string
+                example: DYNAMIC
+            Set-Cookie:
+              schema:
+                type: string
+                example: >-
+                  _cfuvid=XBK_nw8ghmEATcRxtS1O5COtgxvRVeZLfjqmplEctGc-1697636508988-0-604800000;
+                  path=/; domain=.sonqo.io; HttpOnly; Secure; SameSite=None
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            Server:
+              schema:
+                type: string
+                example: cloudflare
+            CF-RAY:
+              schema:
+                type: string
+                example: 81813366dcc608f1-EZE
+            Content-Encoding:
+              schema:
+                type: string
+                example: gzip
+          content:
+            application/json:
+              schema:
+                type: object
     post:
       tags:
         - claims > {claimId}
