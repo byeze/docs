@@ -1196,12 +1196,18 @@ paths:
                           type: string
                           example: >-
                             https://documentations-bucket-develop.s3.us-east-1.amazonaws.com/...
+                          description: The URL of the file
                         name:
                           type: string
                           example: 1707395243157/01HP7F44S1S92E63MZ5Z4QC114.png
+                          description: The name of the file
                         status:
                           type: string
                           example: unapproved
+                          description: The status of the file. Our IA will review the file and approve or reject it.
+                          enum:
+                            - approved
+                            - unapproved
                   quantity:
                     type: integer
                     example: 1
