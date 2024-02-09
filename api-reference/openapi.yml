@@ -892,293 +892,10 @@ paths:
         "200":
           description: OK
           headers:
-            Date:
-              schema:
-                type: string
-                example: Wed, 18 Oct 2023 13:41:48 GMT
             Content-Type:
               schema:
                 type: string
                 example: application/json
-            Transfer-Encoding:
-              schema:
-                type: string
-                example: chunked
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            x-amzn-RequestId:
-              schema:
-                type: string
-                example: bb888a0b-d621-4800-b73e-6641c715c52c
-            x-amz-apigw-id:
-              schema:
-                type: string
-                example: NAAIPFnCoAMEqbQ=
-            X-Amzn-Trace-Id:
-              schema:
-                type: string
-                example: >-
-                  Root=1-652fe09a-5e786f1f7a67f48e6432976c;Sampled=0;lineage=1b13e5ea:0
-            X-Cache:
-              schema:
-                type: string
-                example: Miss from cloudfront
-            Via:
-              schema:
-                type: string
-                example: >-
-                  1.1 6e1462e022bea1c291050d7c8b4e098c.cloudfront.net
-                  (CloudFront)
-            X-Amz-Cf-Pop:
-              schema:
-                type: string
-                example: GRU3-P5
-            X-Amz-Cf-Id:
-              schema:
-                type: string
-                example: uFYrzKGPkQ3zSF1OH_jWUmVQkO1O_sklVnGSc0vamHuSd13baOanYA==
-            CF-Cache-Status:
-              schema:
-                type: string
-                example: DYNAMIC
-            Set-Cookie:
-              schema:
-                type: string
-                example: >-
-                  _cfuvid=XBK_nw8ghmEATcRxtS1O5COtgxvRVeZLfjqmplEctGc-1697636508988-0-604800000;
-                  path=/; domain=.sonqo.io; HttpOnly; Secure; SameSite=None
-            Strict-Transport-Security:
-              schema:
-                type: string
-                example: max-age=15552000; includeSubDomains
-            X-Content-Type-Options:
-              schema:
-                type: string
-                example: nosniff
-            Server:
-              schema:
-                type: string
-                example: cloudflare
-            CF-RAY:
-              schema:
-                type: string
-                example: 81813366dcc608f1-EZE
-            Content-Encoding:
-              schema:
-                type: string
-                example: gzip
-          content:
-            application/json:
-              schema:
-                type: object
-    post:
-      tags:
-        - claims > {claimId}
-      summary: Subir documentación de una reclamación
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                extension: png
-              properties:
-                extension:
-                  type: string
-                  example: png
-                  enum:
-                    - png
-                    - jpg
-                    - jpeg
-      parameters:
-        - name: claimId
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: "207779219414"
-      responses:
-        "200":
-          description: OK
-          headers:
-            Date:
-              schema:
-                type: string
-                example: Wed, 18 Oct 2023 13:41:48 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Transfer-Encoding:
-              schema:
-                type: string
-                example: chunked
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            x-amzn-RequestId:
-              schema:
-                type: string
-                example: bb888a0b-d621-4800-b73e-6641c715c52c
-            x-amz-apigw-id:
-              schema:
-                type: string
-                example: NAAIPFnCoAMEqbQ=
-            X-Amzn-Trace-Id:
-              schema:
-                type: string
-                example: >-
-                  Root=1-652fe09a-5e786f1f7a67f48e6432976c;Sampled=0;lineage=1b13e5ea:0
-            X-Cache:
-              schema:
-                type: string
-                example: Miss from cloudfront
-            Via:
-              schema:
-                type: string
-                example: >-
-                  1.1 6e1462e022bea1c291050d7c8b4e098c.cloudfront.net
-                  (CloudFront)
-            X-Amz-Cf-Pop:
-              schema:
-                type: string
-                example: GRU3-P5
-            X-Amz-Cf-Id:
-              schema:
-                type: string
-                example: uFYrzKGPkQ3zSF1OH_jWUmVQkO1O_sklVnGSc0vamHuSd13baOanYA==
-            CF-Cache-Status:
-              schema:
-                type: string
-                example: DYNAMIC
-            Set-Cookie:
-              schema:
-                type: string
-                example: >-
-                  _cfuvid=XBK_nw8ghmEATcRxtS1O5COtgxvRVeZLfjqmplEctGc-1697636508988-0-604800000;
-                  path=/; domain=.sonqo.io; HttpOnly; Secure; SameSite=None
-            Strict-Transport-Security:
-              schema:
-                type: string
-                example: max-age=15552000; includeSubDomains
-            X-Content-Type-Options:
-              schema:
-                type: string
-                example: nosniff
-            Server:
-              schema:
-                type: string
-                example: cloudflare
-            CF-RAY:
-              schema:
-                type: string
-                example: 81813366dcc608f1-EZE
-            Content-Encoding:
-              schema:
-                type: string
-                example: gzip
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                success: true
-                url: >-
-                  https://first-presentation-document-bucket-develop.s3.us-east-1.amazonaws.com/1234567890/01HD1GAS6CCWKN5DBCZE0P5YKA?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAYQWCYQEWUTFNZZXC%2F20231018%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231018T134148Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEI7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIGcegBc3bwzXrh8HgUchcxPp41pphGQwRQz%2FU3z4nHXzAiEAwlZXuWfblwNh5Zmskn79k%2F1%2FONt4wa9rah9SYmxOz5UqqAMIp%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw1ODU1OTc3NDc1MDEiDHv0rs%2BZ19it0KeUySr8AkTEyEGwGPjeMXgMXBIcjac3WZEKuLOzBp6twC3gwAcMaFqPOsBlqOb5D8u5HGBnA1NReH8CtWST%2FGxv70FlY2KuSKw1bNJWuXfZ%2FsJQ5bDa%2BD2IOIl5ckHwHkiieJFRiJAYlFFXBIgXoMDGZ2cjdkMpB9Wj4aZH7wgQtVTrWjPMaWYlWsMebrLCqwSVdCrxXUUNLt0m32F75vP6SDcTFNB0YH90%2BIGAhVhfJ5cJHeRUCBiz2UlEYKvoPim5Bb2MbBB%2FUcjAN9k2kKwV7NILkq%2F9ABoR%2FUYCt1UG%2FNemUCl2vM1cXvS2KN%2B9z%2FL8%2F8ADWNiJwqyNbUe8Q70kPKhcgRfxt3y2IKW8F1dRhkbL1QXibAaRlekevnSYpq1KYJuEiuGB2JP8BerunexSTgTsGP8Jamyi4io4S4CS4CB7VsL%2F5%2BHSiwgFM%2FSNG0uSNXSBvmXIjDnyelCKnRyB4W8MbaXvoMBf3pc8Yoa4wKm1DIY3QAtQb9kj%2F5cABIMBMJrBv6kGOp0Bylibc7JT4ty31mjZsXPyavneKBDn0I%2BOiSupyzVtfyYU6cS%2BNty5U0JlcVAwGkbc9lKHt6JAas77Sy%2F%2F6%2BtOq%2F4nFCAewmJIwCad8WXUwc2713zRR0jGQHi2wTzZzTdmYobxod3ip6HRgc9GlDKII%2Bmvl4yCGvTjX4vzUEEkdKmWS9GKdCHcSG1SdJqa0vp9sEifXmJZ7tWGsUzbDA%3D%3D&X-Amz-Signature=802d09a524ff27c9f438ed86e85def7457ee8e75d340d949dbcbaf98081372de&X-Amz-SignedHeaders=host&x-id=PutObject
-  /claims/{claimId}/documentation/finish:
-    post:
-      summary: Finalizar la subida de documentación de un reclamo. Cuando se finaliza la subida de documentación, se notifica al sistema que la documentación está completa y se puede proceder con la revisión por parte de las marcas.
-      parameters:
-        - name: claimId
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: "207779219414"
-      responses:
-        "200":
-          description: OK
-          headers:
-            Date:
-              schema:
-                type: string
-                example: Wed, 18 Oct 2023 13:41:48 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Transfer-Encoding:
-              schema:
-                type: string
-                example: chunked
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            x-amzn-RequestId:
-              schema:
-                type: string
-                example: bb888a0b-d621-4800-b73e-6641c715c52c
-            x-amz-apigw-id:
-              schema:
-                type: string
-                example: NAAIPFnCoAMEqbQ=
-            X-Amzn-Trace-Id:
-              schema:
-                type: string
-                example: >-
-                  Root=1-652fe09a-5e786f1f7a67f48e6432976c;Sampled=0;lineage=1b13e5ea:0
-            X-Cache:
-              schema:
-                type: string
-                example: Miss from cloudfront
-            Via:
-              schema:
-                type: string
-                example: >-
-                  1.1 6e1462e022bea1c291050d7c8b4e098c.cloudfront.net
-                  (CloudFront)
-            X-Amz-Cf-Pop:
-              schema:
-                type: string
-                example: GRU3-P5
-            X-Amz-Cf-Id:
-              schema:
-                type: string
-                example: uFYrzKGPkQ3zSF1OH_jWUmVQkO1O_sklVnGSc0vamHuSd13baOanYA==
-            CF-Cache-Status:
-              schema:
-                type: string
-                example: DYNAMIC
-            Set-Cookie:
-              schema:
-                type: string
-                example: >-
-                  _cfuvid=XBK_nw8ghmEATcRxtS1O5COtgxvRVeZLfjqmplEctGc-1697636508988-0-604800000;
-                  path=/; domain=.sonqo.io; HttpOnly; Secure; SameSite=None
-            Strict-Transport-Security:
-              schema:
-                type: string
-                example: max-age=15552000; includeSubDomains
-            X-Content-Type-Options:
-              schema:
-                type: string
-                example: nosniff
-            Server:
-              schema:
-                type: string
-                example: cloudflare
-            CF-RAY:
-              schema:
-                type: string
-                example: 81813366dcc608f1-EZE
-            Content-Encoding:
-              schema:
-                type: string
-                example: gzip
           content:
             application/json:
               schema:
@@ -1218,7 +935,71 @@ paths:
                       name: 1707395243157/01HP7F44S1S92E63MZ5Z4QC114.png
                       status: unapproved
                   quantity: 1
-  /claims/{claimId}/:
+    post:
+      tags:
+        - claims > {claimId}
+      summary: Subir documentación de una reclamación
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                extension: png
+              properties:
+                extension:
+                  type: string
+                  example: png
+                  enum:
+                    - png
+                    - jpg
+                    - jpeg
+      parameters:
+        - name: claimId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: "207779219414"
+      responses:
+        "200":
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                url: >-
+                  https://first-presentation-document-bucket-develop.s3.us-east-1.amazonaws.com/1234567890/...
+  /claims/{claimId}/documentation/finish:
+    post:
+      summary: Finalizar la subida de documentación de un reclamo. Cuando se finaliza la subida de documentación, se notifica al sistema que la documentación está completa y se puede proceder con la revisión por parte de las marcas.
+      parameters:
+        - name: claimId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: "207779219414"
+      responses:
+        "200":
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+  /claims/{claimId}:
     get:
       tags:
         - claims > {claimId}
@@ -1353,7 +1134,7 @@ paths:
                       country: ARS
                   flow:
                     currentStep: PENDING_REVIEW
-  /claims/acquirer/{acquirerId}/:
+  /claims/acquirer/{acquirerId}:
     get:
       tags:
         - claims > acquirer
@@ -1756,7 +1537,7 @@ paths:
                           claimValue: 0.00 USD
                         createdAt: "2023-12-22T17:13:30.379Z"
                         updatedAt: "2024-01-11T19:56:57.069Z"
-  /claims/acquirer/{acquirerId}/seen/:
+  /claims/acquirer/{acquirerId}/seen:
     post:
       tags:
         - claims > acquirer
