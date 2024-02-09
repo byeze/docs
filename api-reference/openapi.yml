@@ -657,6 +657,45 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  exception:
+                    type: string
+                    example: Bad Request
+                  code:
+                    type: string
+                    example: VALIDATION_ERROR
+                  message:
+                    type: string
+                    example: Validation error
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        received:
+                          type: string
+                          example: ACCEPTED-1
+                        code:
+                          type: string
+                          example: invalid_enum_value
+                        options:
+                          type: array
+                          items:
+                            type: string
+                            example: ACCEPTED
+                        path:
+                          type: array
+                          items:
+                            type: string
+                            example: status
+                        message:
+                          type: string
+                          example: >-
+                            Invalid enum value. Expected 'ACCEPTED' | 'REJECTED',
+                            received 'ACCEPTED-1'
               examples:
                 example-0:
                   summary: "400: Validation Error"
@@ -743,6 +782,19 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  exception:
+                    type: string
+                    example: Forbidden
+                  code:
+                    type: string
+                    example: KAUSANA.REJECTED_CLAIMS_NOT_IMPLEMENTED
+                  message:
+                    type: string
+                    example: Rejected claims are not implemented yet
               example:
                 success: false
                 exception: Forbidden
@@ -808,6 +860,19 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  exception:
+                    type: string
+                    example: Not Found
+                  code:
+                    type: string
+                    example: KAUSANA.CLAIM_NOT_FOUND
+                  message:
+                    type: string
+                    example: Claim not found
               example:
                 success: false
                 exception: Not Found
