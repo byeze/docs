@@ -57,7 +57,13 @@
         "api-reference/claims/get-claim",
         "api-reference/claims/get-claim-by-merchant",
         "api-reference/claims/mark-as-seen",
-        "api-reference/claims/put-status",
+        "api-reference/claims/put-status"
+      ]
+    },
+    {
+      "group": "Documentación de claim",
+      "pages": [
+        "api-reference/claims/finish-docs",
         "api-reference/claims/upload-docs",
         "api-reference/claims/get-docs"
       ]
