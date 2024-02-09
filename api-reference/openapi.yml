@@ -1209,97 +1209,96 @@ paths:
             application/json:
               schema:
                 type: object
-              properties:
-                success:
-                  type: boolean
-                  example: true
-                data:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        example: "207779219414"
-                      origin:
-                        type: string
-                        example: mastercard
-                      merchantId:
-                        type: string
-                        example: "000000000010377"
-                      partnerId:
-                        type: string
-                        example: "006355"
-                      seen:
-                        type: boolean
-                        example: false
-                      data:
-                        type: object
-                        properties:
-                          lastModifiedDate:
-                            type: string
-                            example: "2024-01-10T15:30:00Z"
-                          lastModifedBy:
-                            type: string
-                            example: admin_user
-                          refundReversalCurrency:
-                            type: string
-                            example: ARS
-                          primaryAccountNumber:
-                            type: string
-                            example: "1234567890123456"
-                          claimId:
-                            type: string
-                            example: CLM123456789
-                          transactionId:
-                            type: string
-                            example: TX123456789ABCDE
-                          rrn:
-                            type: string
-                            example: RRN123456789
-                          issuerId:
-                            type: string
-                            example: ISS12345
-                          chargebackReferenceNumber:
-                            type: string
-                            example: CHBK123456789
-                          createdAt:
-                            type: string
-                            example: "2023-12-25T10:00:00Z"
-                          isOpen:
-                            type: boolean
-                            example: true
-                          merchantId:
-                            type: string
-                            example: MER98765
-                          claimValue:
-                            type: string
-                            example: "150.00"
-                          currency:
-                            type: string
-                            example: ARS
-                          acquirerId:
-                            type: string
-                            example: ACQ54321
-                          issuerResponseCode:
-                            type: string
-                            example: "05"
-                          issuerRejectReasonCode:
-                            type: string
-                            example: "13"
-                        required:
-                          - lastModifiedDate
-                          - lastModifedBy
-                          - refundReversalCurrency
-                          - primaryAccountNumber
-                          - claimId
-                          - transactionId
-                          - rrn
-                          - issuerId
-                          - chargebackReferenceNumber
-                          - createdAt
-                          - isOpen
-                          -
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: "207779219414"
+                        origin:
+                          type: string
+                          example: mastercard
+                        merchantId:
+                          type: string
+                          example: "000000000010377"
+                        partnerId:
+                          type: string
+                          example: "006355"
+                        seen:
+                          type: boolean
+                          example: false
+                        data:
+                          type: object
+                          properties:
+                            lastModifiedDate:
+                              type: string
+                              example: "2024-01-10T15:30:00Z"
+                            lastModifedBy:
+                              type: string
+                              example: admin_user
+                            refundReversalCurrency:
+                              type: string
+                              example: ARS
+                            primaryAccountNumber:
+                              type: string
+                              example: "1234567890123456"
+                            claimId:
+                              type: string
+                              example: CLM123456789
+                            transactionId:
+                              type: string
+                              example: TX123456789ABCDE
+                            rrn:
+                              type: string
+                              example: RRN123456789
+                            issuerId:
+                              type: string
+                              example: ISS12345
+                            chargebackReferenceNumber:
+                              type: string
+                              example: CHBK123456789
+                            createdAt:
+                              type: string
+                              example: "2023-12-25T10:00:00Z"
+                            isOpen:
+                              type: boolean
+                              example: true
+                            merchantId:
+                              type: string
+                              example: MER98765
+                            claimValue:
+                              type: string
+                              example: "150.00"
+                            currency:
+                              type: string
+                              example: ARS
+                            acquirerId:
+                              type: string
+                              example: ACQ54321
+                            issuerResponseCode:
+                              type: string
+                              example: "05"
+                            issuerRejectReasonCode:
+                              type: string
+                              example: "13"
+                          required:
+                            - lastModifiedDate
+                            - lastModifedBy
+                            - refundReversalCurrency
+                            - primaryAccountNumber
+                            - claimId
+                            - transactionId
+                            - rrn
+                            - issuerId
+                            - chargebackReferenceNumber
+                            - createdAt
+                            - isOpen
               examples:
                 example-0:
                   summary: "200: no claims"
@@ -1616,16 +1615,16 @@ paths:
             application/json:
               schema:
                 type: object
-              properties:
-                success:
-                  type: boolean
-                  example: true
-                data:
-                  type: object
-                  properties:
-                    total:
-                      type: integer
-                      example: 1
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                        example: 1
               examples:
                 example-0:
                   summary: "200: no claims"
