@@ -58,7 +58,8 @@
         "api-reference/claims/get-claim-by-merchant",
         "api-reference/claims/mark-as-seen",
         "api-reference/claims/put-status",
-        "api-reference/claims/upload-docs"
+        "api-reference/claims/upload-docs",
+        "api-reference/claims/get-docs",
       ]
     },
     {
