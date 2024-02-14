@@ -2,3 +2,8 @@
 title: "Listar claims por merchantId"
 openapi: GET /merchants/{merchantId}/claims
 ---
+
+Este endpoint te permite obtener las disputas de un comercio especifico. El merchantId es el identificador del comercio que se utiliza en las redes de las marcas.
+Es necesario contar con un merchantId válido para consultar este endpoint.
+
+Puedes obtener un merchantId consultando el listado de claims de tu cuenta, usando el endpoint `GET /claims/acquirer/{acquirerId}`.

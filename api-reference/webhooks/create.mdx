@@ -3,6 +3,11 @@ title: "Crear un webhook"
 openapi: POST /partner/{partnerId}/subscriptions
 ---
 
+Los webhooks son notificaciones que se envían a una URL específica cada vez que ocurre un evento en la plataforma de Kausanna. Puedes usar webhooks para notificar a tu sistema cuando se crea un contracargo, se actualiza uno, se rechaza, entre otros eventos.
+Permiten tener sistemas en tiempo real y mantener la información actualizada. Tan solo necesitarás un endpoint que reciba las notificaciones y un sistema que las procese.
+
+<Info>Solo aceptamos conexiones seguras (HTTPS) para recibir notificaciones.</Info>
+
 ## Eventos disponibles
 
 | Código                   | Descripción                                                                                                                  |
@@ -13,3 +18,5 @@ openapi: POST /partner/{partnerId}/subscriptions
 | `chargeback.resolved`    | Se dispara cuando se finaliza un contracargo                                                                                 |
 | `documentation.approved` | Se dispara cuando se aprueba una documentación. Las aprobaciones se realizan de forma automática por nuestro sistema con IA. |
 | `documentation.rejected` | Se dispara cuando se rechaza una documentación. Las rechazos se realizan de forma automática por nuestro sistema con IA.     |
+
+En caso de que necesites recibir notificaciones de otros eventos, por favor, contacta a tu ejecutivo de cuenta.

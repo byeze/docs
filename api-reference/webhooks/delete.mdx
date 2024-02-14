@@ -2,3 +2,11 @@
 title: "Eliminar un webhook"
 openapi: DELETE /partner/{partnerId}/subscriptions/{subscriptionId}
 ---
+
+<Warning>
+  Atención! Esta operación no se puede deshacer. Una vez eliminado el webhook, no se recibirán más
+  notificaciones.
+</Warning>
+
+Este endpoint te permite eliminar un webhook de Kausanna, para dejar de recibir notificaciones.
+Los cambios realizados en este endpoint son inmediatos y no se pueden deshacer.
