@@ -339,11 +339,10 @@ paths:
                     description: El estado al que se ha cambiado la reclamación
                   data:
                     type: object
-              examples:
-                example-0:
-                  success: true
-                  transitionedTo: COLLABORATION_REJECTED
-                  data: {}
+              example:
+                success: true
+                transitionedTo: COLLABORATION_REJECTED
+                data: {}
         "400":
           description: Bad Request
           headers:
@@ -599,6 +598,12 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Indicates success of operation
+                example:
+                  success: true
   /claims/{claimId}:
     get:
       tags:
@@ -1158,6 +1163,510 @@ paths:
             type: integer
           required: true
           example: "200002087418"
+      responses:
+        "200":
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Indicates if the operation was successful.
+                  data:
+                    type: array
+                    description: Contains the data of chargeback cases.
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Unique identifier for the chargeback case.
+                        origin:
+                          type: string
+                          description: Origin of the chargeback case (e.g., Mastercard).
+                        partnerId:
+                          type: string
+                          description: Identifier for the partner involved in the transaction.
+                        seen:
+                          type: boolean
+                          description: Indicates if the chargeback case has been viewed.
+                        data:
+                          type: object
+                          description: Detailed information about the chargeback case.
+                          properties:
+                            openClaims:
+                              type: array
+                              items:
+                                type: string
+                              description: Array of open claim identifiers.
+                            amount:
+                              type: string
+                              description: Amount involved in the transaction.
+                            lastModifiedDate:
+                              type: string
+                              description: The last date when the case was modified.
+                            refundReversalCurrency:
+                              type: string
+                              description: Currency of the refund reversal.
+                            lastModifiedBy:
+                              type: string
+                              description: Identifier for the last modifier of the case.
+                            claimId:
+                              type: string
+                              description: Unique identifier for the claim.
+                            transactionId:
+                              type: string
+                              description: Unique identifier for the transaction.
+                            retrievalRequestId:
+                              type: string
+                              description: Unique identifier for the retrieval request.
+                            issuerId:
+                              type: string
+                              description: Identifier for the issuer of the chargeback.
+                            chargebackReferenceNumber:
+                              type: string
+                              description: Reference number for the chargeback.
+                            isOpen:
+                              type: string
+                              description: Status indicating if the case is open.
+                            currency:
+                              type: string
+                              description: Currency of the transaction.
+                            issuerResponseCode:
+                              type: string
+                              description: Response code from the issuer.
+                            issuerRejectReasonCode:
+                              type: string
+                              description: Reason code for rejection by the issuer.
+                        status:
+                          type: string
+                          description: Current status of the chargeback case.
+                        mcData:
+                          type: object
+                          description: Mastercard specific data related to the chargeback case.
+                          properties:
+                            caseFilingRespHistory:
+                              type: array
+                              items: {}
+                              description: History of responses for the case filing.
+                            clearingNetwork:
+                              type: string
+                              description: Clearing network information.
+                            standardClaims:
+                              type: array
+                              items:
+                                type: string
+                              description: Array of standard claim identifiers.
+                            chargebackDetails:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  chargebackId:
+                                    type: string
+                                    description: Unique identifier for the chargeback.
+                                  editExclusionCode:
+                                    type: string
+                                    description: Exclusion code for editing the chargeback.
+                                  japanCommonMerchantCode:
+                                    type: string
+                                    description: Common merchant code for Japan.
+                                  chargebackRefNum:
+                                    type: string
+                                    description: Reference number for the chargeback.
+                                  documentIndicator:
+                                    type: string
+                                    description: Indicator for the document status.
+                                  refundNotReceivedIndicator:
+                                    type: string
+                                    description: Indicator for refund not received status.
+                                  isPartialChargeback:
+                                    type: boolean
+                                    description: Indicates if it is a partial chargeback.
+                                  rejectReason:
+                                    type: string
+                                    description: Reason for rejection of the chargeback.
+                                  installmentData:
+                                    type: string
+                                    description: Installment data related to the chargeback.
+                                  currency:
+                                    type: string
+                                    description: Currency of the chargeback amount.
+                                  documentStatus:
+                                    type: string
+                                    description: Status of the document related to the chargeback.
+                                  reasonCode:
+                                    type: string
+                                    description: Reason code for the chargeback.
+                                  createDate:
+                                    type: string
+                                    description: Creation date of the chargeback record.
+                                  messageText:
+                                    type: string
+                                    description: Text message related to the chargeback case.
+                                  amount:
+                                    type: string
+                                    description: Amount of the chargeback.
+                                  reconciliationCurrency:
+                                    type: string
+                                    description: Currency used for reconciliation.
+                                  currencyConversionAssessmentCCAIncluded:
+                                    type: string
+                                    description: Indicates if currency conversion assessment CCA is included.
+                                  chargebackType:
+                                    type: string
+                                    description: Type of the chargeback.
+                                  claimId:
+                                    type: string
+                                    description: Unique identifier for the claim related to the chargeback.
+                                  flexCode:
+                                    type: string
+                                    description: Flex code related to the chargeback case.
+                                  creditVoucherStatus:
+                                    type: string
+                                    description: Status of the credit voucher.
+                                  reversal:
+                                    type: boolean
+                                    description: Indicates if the chargeback has been reversed.
+                                  reconciliationAmount:
+                                    type: string
+                                    description: Amount used for reconciliation.
+                                  currencyConversionAssessmentCCAAmount:
+                                    type: string
+                                    description: Amount for currency conversion assessment CCA.
+                                  reversed:
+                                    type: boolean
+                                    description: Indicates if the chargeback has been reversed.
+                            disputedCurrency:
+                              type: string
+                              description: Currency of the disputed amount.
+                            collaborationExpirationDateTime:
+                              type: string
+                              description: Expiration date and time for collaboration.
+                            issuerId:
+                              type: string
+                              description: Identifier for the issuer involved in the case.
+                            claimType:
+                              type: string
+                              description: Type of the claim.
+                            isAccurate:
+                              type: string
+                              description: Indicates if the information provided is accurate.
+                            caseFilingDetails:
+                              type: object
+                              description: Details of the case filing.
+                              properties:
+                                caseFilingRespHistory:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      memo:
+                                        type: string
+                                        description: Memo for the case filing response history.
+                                      action:
+                                        type: string
+                                        description: Action taken for the case filing response history.
+                                      responseDate:
+                                        type: string
+                                        description: Response date for the case filing history.
+                                caseFilingStatus:
+                                  type: string
+                                  description: Status of the case filing.
+                                caseFilingDetails:
+                                  type: object
+                                  description: Detailed information about the case filing.
+                                  properties:
+                                    filingIca:
+                                      type: string
+                                      description: ICA number for the filing.
+                                    chargebackRefNum:
+                                      type: string
+                                      description: Reference number for the chargeback related to the filing.
+                                    dueDate:
+                                      type: string
+                                      description: Due date for the filing.
+                                    filingAs:
+                                      type: string
+                                      description: Role in which the filing was made (e.g., Acquirer, Issuer).
+                                    primaryAccountNum:
+                                      type: string
+                                      description: Primary account number involved in the filing.
+                                    customerFilingNumber:
+                                      type: string
+                                      description: Customer filing number.
+                                    claimId:
+                                      type: string
+                                      description: Unique identifier for the claim related to the filing.
+                                    rulingDate:
+                                      type: string
+                                      description: Date when the ruling was made.
+                                    caseType:
+                                      type: string
+                                      description: Type of the case filed.
+                                    merchantName:
+                                      type: string
+                                      description: Name of the merchant involved in the case.
+                                    rulingStatus:
+                                      type: string
+                                      description: Status of the ruling for the case.
+                                    disputeAmount:
+                                      type: string
+                                      description: Amount disputed in the case.
+                                    claimType:
+                                      type: string
+                                      description: Type of the claim related to the case filing.
+                                    violationCode:
+                                      type: string
+                                      description: Code indicating the violation.
+                                    creditDate:
+                                      type: string
+                                      description: Date when the credit was issued.
+                                    virtualAccountNum:
+                                      type: string
+                                      description: Virtual account number related to the case.
+                                    caseId:
+                                      type: string
+                                      description: Unique identifier for the case.
+                                    violationDate:
+                                      type: string
+                                      description: Date when the violation occurred.
+                                    reasonCode:
+                                      type: string
+                                      description: Reason code related to the case.
+                                    filingAgaintstIca:
+                                      type: string
+                                      description: ICA number against which the filing was made.
+                                    currencyCode:
+                                      type: string
+                                      description: Currency code related to the case.
+                                    chargebackDate:
+                                      type: string
+                                      description: Date when the chargeback occurred.
+                            retrievalDetails:
+                              type: object
+                              description: Details of the retrieval request.
+                              properties:
+                                cancelDate:
+                                  type: string
+                                  description: Date when the retrieval request was cancelled.
+                                retrievalRequestReason:
+                                  type: string
+                                  description: Reason for the retrieval request.
+                                chargebackRefNum:
+                                  type: string
+                                  description: Reference number for the chargeback related to the retrieval.
+                                memo:
+                                  type: string
+                                  description: Memo related to the retrieval request.
+                                acquirerResponseCd:
+                                  type: string
+                                  description: Response code from the acquirer for the retrieval.
+                                refundReversalReferenceId:
+                                  type: string
+                                  description: Reference ID for the refund reversal related to the retrieval.
+                                collaborationExpirationDateTime:
+                                  type: string
+                                  description: Expiration date and time for the collaboration related to the retrieval.
+                                acquirerResponseNotificationStatus:
+                                  type: string
+                                  description: Notification status of the acquirer's response for the retrieval.
+                                issuerMemo:
+                                  type: string
+                                  description: Memo from the issuer related to the retrieval.
+                                refundReversalAmount:
+                                  type: string
+                                  description: Amount for the refund reversal related to the retrieval.
+                                rejectReason:
+                                  type: string
+                                  description: Reason for rejection related to the retrieval.
+                                rejectDate:
+                                  type: string
+                                  description: Date when the retrieval was rejected.
+                                reverseDate:
+                                  type: string
+                                  description: Date when the retrieval was reversed.
+                                requestId:
+                                  type: string
+                                  description: Unique identifier for the retrieval request.
+                                refundReversalDate:
+                                  type: string
+                                  description: Date when the refund reversal occurred.
+                                acquirerResponseDt:
+                                  type: string
+                                  description: Date when the acquirer responded to the retrieval request.
+                                instructionsForHealthcare:
+                                  type: string
+                                  description: Instructions for healthcare related to the retrieval.
+                                currency:
+                                  type: string
+                                  description: Currency related to the retrieval request.
+                                imageReviewDt:
+                                  type: string
+                                  description: Date when the image review was done for the retrieval.
+                                createDate:
+                                  type: string
+                                  description: Creation date of the retrieval record.
+                                issuerResponseDt:
+                                  type: string
+                                  description: Date when the issuer responded to the retrieval request.
+                                amount:
+                                  type: string
+                                  description: Amount related to the retrieval request.
+                                refundReversalCurrency:
+                                  type: string
+                                  description: Currency of the refund reversal related to the retrieval.
+                                acquirerRefNum:
+                                  type: string
+                                  description: Acquirer reference number related to the retrieval.
+                                imageReviewDecision:
+                                  type: string
+                                  description: Decision made during the image review for the retrieval.
+                                refundReversalType:
+                                  type: string
+                                  description: Type of refund reversal related to the retrieval.
+                                claimId:
+                                  type: string
+                                  description: Unique identifier for the claim related to the retrieval.
+                                flexCode:
+                                  type: string
+                                  description: Flex code related to the retrieval case.
+                                acquirerMemo:
+                                  type: string
+                                  description: Memo from the acquirer related to the retrieval.
+                                issuerResponseCd:
+                                  type: string
+                                  description: Response code from the issuer for the retrieval.
+                                docNeeded:
+                                  type: string
+                                  description: Document needed status for the retrieval.
+                                primaryAcctNum:
+                                  type: string
+                                  description: Primary account number related to the retrieval.
+                                issuerRejectRsnCd:
+                                  type: string
+                                  description: Reason code for rejection by the issuer for the retrieval.
+                        authCode:
+                          type: string
+                          description: Authorization code for the transaction.
+                        clearingTransactionId:
+                          type: string
+                          description: Clearing transaction ID.
+                        lastModifiedDate:
+                          type: string
+                          description: Last modification date of the case.
+                        lastModifiedBy:
+                          type: string
+                          description: Identifier for the last modifier of the case.
+                        isIssuer:
+                          type: string
+                          description: Indicates if the participant is the issuer.
+                        claimId:
+                          type: string
+                          description: Unique identifier for the claim.
+                        disputedAmount:
+                          type: string
+                          description: Amount disputed in the case.
+                        retrievalDetailsList:
+                          type: array
+                          items: {}
+                          description: List of retrieval details associated with the case.
+                        isAcquirer:
+                          type: string
+                          description: Indicates if the participant is the acquirer.
+                        transactionId:
+                          type: string
+                          description: Unique identifier for the transaction.
+                        clearingDueDate:
+                          type: string
+                          description: Due date for the clearing process.
+                        queueName:
+                          type: string
+                          description: Name of the queue where the case is being worked on.
+                        isOpen:
+                          type: string
+                          description: Status indicating if the case is open.
+                        authTransactionId:
+                          type: string
+                          description: Authorization transaction ID.
+                        feeDetails:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              reason:
+                                type: string
+                                description: Reason for the fee.
+                              reconciliationCurrency:
+                                type: string
+                                description: Currency used for reconciliation.
+                              japanCommonMerchantCode:
+                                type: string
+                                description: Common merchant code for Japan.
+                              chargebackRefNum:
+                                type: string
+                                description: Reference number for the chargeback related to the fee.
+                              destinationMember:
+                                type: string
+                                description: Destination member ID.
+                              flexCode:
+                                type: string
+                                description: Flex code related to the fee case.
+                              message:
+                                type: string
+                                description: Message related to the fee case.
+                              feeId:
+                                type: string
+                                description: Unique identifier for the fee.
+                              feeDate:
+                                type: string
+                                description: Date when the fee was applied.
+                              feeAmount:
+                                type: string
+                                description: Amount of the fee.
+                              rejectReason:
+                                type: string
+                                description: Reason for rejection of the fee.
+                              reconciliationAmount:
+                                type: string
+                                description: Amount used for reconciliation.
+                              countryCode:
+                                type: string
+                                description: Country code related to the fee.
+                              installmentData:
+                                type: string
+                                description: Installment data related to the fee.
+                              cardAcceptorIdCode:
+                                type: string
+                                description: ID code for the card acceptor.
+                              creditReceiver:
+                                type: boolean
+                                description: Is receiver of the credit?
+                              currency:
+                                type: string
+                                description: Currency of the fee. ISO 4217 code.
+                              creditSender:
+                                type: boolean
+                                description: Is sender of the credit?
+                              cardNumber: 
+                                type: string
+                                description: Card number related to the fee.
+                        clearingDetails:
+                          type: object
+                          description: Details of the clearing process.
+                        createdAt:
+                          type: string
+                          description: Creation date of the case.
+                        updatedAt:
+                          type: string
+                          description: Last update date of the case.                
   /claims/{claimId}/actions/email:
     post:
       tags:
