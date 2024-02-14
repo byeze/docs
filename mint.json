@@ -47,7 +47,7 @@
     },
     {
       "group": "Disputas",
-      "pages": ["disputes/about", "disputes/glossary"]
+      "pages": ["disputes/about", "disputes/glossary", "disputes/status"]
     },
     {
       "group": "Webhooks",

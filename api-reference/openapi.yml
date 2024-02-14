@@ -338,7 +338,6 @@ paths:
                     data:
                       - id: 01H69QY2PXZS6RV33JRZF20PZ1
                         url: https://google.com
-                        secret: sq_ArYi9JZLmTtIGtMBOGBzGb27yiLOQI4suQM1DxTCwMM
                         subscribedEvents:
                           - chargeback.created
                         partnerId: "006837"
@@ -1235,7 +1234,6 @@ paths:
                           claimValue: 0.00 USD
                         createdAt: "2023-12-22T17:13:30.379Z"
                         updatedAt: "2024-01-11T19:56:57.069Z"
-
   /claims/acquirer/{acquirerId}/seen:
     post:
       tags:
@@ -1344,8 +1342,7 @@ paths:
                           description: Indicates if the chargeback case has been viewed.
                         data:
                           description: Detailed information about the chargeback case.
-                          $ref: "#/components/schemas/ChargebackCase"
-                          
+                          $ref: "#/components/schemas/ChargebackCase"                         
   /claims/{claimId}/actions/email:
     post:
       tags:
