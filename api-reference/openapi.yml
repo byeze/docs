@@ -339,10 +339,11 @@ paths:
                     description: El estado al que se ha cambiado la reclamación
                   data:
                     type: object
-              example:
-                success: true
-                transitionedTo: COLLABORATION_REJECTED
-                data: {}
+              examples:
+                example-0:
+                  success: true
+                  transitionedTo: COLLABORATION_REJECTED
+                  data: {}
         "400":
           description: Bad Request
           headers:
