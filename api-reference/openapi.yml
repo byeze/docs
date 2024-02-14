@@ -909,7 +909,7 @@ paths:
         "200":
           description: OK
           headers:
-            Content-Type:
+            content-type:
               schema:
                 type: string
                 example: application/json
@@ -1007,84 +1007,52 @@ paths:
                             - chargebackReferenceNumber
                             - createdAt
                             - isOpen
-              example:
-                summary: "200: with claims"
-                value:
-                  success: true
-                  data:
-                    - id: "207779219414"
-                      origin: mastercard
-                      merchantId: "000000000010377"
-                      partnerId: "006355"
-                      seen: false
-                      data:
-                        lastModifiedDate: "2024-01-10T15:30:00Z"
-                        lastModifedBy: admin_user
-                        refundReversalCurrency: ARS
-                        primaryAccountNumber: "1234567890123456"
-                        claimId: CLM123456789
-                        transactionId: TX123456789ABCDE
-                        rrn: RRN123456789
-                        issuerId: ISS12345
-                        chargebackReferenceNumber: CHBK123456789
-                        createdAt: "2023-12-25T10:00:00Z"
-                        isOpen: true
-                        merchantId: MER98765
-                        claimValue: "150.00"
-                        currency: ARS
-                        acquirerId: ACQ54321
-                        issuerResponseCode: "05"
-                        issuerRejectReasonCode: "13"
-                      status: COLLABORATION_REJECTED
-                      mcData:
-                        primaryAccountNum: "5200535335702520"
-                        clearingNetwork: GCMS
-                        dueDate: "2023-12-23"
-                        standardClaims: null
-                        chargebackDetails: null
-                        mastercardRetrievalRequestId: ""
-                        claimType: Standard
-                        issuerId: "012385"
+              examples:
+                success:
+                  summary: "200: with claims"
+                  value:
+                    success: true
+                    data:
+                      - id: "207779219414"
+                        origin: mastercard
                         merchantId: "000000000010377"
-                        isAccurate: "true"
-                        acquirerId: "032314"
-                        caseFilingDetails: null
-                        createDate: "2023-12-20"
-                        retrievalDetails:
-                          cancelDate: null
-                          retrievalRequestReason: "6342"
-                          chargebackRefNum: "9202958551"
-                          acquirerResponseCd: null
-                          collaborationExpirationDateTime: "2023-12-23T12:10:57"
-                          acquirerResponseNotificationStatus: null
-                          issuerMemo: null
-                          rejectReason: null
-                          rejectDate: null
-                          requestId: "307779219651"
-                          reverseDate: null
-                          acquirerResponseDt: null
-                          instructionsForHealthcare: null
+                        partnerId: "006355"
+                        seen: false
+                        data:
+                          lastModifiedDate: "2024-01-10T15:30:00Z"
+                          lastModifedBy: admin_user
+                          refundReversalCurrency: ARS
+                          primaryAccountNumber: "1234567890123456"
+                          claimId: CLM123456789
+                          transactionId: TX123456789ABCDE
+                          rrn: RRN123456789
+                          issuerId: ISS12345
+                          chargebackReferenceNumber: CHBK123456789
+                          createdAt: "2023-12-25T10:00:00Z"
+                          isOpen: true
+                          merchantId: MER98765
+                          claimValue: "150.00"
                           currency: ARS
-                          imageReviewDt: null
+                          acquirerId: ACQ54321
+                          issuerResponseCode: "05"
+                          issuerRejectReasonCode: "13"
+                        status: COLLABORATION_REJECTED
+                        mcData:
+                          primaryAccountNum: "5200535335702520"
+                          clearingNetwork: GCMS
+                          dueDate: "2023-12-23"
+                          standardClaims: null
+                          chargebackDetails: null
+                          mastercardRetrievalRequestId: ""
+                          claimType: Standard
+                          issuerId: "012385"
+                          merchantId: "000000000010377"
+                          isAccurate: "true"
+                          acquirerId: "032314"
+                          caseFilingDetails: null
                           createDate: "2023-12-20"
-                          issuerResponseDt: null
-                          amount: "138500.00"
-                          acquirerRefNum: "08032053309002100003662"
-                          imageReviewDecision: null
-                          claimId: "207779219414"
-                          acquirerMemo: null
-                          issuerResponseCd: null
-                          docNeeded: NONE
-                          primaryAcctNum: "5200535335702520"
-                          issuerRejectRsnCd: null
-                        authCode: "682190"
-                        lastModifiedDate: "2023-12-20"
-                        isIssuer: "false"
-                        lastModifiedBy: MCOMAPI
-                        acquirerRefNum: "08032053309002100003662"
-                        claimId: "207779219414"
-                        retrievalDetailsList:
-                          - cancelDate: null
+                          retrievalDetails:
+                            cancelDate: null
                             retrievalRequestReason: "6342"
                             chargebackRefNum: "9202958551"
                             acquirerResponseCd: null
@@ -1099,7 +1067,7 @@ paths:
                             instructionsForHealthcare: null
                             currency: ARS
                             imageReviewDt: null
-                            createDate: "2023-12-20"
+                            createDate: "2024-01-10T15:30:00Z"
                             issuerResponseDt: null
                             amount: "138500.00"
                             acquirerRefNum: "08032053309002100003662"
@@ -1110,357 +1078,163 @@ paths:
                             docNeeded: NONE
                             primaryAcctNum: "5200535335702520"
                             issuerRejectRsnCd: null
-                        transactionId: >-
-                          TI:wRICVszz2hmGh6wVszrLLmyxMbNmuNBt4L1sudb90OqQgu5cMhQn5FA92qasIa8L_JeWjNeZJERtVAgeOD06JnmvqcoS55tFnmou7Pqeg4k=##ACQ
-                        isAcquirer: "true"
-                        clearingDueDate: "2023-12-23"
-                        isOpen: "true"
-                        queueName: Acquirer Collaboration Unworked
-                        feeDetails: null
-                        clearingDetails:
-                          programRegistrationId: null
-                          acquiringInstitutionIdCode: null
-                          installmentPlanType: null
-                          pinCaptureCapability: "1"
-                          businessCycle: "05"
-                          processingCode: "00"
-                          cardholderBillingAmount: null
-                          primaryAccountNumber: 520053******2520
-                          currencyCodeCardholderBilling: "032"
-                          cardholderAuthenticationEntity: "9"
-                          cardAcceptorBusinessCode: "5732"
-                          localTax1IVA: null
-                          dataRecord: null
-                          cardAcceptorPostalCode: C1425FOC
-                          walletIdentifierMdes: null
-                          installmentPaymentDataInterestRate: null
-                          cardAcceptorTerminalId: "49696258"
-                          transactionCategoryIndicator: null
-                          partnerIdCode: null
-                          currencyExponentCardholderBilling: "2"
-                          cardCaptureCapability: "0"
-                          settlementData: null
-                          cardAcceptorUrl: null
-                          receivingInstitutionIdCode: "012699"
-                          cardAcceptorCity: CIUDAD AUTONO
-                          cardAcceptorClassificationOverrideIndicator: null
-                          cardDataOutputCapability: "0"
-                          forwardingInstitutionIdCode: "032314"
-                          terminalOperatingEnvironment: "4"
-                          cardProgramIdentifier: MCC
-                          integratedCircuitCardRelatedData: null
-                          transactionOriginatorInstitutionIdCode: "032314"
-                          legalCorporateName: LUCAS ROMERO
-                          specialConditionsIndicator: "N"
-                          installmentFee: null
-                          originatingMessageFormat: "2"
-                          serviceCode: null
-                          japanCommonMerchantCode: null
-                          rateIndicator: "N"
-                          cardholderToAccountCode: "00"
-                          qpsPaypassEligibilityIndicator: null
-                          tokenRequestorId: null
-                          installmentPaymentDataSubsequentInstallmentAmount: null
-                          remotePaymentsProgramData: null
-                          settlementIndicator: M
-                          mastercardAssignedIdOverrideIndicator: "N"
-                          transactionDestinationInstitutionIdCode: "012385"
-                          accountLevelManagementAccountCategoryCode: "N"
-                          cardAcceptorName: MUEBLES-TIENDANUBE
-                          cardDataInputCapability: "6"
-                          cardholderPresentData: "5"
-                          terminalDataOutputCapability: "0"
-                          reconciliationCurrencyCode: null
-                          cardAcceptorCountry: ARG
-                          interchangeRateDesignator: "05"
-                          flexCode: null
-                          gcmsProductIndentifier: MCS
-                          transactionType: Clearing
-                          transactionAmountLocal: "13850000"
-                          numberOfInstallments: null
-                          transitProgramCode: null
-                          cardAcceptorIdCode: "000000000010377"
-                          businessServiceArrangementTypeCode: "4"
-                          cardAcceptorStreetAddress: SANTA MARIA DE ORO
-                          currencyConversionAssessmentAmount: null
-                          approvalCode: "682190"
-                          functionCode: "200"
-                          licensedProductIndentifier: MCS
-                          currencyCodeTransaction: "032"
-                          productOverrideIndicator: null
-                          electronicCommerceSecurityLevelIndicator: "9"
-                          originalInformationInstallments: null
-                          electronicCommerceUcafCollectionIndicator: "0"
-                          mastercardAssignedId: null
-                          currencyCodeReconciliation: "032"
-                          localTransactionDateTime: "231105022701"
-                          cardholderFromAccountCode: "00"
-                          cardholderAuthenticationCapability: "9"
-                          installmentPaymentData: null
-                          terminalType: CT6
-                          installmentNumber: null
-                          installmentPaymentDataNumberInstallments: null
-                          cardIssuerReferenceData: null
-                          reconciliationAmount: null
-                          masterPassIncentiveIndicator: "N"
-                          cardholderBillingCurrencyCode: null
-                          installmentAmount: null
-                          installmentPaymentDataInstallmentFee: null
-                          messageReversalIndicator: null
-                          businessServiceIdCode: "032001"
-                          transactionLifeCycleId: " MCS425WCD1104  "
-                          totalTransactionAmount: null
-                          cardholderAuthenticationMethod: "9"
-                          cardPresentData: "0"
-                          currencyExponentTransaction: "2"
-                          electronicCommerceCardAuth: "1"
-                          installmentData: null
-                          transactionCurrencyCode: "032"
-                          cardDataInputMode: S
-                          additionalAmountDataCode: null
-                          installmentPaymentDataBrazil: null
-                          installmentParameters: null
-                          installmentPaymentDataAnnualPercentageRate: null
-                          installmentPaymentDataFirstInstallmentAmount: null
-                          mastercardMappingServiceAccountNumber: null
-                          messageReasonCode: "1401"
-                          centralSiteProcessingDateOriginalMessage: null
-                          currencyExponentReconciliation: "2"
-                          localMessageReasonCode: null
-                          cardAcceptorState: C
-                          centralSiteBusinessDate: "231105"
-                          acquirerReferenceData: "08032053309002100003662"
-                        switchSerialNumber: null
-                        claimValue: 0.00 USD
-                      createdAt: "2023-12-22T17:13:30.379Z"
-                      updatedAt: "2024-01-11T19:56:57.069Z"
-          example:
-            summary: "200: with claims"
-            value:
-              success: true
-              data:
-                - id: "207779219414"
-                  origin: mastercard
-                  merchantId: "000000000010377"
-                  partnerId: "006355"
-                  seen: false
-                  data:
-                    lastModifiedDate: "2024-01-10T15:30:00Z"
-                    lastModifedBy: admin_user
-                    refundReversalCurrency: ARS
-                    primaryAccountNumber: "1234567890123456"
-                    claimId: CLM123456789
-                    transactionId: TX123456789ABCDE
-                    rrn: RRN123456789
-                    issuerId: ISS12345
-                    chargebackReferenceNumber: CHBK123456789
-                    createdAt: "2023-12-25T10:00:00Z"
-                    isOpen: true
-                    merchantId: MER98765
-                    claimValue: "150.00"
-                    currency: ARS
-                    acquirerId: ACQ54321
-                    issuerResponseCode: "05"
-                    issuerRejectReasonCode: "13"
-                  status: COLLABORATION_REJECTED
-                  mcData:
-                    primaryAccountNum: "5200535335702520"
-                    clearingNetwork: GCMS
-                    dueDate: "2023-12-23"
-                    standardClaims: null
-                    chargebackDetails: null
-                    mastercardRetrievalRequestId: ""
-                    claimType: Standard
-                    issuerId: "012385"
-                    merchantId: "000000000010377"
-                    isAccurate: "true"
-                    acquirerId: "032314"
-                    caseFilingDetails: null
-                    createDate: "2023-12-20"
-                    retrievalDetails:
-                      cancelDate: null
-                      retrievalRequestReason: "6342"
-                      chargebackRefNum: "9202958551"
-                      acquirerResponseCd: null
-                      collaborationExpirationDateTime: "2023-12-23T12:10:57"
-                      acquirerResponseNotificationStatus: null
-                      issuerMemo: null
-                      rejectReason: null
-                      rejectDate: null
-                      requestId: "307779219651"
-                      reverseDate: null
-                      acquirerResponseDt: null
-                      instructionsForHealthcare: null
-                      currency: ARS
-                      imageReviewDt: null
-                      createDate: "2024-01-10T15:30:00Z"
-                      issuerResponseDt: null
-                      amount: "138500.00"
-                      acquirerRefNum: "08032053309002100003662"
-                      imageReviewDecision: null
-                      claimId: "207779219414"
-                      acquirerMemo: null
-                      issuerResponseCd: null
-                      docNeeded: NONE
-                      primaryAcctNum: "5200535335702520"
-                      issuerRejectRsnCd: null
-                    authCode: "682190"
-                    lastModifiedDate: "2023-12-20"
-                    isIssuer: "false"
-                    lastModifiedBy: MCOMAPI
-                    acquirerRefNum: "08032053309002100003662"
-                    claimId: "207779219414"
-                    retrievalDetailsList:
-                      - cancelDate: null
-                        retrievalRequestReason: "6342"
-                        chargebackRefNum: "9202958551"
-                        acquirerResponseCd: null
-                        collaborationExpirationDateTime: "2023-12-23T12:10:57"
-                        acquirerResponseNotificationStatus: null
-                        issuerMemo: null
-                        rejectReason: null
-                        rejectDate: null
-                        requestId: "307779219651"
-                        reverseDate: null
-                        acquirerResponseDt: null
-                        instructionsForHealthcare: null
-                        currency: ARS
-                        imageReviewDt: null
-                        createDate: "2023-12-20"
-                        issuerResponseDt: null
-                        amount: "138500.00"
-                        acquirerRefNum: "08032053309002100003662"
-                        imageReviewDecision: null
-                        claimId: "207779219414"
-                        acquirerMemo: null
-                        issuerResponseCd: null
-                        docNeeded: NONE
-                        primaryAcctNum: "5200535335702520"
-                        issuerRejectRsnCd: null
-                    transactionId: >-
-                      TI:wRICVszz2hmGh6wVszrLLmyxMbNmuNBt4L1sudb90OqQgu5cMhQn5FA92qasIa8L_JeWjNeZJERtVAgeOD06JnmvqcoS55tFnmou7Pqeg4k=##ACQ
-                    isAcquirer: "true"
-                    clearingDueDate: "2023-12-23"
-                    isOpen: "true"
-                    queueName: Acquirer Collaboration Unworked
-                    feeDetails: null
-                    clearingDetails:
-                      programRegistrationId: null
-                      acquiringInstitutionIdCode: null
-                      installmentPlanType: null
-                      pinCaptureCapability: "1"
-                      businessCycle: "05"
-                      processingCode: "00"
-                      cardholderBillingAmount: null
-                      primaryAccountNumber: 520053******2520
-                      currencyCodeCardholderBilling: "032"
-                      cardholderAuthenticationEntity: "9"
-                      cardAcceptorBusinessCode: "5732"
-                      localTax1IVA: null
-                      dataRecord: null
-                      cardAcceptorPostalCode: C1425FOC
-                      walletIdentifierMdes: null
-                      installmentPaymentDataInterestRate: null
-                      cardAcceptorTerminalId: "49696258"
-                      transactionCategoryIndicator: null
-                      partnerIdCode: null
-                      currencyExponentCardholderBilling: "2"
-                      cardCaptureCapability: "0"
-                      settlementData: null
-                      cardAcceptorUrl: null
-                      receivingInstitutionIdCode: "012699"
-                      cardAcceptorCity: CIUDAD AUTONO
-                      cardAcceptorClassificationOverrideIndicator: null
-                      cardDataOutputCapability: "0"
-                      forwardingInstitutionIdCode: "032314"
-                      terminalOperatingEnvironment: "4"
-                      cardProgramIdentifier: MCC
-                      integratedCircuitCardRelatedData: null
-                      transactionOriginatorInstitutionIdCode: "032314"
-                      legalCorporateName: LUCAS ROMERO
-                      specialConditionsIndicator: "N"
-                      installmentFee: null
-                      originatingMessageFormat: "2"
-                      serviceCode: null
-                      japanCommonMerchantCode: null
-                      rateIndicator: "N"
-                      cardholderToAccountCode: "00"
-                      qpsPaypassEligibilityIndicator: null
-                      tokenRequestorId: null
-                      installmentPaymentDataSubsequentInstallmentAmount: null
-                      remotePaymentsProgramData: null
-                      settlementIndicator: M
-                      mastercardAssignedIdOverrideIndicator: "N"
-                      transactionDestinationInstitutionIdCode: "012385"
-                      accountLevelManagementAccountCategoryCode: "N"
-                      cardAcceptorName: MUEBLES-TIENDANUBE
-                      cardDataInputCapability: "6"
-                      cardholderPresentData: "5"
-                      terminalDataOutputCapability: "0"
-                      reconciliationCurrencyCode: null
-                      cardAcceptorCountry: ARG
-                      interchangeRateDesign: "05"
-                      flexCode: null
-                      gcmsProductIndentifier: MCS
-                      transactionType: Clearing
-                      transactionAmountLocal: "13850000"
-                      numberOfInstallments: null
-                      transitProgramCode: null
-                      cardAcceptorIdCode: "000000000010377"
-                      businessServiceArrangementTypeCode: "4"
-                      cardAcceptorStreetAddress: SANTA MARIA DE ORO
-                      currencyConversionAssessmentAmount: null
-                      approvalCode: "682190"
-                      functionCode: "200"
-                      licensedProductIndentifier: MCS
-                      currencyCodeTransaction: "032"
-                      productOverrideIndicator: null
-                      electronicCommerceSecurityLevelIndicator: "9"
-                      originalInformationInstallments: null
-                      electronicCommerceUcafCollectionIndicator: "0"
-                      mastercardAssignedId: null
-                      currencyCodeReconciliation: "032"
-                      localTransactionDateTime: "231105022701"
-                      cardholderFromAccountCode: "00"
-                      cardholderAuthenticationCapability: "9"
-                      installmentPaymentData: null
-                      terminalType: CT6
-                      installmentNumber: null
-                      installmentPaymentDataNumberInstallments: null
-                      cardIssuerReferenceData: null
-                      reconciliationAmount: null
-                      masterPassIncentiveIndicator: "N"
-                      cardholderBillingCurrencyCode: null
-                      installmentAmount: null
-                      installmentPaymentDataInstallmentFee: null
-                      messageReversalIndicator: null
-                      businessServiceIdCode: "032001"
-                      transactionLifeCycleId: "MCS425WCD1104"
-                      totalTransactionAmount: null
-                      cardholderAuthenticationMethod: "9"
-                      cardPresentData: "0"
-                      currencyExponentTransaction: "2"
-                      electronicCommerceCardAuth: "1"
-                      installmentData: null
-                      transactionCurrencyCode: "032"
-                      cardDataInputMode: S
-                      additionalAmountDataCode: null
-                      installmentPaymentDataBrazil: null
-                      installmentParameters: null
-                      installmentPaymentDataAnnualPercentageRate: null
-                      installmentPaymentDataFirstInstallmentAmount: null
-                      mastercardMappingServiceAccountNumber: null
-                      messageReasonCode: "1401"
-                      centralSiteProcessingDateOriginalMessage: null
-                      currencyExponentReconciliation: "2"
-                      localMessageReasonCode: null
-                      cardAcceptorState: C
-                      centralSiteBusinessDate: "231105"
-                      acquirerReferenceData: "08032053309002100003662"
-                    switchSerialNumber: null
-                    claimValue: 0.00 USD
-                  createdAt: "2023-12-22T17:13:30.379Z"
-                  updatedAt: "2024-01-11T19:56:57.069Z"
+                          authCode: "682190"
+                          lastModifiedDate: "2023-12-20"
+                          isIssuer: "false"
+                          lastModifiedBy: MCOMAPI
+                          acquirerRefNum: "08032053309002100003662"
+                          claimId: "207779219414"
+                          retrievalDetailsList:
+                            - cancelDate: null
+                              retrievalRequestReason: "6342"
+                              chargebackRefNum: "9202958551"
+                              acquirerResponseCd: null
+                              collaborationExpirationDateTime: "2023-12-23T12:10:57"
+                              acquirerResponseNotificationStatus: null
+                              issuerMemo: null
+                              rejectReason: null
+                              rejectDate: null
+                              requestId: "307779219651"
+                              reverseDate: null
+                              acquirerResponseDt: null
+                              instructionsForHealthcare: null
+                              currency: ARS
+                              imageReviewDt: null
+                              createDate: "2023-12-20"
+                              issuerResponseDt: null
+                              amount: "138500.00"
+                              acquirerRefNum: "08032053309002100003662"
+                              imageReviewDecision: null
+                              claimId: "207779219414"
+                              acquirerMemo: null
+                              issuerResponseCd: null
+                              docNeeded: NONE
+                              primaryAcctNum: "5200535335702520"
+                              issuerRejectRsnCd: null
+                          transactionId: >-
+                            TI:wRICVszz2hmGh6wVszrLLmyxMbNmuNBt4L1sudb90OqQgu5cMhQn5FA92qasIa8L_JeWjNeZJERtVAgeOD06JnmvqcoS55tFnmou7Pqeg4k=##ACQ
+                          isAcquirer: "true"
+                          clearingDueDate: "2023-12-23"
+                          isOpen: "true"
+                          queueName: Acquirer Collaboration Unworked
+                          feeDetails: null
+                          clearingDetails:
+                            programRegistrationId: null
+                            acquiringInstitutionIdCode: null
+                            installmentPlanType: null
+                            pinCaptureCapability: "1"
+                            businessCycle: "05"
+                            processingCode: "00"
+                            cardholderBillingAmount: null
+                            primaryAccountNumber: 520053******2520
+                            currencyCodeCardholderBilling: "032"
+                            cardholderAuthenticationEntity: "9"
+                            cardAcceptorBusinessCode: "5732"
+                            localTax1IVA: null
+                            dataRecord: null
+                            cardAcceptorPostalCode: C1425FOC
+                            walletIdentifierMdes: null
+                            installmentPaymentDataInterestRate: null
+                            cardAcceptorTerminalId: "49696258"
+                            transactionCategoryIndicator: null
+                            partnerIdCode: null
+                            currencyExponentCardholderBilling: "2"
+                            cardCaptureCapability: "0"
+                            settlementData: null
+                            cardAcceptorUrl: null
+                            receivingInstitutionIdCode: "012699"
+                            cardAcceptorCity: CIUDAD AUTONO
+                            cardAcceptorClassificationOverrideIndicator: null
+                            cardDataOutputCapability: "0"
+                            forwardingInstitutionIdCode: "032314"
+                            terminalOperatingEnvironment: "4"
+                            cardProgramIdentifier: MCC
+                            integratedCircuitCardRelatedData: null
+                            transactionOriginatorInstitutionIdCode: "032314"
+                            legalCorporateName: LUCAS ROMERO
+                            specialConditionsIndicator: "N"
+                            installmentFee: null
+                            originatingMessageFormat: "2"
+                            serviceCode: null
+                            japanCommonMerchantCode: null
+                            rateIndicator: "N"
+                            cardholderToAccountCode: "00"
+                            qpsPaypassEligibilityIndicator: null
+                            tokenRequestorId: null
+                            installmentPaymentDataSubsequentInstallmentAmount: null
+                            remotePaymentsProgramData: null
+                            settlementIndicator: M
+                            mastercardAssignedIdOverrideIndicator: "N"
+                            transactionDestinationInstitutionIdCode: "012385"
+                            accountLevelManagementAccountCategoryCode: "N"
+                            cardAcceptorName: MUEBLES-TIENDANUBE
+                            cardDataInputCapability: "6"
+                            cardholderPresentData: "5"
+                            terminalDataOutputCapability: "0"
+                            reconciliationCurrencyCode: null
+                            cardAcceptorCountry: ARG
+                            interchangeRateDesign: "05"
+                            flexCode: null
+                            gcmsProductIndentifier: MCS
+                            transactionType: Clearing
+                            transactionAmountLocal: "13850000"
+                            numberOfInstallments: null
+                            transitProgramCode: null
+                            cardAcceptorIdCode: "000000000010377"
+                            businessServiceArrangementTypeCode: "4"
+                            cardAcceptorStreetAddress: SANTA MARIA DE ORO
+                            currencyConversionAssessmentAmount: null
+                            approvalCode: "682190"
+                            functionCode: "200"
+                            licensedProductIndentifier: MCS
+                            currencyCodeTransaction: "032"
+                            productOverrideIndicator: null
+                            electronicCommerceSecurityLevelIndicator: "9"
+                            originalInformationInstallments: null
+                            electronicCommerceUcafCollectionIndicator: "0"
+                            mastercardAssignedId: null
+                            currencyCodeReconciliation: "032"
+                            localTransactionDateTime: "231105022701"
+                            cardholderFromAccountCode: "00"
+                            cardholderAuthenticationCapability: "9"
+                            installmentPaymentData: null
+                            terminalType: CT6
+                            installmentNumber: null
+                            installmentPaymentDataNumberInstallments: null
+                            cardIssuerReferenceData: null
+                            reconciliationAmount: null
+                            masterPassIncentiveIndicator: "N"
+                            cardholderBillingCurrencyCode: null
+                            installmentAmount: null
+                            installmentPaymentDataInstallmentFee: null
+                            messageReversalIndicator: null
+                            businessServiceIdCode: "032001"
+                            transactionLifeCycleId: "MCS425WCD1104"
+                            totalTransactionAmount: null
+                            cardholderAuthenticationMethod: "9"
+                            cardPresentData: "0"
+                            currencyExponentTransaction: "2"
+                            electronicCommerceCardAuth: "1"
+                            installmentData: null
+                            transactionCurrencyCode: "032"
+                            cardDataInputMode: S
+                            additionalAmountDataCode: null
+                            installmentPaymentDataBrazil: null
+                            installmentParameters: null
+                            installmentPaymentDataAnnualPercentageRate: null
+                            installmentPaymentDataFirstInstallmentAmount: null
+                            mastercardMappingServiceAccountNumber: null
+                            messageReasonCode: "1401"
+                            centralSiteProcessingDateOriginalMessage: null
+                            currencyExponentReconciliation: "2"
+                            localMessageReasonCode: null
+                            cardAcceptorState: C
+                            centralSiteBusinessDate: "231105"
+                            acquirerReferenceData: "08032053309002100003662"
+                          switchSerialNumber: null
+                          claimValue: 0.00 USD
+                        createdAt: "2023-12-22T17:13:30.379Z"
+                        updatedAt: "2024-01-11T19:56:57.069Z"
 
   /claims/acquirer/{acquirerId}/seen:
     post:
@@ -1569,10 +1343,9 @@ paths:
                           type: boolean
                           description: Indicates if the chargeback case has been viewed.
                         data:
-                          type: object
                           description: Detailed information about the chargeback case.
-                          schema:
-                            $ref: "#/components/schemas/ChargebackCase"
+                          $ref: "#/components/schemas/ChargebackCase"
+                          
   /claims/{claimId}/actions/email:
     post:
       tags:
