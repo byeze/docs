@@ -26,3 +26,15 @@ El usuario o merchant debe subir la documentación que soporte su reclamación, 
     peleado la reclamación, se continuará con el proceso de disputa.
   </Step>
 </Steps>
+
+## ¿Cómo se utiliza este endpoint?
+
+Vas a recibir una URL a la que debes hacer una petición `PUT` con el archivo que quieres subir.
+El archivo debe ser enviado en el cuerpo de la petición. El archivo debe ser un archivo en formato `JPG`, `PNG` o `JPEG` y no debe exceder los 10MB.
+La URL está firmada y tiene una validez de 1 hora, por lo que debes hacer la petición antes de que expire.
+Solamente se admite 1 subida de documentación por URL generada.
+
+<Warning>
+  Si reutilizas la URL generada para subir documentación, sobre-escribirás la documentación
+  previamente subida, lo que podría afectar el proceso de disputa.
+</Warning>
