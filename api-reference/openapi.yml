@@ -24,9 +24,9 @@ info:
     url: "https://www.naranjax.com/assets/img/logo-nx.svg"
     altText: "SONQO Logo"
 servers:
-  - url: http://e1-kausana.sonqo.io
-  - url: http://e3-kausana.sonqo.io
-  - url: http://kausana.sonqo.io
+  - url: https://e1-kausana.sonqo.io
+  - url: https://e3-kausana.sonqo.io
+  - url: https://kausana.sonqo.io
 components:
   securitySchemes:
     bearerAuth:
