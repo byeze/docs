@@ -54,7 +54,7 @@
       "pages": ["webhooks/security-hmac"]
     },
     {
-      "group": "API Documentation",
+      "group": "Documentación API",
       "pages": ["api-reference/introduction"]
     },
     {
