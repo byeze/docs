@@ -2,3 +2,21 @@
 title: "Listar documentación"
 openapi: GET /claims/{claimId}/documentation
 ---
+
+Este endpoint te permite obtener la documentación asociada a un reclamo que ha sido subida por el merchant hasta el momento.
+Se puede consultar esta información en cualquier momento, posterior la subida de documentos.
+
+## ¿Que es "status"?
+
+El campo "status" indica el estado del documento. Los posibles valores son: `approved` (aprobado), `unapproved` (no aprobado).
+La inteligencia artificial de nuestro proyecto analizará el contenido de las imágenes subidas al bucket y determinará si el documento es aprobado o no.
+
+### ¿Qué se tiene en cuenta para aprobar un documento?
+
+- La calidad de la imagen.
+- La legibilidad del documento.
+- La coherencia entre el documento subido y el tipo de documento que se espera.
+- La coherencia entre el documento subido y el tipo de reclamo que se está realizando.
+
+En caso de que el documento sea aprobado, el campo "status" tendrá el valor `approved`. En caso contrario, el campo "status" tendrá el valor `unapproved`.
+Este proceso es asincrónico, por lo que el campo "status" puede cambiar en cualquier momento. Esto podría tardar unos minutos.
