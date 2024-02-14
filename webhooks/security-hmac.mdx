@@ -17,8 +17,10 @@ Concatene la ruta completa de la URL (sin incluir el dominio) y el cuerpo del me
 ### Paso 3: Generación del Hash HMAC
 
 <Info>
-  Usted ha recibido el secret key de Kausanna cuando configuró los webhooks. Esta clave secreta es necesaria para generar el hash HMAC.
-  El campo `secret` en el objeto de configuración del webhook en Kausanna es la clave secreta compartida. No se puede volver a ver después de que se haya guardado.
+  Usted ha recibido el secret key de Kausanna cuando configuró los webhooks. Esta clave secreta es
+  necesaria para generar el hash HMAC. El campo `secret` en el objeto de configuración del webhook
+  en Kausanna es la clave secreta compartida. No se puede volver a ver después de que se haya
+  guardado.
 </Info>
 
 Utilice la clave secreta compartida (proporcionada por Kausanna cuando configura los webhooks) para generar un nuevo hash HMAC. Este paso se realiza utilizando el mismo algoritmo de hash que Kausanna usa para generar el `x-hmac-hash`. Por ejemplo, si Kausanna utiliza SHA-256, debe usar SHA-256 en su servidor también.
@@ -26,12 +28,14 @@ Utilice la clave secreta compartida (proporcionada por Kausanna cuando configura
 ```typescript
 import * as crypto from "crypto";
 
-function generate_hmac(secret_key: string, message: string): string {
-  return crypto.createHmac("sha256", secret_key).update(message).digest("hex");
+function generate_hmac(url: string, payload: string, secret: string): string {
+  const urlWithoutDomain = url.replace(/https?:\/\//, "");
+  const data = `${urlWithoutDomain}${payload}`;
+  return crypto.createHmac("sha256", secret).update(data).digest("hex");
 }
 ```
 
-En este código, `secret_key` es su clave secreta compartida y `message` es la cadena que preparó en el paso 2.
+En este código, `secret` es su clave secreta compartida, `url` es la URL completa del webhook y `payload` es el cuerpo del mensaje recibido.
 
 ### Paso 4: Comparación de Hashes
 
