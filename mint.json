@@ -6,7 +6,7 @@
     "dark": "https://www.naranjax.com/assets/images/navbar-isologo-naranjax.png",
     "light": "https://www.naranjax.com/assets/images/navbar-isologo-naranjax.png"
   },
-  "favicon": "https://www.naranjax.com/favicon.svg",
+  "favicon": "/favicon.svg",
   "colors": {
     "primary": "#fd4f00",
     "light": "#efe2d2",
