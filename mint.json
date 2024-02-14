@@ -43,7 +43,7 @@
   "navigation": [
     {
       "group": "Empezando",
-      "pages": ["introduction", "quickstart", "usage"]
+      "pages": ["introduction", "quickstart", "usage", "networks"]
     },
     {
       "group": "API Documentation",
