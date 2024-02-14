@@ -39,10 +39,10 @@ Todos los errores de la API tienen un formato definido. El código de estado HTT
 }
 ```
 
-| Campo       | Descripción                                                                                                     |
-| ----------- | --------------------------------------------------------------------------------------------------------------- |
-| `code`      | Código del error.                                                                                               |
-| `exception` | Nombre del error.                                                                                               |
-| `issues`    | Lista de problemas encontrados. En caso de que hayas enviado un body, se retornará los problemas de validación. |
-| `message`   | Mensaje del error.                                                                                              |
-| `success`   | Indica si la petición fue exitosa o no.                                                                         |
+| Campo       | Descripción                                                                                                     | Opcional |
+| ----------- | --------------------------------------------------------------------------------------------------------------- | -------- |
+| `code`      | Código del error.                                                                                               | No       |
+| `exception` | Nombre del error.                                                                                               | No       |
+| `issues`    | Lista de problemas encontrados. En caso de que hayas enviado un body, se retornará los problemas de validación. | Sí       |
+| `message`   | Mensaje del error.                                                                                              | No       |
+| `success`   | Indica si la petición fue exitosa o no.                                                                         | No       |

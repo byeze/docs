@@ -23,6 +23,9 @@
       "url": "mailto:sonqo-ongoing-processes@naranjax.com"
     }
   ],
+  "primaryTab": {
+    "name": "Documentación"
+  },
   "tabs": [
     {
       "name": "API Reference",
@@ -90,5 +93,8 @@
   "footerSocials": {
     "twitter": "https://twitter.com/naranjax",
     "linkedin": "https://www.linkedin.com/company/naranjax"
+  },
+  "search": {
+    "prompt": "Buscar en la documentación"
   }
 }
