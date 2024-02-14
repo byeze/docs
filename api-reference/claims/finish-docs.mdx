@@ -2,3 +2,14 @@
 title: "Finalizar subida de documentación"
 openapi: POST /claims/{claimId}/documentation/finish
 ---
+
+Cuando se ha subido toda la documentación necesaria para la reclamación, se debe finalizar la subida de documentación para que el proceso de reclamación pueda continuar y todos los documentos se suban a la marca.
+Por ejemplo, en el frontend se puede mostrar un botón que diga "Finalizar subida de documentación" que al hacer click llame a este endpoint.
+
+<Warning>
+  Una vez que hayas finalizado la documentación, no puedes subir nueva documentación luego.
+</Warning>
+
+## ¿Que pasa si no se finaliza la subida de documentación?
+
+Si no se finaliza la subida de documentación, la reclamación no podrá continuar y la marca cerrará la reclamación dando por ganado a la parte contraria, debido a falta de respuestas.

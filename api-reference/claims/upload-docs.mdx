@@ -2,3 +2,27 @@
 title: "Subir documentación"
 openapi: POST /claims/{claimId}/documentation
 ---
+
+Este endpoint permite que puedas subir documentación a una reclamación que ya ha sido creada.
+La documentación que se suba debe ser un archivo en formato `JPG`, `PNG` o `JPEG` y no debe exceder los 10MB.
+
+## ¿Para qué se utiliza este endpoint?
+
+Cuando un usuario ha creado una reclamación y necesita subir documentación adicional para soportar su reclamación, lo mismo para el caso de un merchant.
+El usuario o merchant debe subir la documentación que soporte su reclamación, por ejemplo, una factura, un contrato, una foto, etc.
+
+<Steps>
+  <Step title="Primera presentación">
+    Un usuario ha creado una reclamación y necesita subir documentación adicional para soportar su
+    reclamación.
+  </Step>
+  <Step title="Colaboración">
+    En esta etapa el merchant puede decidir si quiere colaborar o no, dando como perdido el dinero o
+    peleando la reclamación. En caso de pelear la reclamación, el merchant debe subir la
+    documentación que soporte su reclamación.
+  </Step>
+  <Step title="Continuación">
+    En caso de que el merchant haya colaborado, la disputa se da por finalizada. En caso de que haya
+    peleado la reclamación, se continuará con el proceso de disputa.
+  </Step>
+</Steps>

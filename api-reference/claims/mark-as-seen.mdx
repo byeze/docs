@@ -2,3 +2,6 @@
 title: "Marcar como visto"
 openapi: POST /claims/acquirer/{acquirerId}/seen
 ---
+
+Permite marcar como visto un reclamo, para que no se muestre en la lista de reclamos pendientes.
+Cuando realizas una petición a `GET /claims/acquirer/{acquirerId}` se mostrarán solo los reclamos que no han sido marcados como vistos.
