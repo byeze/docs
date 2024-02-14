@@ -47,7 +47,7 @@
     },
     {
       "group": "Disputas",
-      "pages": ["disputes/about"]
+      "pages": ["disputes/about", "disputes/glossary"]
     },
     {
       "group": "API Documentation",
