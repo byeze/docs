@@ -1,0 +1,63 @@
+---
+title: "Verificación de Webhooks mediante HMAC en Kausanna"
+---
+
+Este documento describe el proceso de verificación de la autenticidad de los webhooks enviados desde Kausanna utilizando el método de Hash-based Message Authentication Code (HMAC). El propósito es asegurar que los mensajes recibidos en el endpoint del servidor del cliente provienen realmente de Kausanna y no han sido alterados en tránsito.
+
+## Paso a Paso para la Verificación
+
+### Paso 1: Captura del Webhook
+
+Cuando su servidor recibe un webhook de Kausanna, primero debe capturar el cuerpo del mensaje y los headers. Preste especial atención al header `x-hmac-hash`, ya que contiene el hash HMAC que Kausanna utiliza para asegurar el mensaje.
+
+### Paso 2: Preparación de la Cadena para el Hash
+
+Concatene la ruta completa de la URL (sin incluir el dominio) y el cuerpo del mensaje recibido. Esta concatenación es la que se utilizará para generar el hash de verificación. Asegúrese de no alterar el orden ni el contenido del mensaje durante este proceso.
+
+### Paso 3: Generación del Hash HMAC
+
+<Info>
+  Usted ha recibido el secret key de Kausanna cuando configuró los webhooks. Esta clave secreta es necesaria para generar el hash HMAC.
+  El campo `secret` en el objeto de configuración del webhook en Kausanna es la clave secreta compartida. No se puede volver a ver después de que se haya guardado.
+</Info>
+
+Utilice la clave secreta compartida (proporcionada por Kausanna cuando configura los webhooks) para generar un nuevo hash HMAC. Este paso se realiza utilizando el mismo algoritmo de hash que Kausanna usa para generar el `x-hmac-hash`. Por ejemplo, si Kausanna utiliza SHA-256, debe usar SHA-256 en su servidor también.
+
+```typescript
+import * as crypto from "crypto";
+
+function generate_hmac(secret_key: string, message: string): string {
+  return crypto.createHmac("sha256", secret_key).update(message).digest("hex");
+}
+```
+
+En este código, `secret_key` es su clave secreta compartida y `message` es la cadena que preparó en el paso 2.
+
+### Paso 4: Comparación de Hashes
+
+Compare el hash HMAC que generó en el paso 3 con el valor del header `x-hmac-hash` recibido en el webhook. Si los dos hashes son idénticos, puede confiar en que el webhook es auténtico y no ha sido modificado.
+
+```typescript
+function verify_hmac(received_hmac: string, generated_hmac: string): boolean {
+  return crypto.timingSafeEqual(
+    Buffer.from(received_hmac, "utf8"),
+    Buffer.from(generated_hmac, "utf8")
+  );
+}
+```
+
+Utilice `received_hmac` para el hash del header `x-hmac-hash` y `generated_hmac` para el hash que generó.
+
+### Paso 5: Procesamiento del Webhook
+
+Si la verificación es exitosa, proceda con el procesamiento normal del webhook. Si los hashes no coinciden, rechace el webhook y registre el evento para una revisión más detallada.
+
+<Tip>
+  Es recomendable registrar los intentos fallidos de verificación de webhooks, ya que pueden indicar
+  intentos de manipulación o errores en la configuración.
+</Tip>
+
+<Warning>
+  Guarde su clave secreta en un lugar seguro y nunca la exponga públicamente. La seguridad de la
+  verificación HMAC depende de la confidencialidad de esta clave.
+</Warning>

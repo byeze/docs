@@ -50,6 +50,10 @@
       "pages": ["disputes/about", "disputes/glossary"]
     },
     {
+      "group": "Webhooks",
+      "pages": ["webhooks/security-hmac"]
+    },
+    {
       "group": "API Documentation",
       "pages": ["api-reference/introduction"]
     },
