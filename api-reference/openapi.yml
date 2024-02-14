@@ -319,6 +319,19 @@ paths:
           required: true
           example: "200002031927"
       responses:
+        "200":
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
         "400":
           description: Bad Request
           headers:
@@ -326,6 +339,18 @@ paths:
               schema:
                 type: string
                 example: application/json
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                    description: Indicates if the request was successful
+                  transitionedTo:
+                    type: string
+                    example: "COLLABORATION_ACCEPTED"
+                    description: The status the claim was transitioned to
+                  data:
+                    type: object
+                    description: The data of the claim
           content:
             application/json:
               schema:
