@@ -46,6 +46,10 @@
       "pages": ["introduction", "quickstart", "usage", "networks"]
     },
     {
+      "group": "Disputas",
+      "pages": ["disputes/about"]
+    },
+    {
       "group": "API Documentation",
       "pages": ["api-reference/introduction"]
     },
