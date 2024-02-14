@@ -55,7 +55,7 @@
     },
     {
       "group": "Webhooks",
-      "pages": ["webhooks/security-hmac"]
+      "pages": ["webhooks/security-hmac", "webhooks/good-practices"]
     },
     {
       "group": "Documentación API",

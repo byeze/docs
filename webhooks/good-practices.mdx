@@ -1,0 +1,69 @@
+---
+title: "Buenas Prácticas para Webhooks"
+---
+
+Este documento ofrece una guía de buenas prácticas desde la creación hasta la implementación y manejo de webhooks, asegurando un funcionamiento eficiente y seguro de estos componentes críticos para la integración de servicios.
+
+## Diseño
+
+### Definición Clara de Eventos
+
+- **Especifique claramente** qué eventos usted desea recibir.
+
+### Seguridad
+
+- **Validación de Request**: Asegure la autenticidad y la integridad de los requests mediante la verificación de firmas digitales, como HMAC.
+- **HTTPS**: Utilice siempre HTTPS para la transmisión de datos, protegiendo la información sensible.
+
+### Eficiencia
+
+- **Intentos de Reintento**: Implemente lógicas de reintento con políticas de backoff exponencial para manejar fallos de entrega.
+
+## Implementación del Servidor
+
+### Manejo de Cargas
+
+- **Asincronía**: Procese los webhooks de manera asincrónica para evitar bloqueos y asegurar una respuesta rápida al emisor.
+- **Escalabilidad**: Diseñe su sistema para ser escalable, capaz de manejar picos de actividad sin degradación del servicio.
+
+### Seguridad
+
+- **Verificación de Firmas**: Implemente y verifique firmas HMAC para confirmar la autenticidad del emisor.
+- **Limitación de IP**: Restrinja las solicitudes a rangos de IP conocidos cuando sea posible.
+
+### Robustez
+
+- **Validación de Datos**: Realice una validación rigurosa de los datos recibidos para evitar inyecciones SQL y otros ataques.
+- **Manejo de Errores**: Implemente un manejo de errores exhaustivo para cubrir posibles fallos y asegurar una respuesta adecuada.
+
+## Procesamiento de Webhooks
+
+### Recepción y Respuesta
+
+- **Respuestas Rápidas**: Asegure que su endpoint de webhook responda rápidamente, idealmente con un código de estado HTTP 200, para confirmar la recepción.
+
+### Logística de Procesamiento
+
+- **Colas de Mensajes**: Utilice colas de mensajes para procesar los webhooks de forma eficiente y en orden.
+- **Monitoreo y Alertas**: Establezca sistemas de monitoreo y alertas para rastrear fallos, latencias y volúmenes anómalos.
+
+## Pruebas y Mantenimiento
+
+### Pruebas Rigurosas
+
+- **Automatización de Pruebas**: Desarrolle pruebas automatizadas para su lógica de webhooks, incluyendo la verificación de firmas y el manejo de errores.
+
+### Documentación
+
+- **Documente Ampliamente**: Provea documentación clara y completa para los consumidores de su webhook, incluyendo detalles de eventos, payloads esperados y ejemplos de código.
+
+<Tip>
+  La implementación de estas buenas prácticas no solo mejora la seguridad y eficiencia de sus
+  webhooks sino que también facilita una mejor integración y experiencia para los consumidores de su
+  API.
+</Tip>
+
+<Warning>
+  Mantenga siempre una postura de seguridad proactiva, actualizando y revisando sus prácticas
+  conforme evolucionan las amenazas y las tecnologías.
+</Warning>

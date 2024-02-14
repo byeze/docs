@@ -65,3 +65,69 @@ Si la verificación es exitosa, proceda con el procesamiento normal del webhook.
   Guarde su clave secreta en un lugar seguro y nunca la exponga públicamente. La seguridad de la
   verificación HMAC depende de la confidencialidad de esta clave.
 </Warning>
+
+## Ejemplo de Verificación HMAC en Node.js
+
+A continuación se muestra un ejemplo de cómo implementar la verificación HMAC en Node.js utilizando Express y el módulo `crypto`.
+
+```typescript
+import express from "express";
+import * as crypto from "crypto";
+
+const app = express();
+
+app.use(express.json());
+
+app.post("/webhook", (req, res) => {
+  const received_hmac = req.headers["x-hmac-hash"];
+  const generated_hmac = generate_hmac(req.url, JSON.stringify(req.body), "your_secret");
+
+  if (verify_hmac(received_hmac, generated_hmac)) {
+    console.log("Webhook verified successfully");
+    // Process the webhook
+    res.status(200).send("Webhook verified successfully");
+  } else {
+    console.error("Webhook verification failed");
+    // Reject the webhook
+    res.status(403).send("Webhook verification failed");
+  }
+});
+
+function generate_hmac(url: string, payload: string, secret: string): string {
+  const urlWithoutDomain = url.replace(/https?:\/\//, "");
+  const data = `${urlWithoutDomain}${payload}`;
+  return crypto.createHmac("sha256", secret).update(data).digest("hex");
+}
+
+function verify_hmac(received_hmac: string, generated_hmac: string): boolean {
+  return crypto.timingSafeEqual(
+    Buffer.from(received_hmac, "utf8"),
+    Buffer.from(generated_hmac, "utf8")
+  );
+}
+
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
+});
+```
+
+En este ejemplo, el servidor Express escucha en el puerto 3000 y verifica el hash HMAC de los webhooks recibidos. Asegúrese de reemplazar `"your_secret"` con su clave secreta compartida.
+
+# Vulnerabilidades y Consideraciones de Seguridad
+
+## Almacenamiento Seguro de la Clave Secreta
+
+La clave secreta compartida es un componente crítico de la verificación HMAC. Debe almacenarse de forma segura y no debe exponerse públicamente. Si la clave secreta se ve comprometida, los atacantes pueden falsificar webhooks y realizar acciones no autorizadas en su sistema.
+
+## Protección contra Ataques de Tiempo
+
+Al comparar los hashes HMAC, es importante utilizar una comparación segura en tiempo para evitar ataques de temporización. La función `crypto.timingSafeEqual` en Node.js proporciona una comparación segura en tiempo que evita la revelación de información a través de la sincronización de relojes.
+Este tipo de ataque puede ser utilizado para adivinar la clave secreta a través de la comparación de tiempos de respuesta.
+
+## Registro de Intentos Fallidos
+
+Es recomendable registrar los intentos fallidos de verificación de webhooks, ya que pueden indicar intentos de manipulación o errores en la configuración. El registro de estos eventos puede ayudar a identificar y mitigar posibles amenazas de seguridad.
+
+## Rotación de Claves Secretas
+
+Es una buena práctica rotar las claves secretas periódicamente para reducir el riesgo de exposición. Si sospecha que su clave secreta ha sido comprometida, debe cambiarla inmediatamente y actualizar la configuración de los webhooks en Kausanna.
