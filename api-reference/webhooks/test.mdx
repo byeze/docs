@@ -5,3 +5,29 @@ openapi: POST /partner/{partnerId}/subscriptions/test
 
 Este endpoint enviará un evento de prueba a la URL de webhook configurada para el partner, para que puedan probar que la integración está funcionando correctamente.
 La notificación es de tipo `POST`.
+
+## Ejemplo de notificación
+
+```json
+{
+  "test": true,
+  "event": "chargeback.created",
+  "data": {
+    "message": "Test webhook"
+  }
+}
+```
+
+Puedes ver en las cabercas de la petición el `x-hmac-hash` que es el hash de la petición que se envía para que el partner pueda validar que la petición es auténtica.
+Por ejemplo:
+
+```http
+POST /webhook/sample HTTP/1.1
+Host: api.example.com
+Content-Type: application/json
+x-hmac-hash: 5d0a63628669ebc76cf3d5d33a0da3a3c96bd519fa129534b50e0f3ae97027d3
+```
+
+<Info>
+  Kausanna usa el algoritmo SHA256 para generar el hash de la petición.
+</Info>
