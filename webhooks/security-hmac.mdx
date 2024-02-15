@@ -131,3 +131,13 @@ Es recomendable registrar los intentos fallidos de verificación de webhooks, ya
 ## Rotación de Claves Secretas
 
 Es una buena práctica rotar las claves secretas periódicamente para reducir el riesgo de exposición. Si sospecha que su clave secreta ha sido comprometida, debe cambiarla inmediatamente y actualizar la configuración de los webhooks en Kausanna.
+
+## ¿Que hacer en caso de compromiso de la clave secreta?
+
+Si sospecha que su clave secreta ha sido comprometida, debe cambiarla inmediatamente y actualizar la configuración de los webhooks en Kausanna. Además, es recomendable revisar los registros de intentos fallidos de verificación de webhooks para identificar posibles actividades maliciosas.
+Pasos:
+
+1. Cree un webhook con los eventos que desee recibir. Puede clonar un webhook existente.
+2. Copie la nueva clave secreta generada por Kausanna.
+3. Actualice la configuración de su servidor para utilizar la nueva clave secreta.
+4. Elimine el webhook comprometido, puede buscar por ID o por URL.
