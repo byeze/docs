@@ -1,0 +1,278 @@
+---
+title: "El objeto evento"
+description: "Conoce el objeto evento y cómo utilizarlo en tu integración"
+---
+
+El objeto evento es la representación de una acción que ha ocurrido en la plataforma de Kausanna. Cada vez que ocurre una acción, se genera un evento que contiene información sobre lo que ha ocurrido y se te envía a tu servidor a través de una conexión segura.
+
+Tiene la siguiente estructura:
+
+```json
+{
+  "id": "evt_2o3k4j5l6m",
+  "type": "chargeback.created",
+  "timestamp": "2020-01-01T00:00:00Z",
+  "test": true,
+  "data": {
+    "param": "value"
+  }
+}
+```
+
+<ParamField path="id" type="string">
+  El identificador único del evento.
+</ParamField>
+
+<ParamField path="type" type="string">
+  El tipo de evento. Indica la acción que ha ocurrido. Su formato es `recurso.accion`.
+</ParamField>
+
+<ParamField path="timestamp" type="string">
+  La fecha y hora en la que ocurrió el evento.
+</ParamField>
+
+<ParamField path="test" type="boolean">
+  Indica si el evento fue generado en un ambiente de pruebas.
+</ParamField>
+
+<ParamField path="data" type="object">
+  Un objeto con la información específica del evento. Consulta la documentación de cada evento para
+  conocer los campos que contiene.
+</ParamField>
+
+## Evento de pruebas
+
+Cuando ejecutas la acción de probar los webhooks de tu cuenta en Kausanna, te llegará un evento como el siguiente:
+
+```json
+{
+  "test": true,
+  "event": "chargeback.created",
+  "data": {
+    "message": "Test webhook"
+  }
+}
+```
+
+## Evento de nuevo contracargo
+
+El evento de tipo `chargeback.created` contiene la siguiente información:
+
+```json
+{
+  "id": "200002043925",
+  "data": {
+    "acquirerId": "002222",
+    "merchantId": "002403845259",
+    "chargebackIds": ["300003030396", "300003030396"],
+    "amount": "938.61 MXN",
+    "primaryAccountNum": "5123********6694",
+    "transactionId": "120602363",
+    "isFraud": false
+  },
+  "type": "chargeback.created",
+  "origin": "mastercard"
+}
+```
+
+<ParamField path="id" type="string">
+  El identificador único del evento.
+</ParamField>
+
+<ParamField path="type" type="string">
+  El tipo de evento. Indica la acción que ha ocurrido. Su formato es `recurso.accion`.
+</ParamField>
+
+<ParamField path="timestamp" type="string">
+  La fecha y hora en la que ocurrió el evento.
+</ParamField>
+
+<ParamField path="test" type="boolean">
+  Indica si el evento fue generado en un ambiente de pruebas.
+</ParamField>
+
+<ParamField path="data" type="object">
+  Un objeto con la información específica del evento. Consulta la documentación de cada evento para
+  conocer los campos que contiene.
+</ParamField>
+
+<ParamField path="data.acquirerId" type="string">
+  El identificador del adquirente.
+</ParamField>
+
+<ParamField path="data.merchantId" type="string">
+  El identificador del comercio.
+</ParamField>
+
+<ParamField path="data.chargebackIds" type="array">
+  Un arreglo con los identificadores de los contracargos.
+</ParamField>
+
+<ParamField path="data.amount" type="string">
+  El monto del contracargo.
+</ParamField>
+
+<ParamField path="data.primaryAccountNum" type="string">
+  El número de tarjeta enmascarado.
+</ParamField>
+
+<ParamField path="data.transactionId" type="string">
+  El identificador de la transacción.
+</ParamField>
+
+<ParamField path="data.isFraud" type="boolean">
+  Indica si el contracargo es por fraude.
+</ParamField>
+
+<Info>Por seguridad, el campo `primaryAccountNum` es enmascarado.</Info>
+
+## Evento de contracargo actualizado
+
+El evento de tipo `chargeback.updated` contiene la siguiente información:
+
+```json
+{
+  "id": "200002043925",
+  "data": {
+    "acquirerId": "002222",
+    "merchantId": "002403845259",
+    "chargebackIds": ["300003030396", "300003030396"],
+    "amount": "938.61 MXN",
+    "primaryAccountNum": "5123********6694",
+    "transactionId": "120602363",
+    "isFraud": false
+  },
+  "type": "chargeback.updated",
+  "origin": "mastercard"
+}
+```
+
+<ParamField path="id" type="string">
+  El identificador único del evento.
+</ParamField>
+
+<ParamField path="type" type="string">
+  El tipo de evento. Indica la acción que ha ocurrido. Su formato es `recurso.accion`.
+</ParamField>
+
+<ParamField path="timestamp" type="string">
+  La fecha y hora en la que ocurrió el evento.
+</ParamField>
+
+<ParamField path="test" type="boolean">
+  Indica si el evento fue generado en un ambiente de pruebas.
+</ParamField>
+
+<ParamField path="data" type="object">
+  Un objeto con la información específica del evento. Consulta la documentación de cada evento para
+  conocer los campos que contiene.
+</ParamField>
+
+<ParamField path="data.acquirerId" type="string">
+  El identificador del adquirente.
+</ParamField>
+
+<ParamField path="data.merchantId" type="string">
+  El identificador del comercio.
+</ParamField>
+
+<ParamField path="data.chargebackIds" type="array">
+  Un arreglo con los identificadores de los contracargos.
+</ParamField>
+
+<ParamField path="data.amount" type="string">
+  El monto del contracargo.
+</ParamField>
+
+<ParamField path="data.primaryAccountNum" type="string">
+  El número de tarjeta enmascarado.
+</ParamField>
+
+<ParamField path="data.transactionId" type="string">
+  El identificador de la transacción.
+</ParamField>
+
+<ParamField path="data.isFraud" type="boolean">
+  Indica si el contracargo es por fraude.
+</ParamField>
+
+## Evento de contracargo resuelto
+
+El evento de tipo `chargeback.resolved` contiene la siguiente información:
+
+```json
+{
+  "id": "200002043925",
+  "data": {
+    "acquirerId": "002222",
+    "merchantId": "002403845259",
+    "chargebackIds": ["300003030396", "300003030396"],
+    "amount": "938.61 MXN",
+    "primaryAccountNum": "5123********6694",
+    "transactionId": "120602363",
+    "isFraud": false
+  },
+  "type": "chargeback.resolved",
+  "origin": "mastercard"
+}
+```
+
+<ParamField path="id" type="string">
+  El identificador único del evento.
+</ParamField>
+
+<ParamField path="type" type="string">
+  El tipo de evento. Indica la acción que ha ocurrido. Su formato es `recurso.accion`.
+</ParamField>
+
+<ParamField path="timestamp" type="string">
+  La fecha y hora en la que ocurrió el evento.
+</ParamField>
+
+<ParamField path="test" type="boolean">
+  Indica si el evento fue generado en un ambiente de pruebas.
+</ParamField>
+
+<ParamField path="data" type="object">
+  Un objeto con la información específica del evento. Consulta la documentación de cada evento para
+  conocer los campos que contiene.
+</ParamField>
+
+<ParamField path="data.acquirerId" type="string">
+  El identificador del adquirente.
+</ParamField>
+
+<ParamField path="data.merchantId" type="string">
+  El identificador del comercio.
+</ParamField>
+
+<ParamField path="data.chargebackIds" type="array">
+  Un arreglo con los identificadores de los contracargos.
+</ParamField>
+
+<ParamField path="data.amount" type="string">
+  El monto del contracargo.
+</ParamField>
+
+<ParamField path="data.primaryAccountNum" type="string">
+  El número de tarjeta enmascarado.
+</ParamField>
+
+<ParamField path="data.transactionId" type="string">
+  El identificador de la transacción.
+</ParamField>
+
+<ParamField path="data.isFraud" type="boolean">
+  Indica si el contracargo es por fraude.
+</ParamField>
+
+## Origenes disponibles
+
+| Origen     | Descripción                                         |
+| ---------- | --------------------------------------------------- |
+| mastercard | Eventos relacionados con tarjetas Mastercard.       |
+| visa       | Eventos relacionados con tarjetas Visa.             |
+| amex       | Eventos relacionados con tarjetas American Express. |
+| discover   | Eventos relacionados con tarjetas Discover.         |
+| diners     | Eventos relacionados con tarjetas Diners Club.      |
+| nx         | Eventos relacionados con tarjetas NaranjaX.         |
