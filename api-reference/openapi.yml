@@ -1277,11 +1277,6 @@ paths:
                         type: integer
                         example: 1
               examples:
-                example-0:
-                  summary: "200: no claims"
-                  value:
-                    success: true
-                    data: []
                 example-1:
                   summary: "200: marked as seen"
                   value:
