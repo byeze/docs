@@ -40,6 +40,26 @@ Tiene la siguiente estructura:
   conocer los campos que contiene.
 </ParamField>
 
+### Ejemplo de request HTTP
+
+```http
+POST /webhooks HTTP/1.1
+Host: example.com
+Content-Type: application/json
+Content-Length: 123
+x-hmac-hash: abcakdaodsdslajsdi12381293ijndaksdjnqd
+
+{
+  "id": "evt_2o3k4j5l6m",
+  "type": "chargeback.created",
+  "timestamp": "2020-01-01T00:00:00Z",
+  "test": true,
+  "data": {
+    "param": "value"
+  }
+}
+```
+
 ## Evento de pruebas
 
 Cuando ejecutas la acción de probar los webhooks de tu cuenta en Kausanna, te llegará un evento como el siguiente:
