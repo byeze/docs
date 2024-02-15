@@ -1,0 +1,112 @@
+---
+title: "Cómo Funcionan las Disputas"
+description: "Aprende sobre el ciclo de vida general de las disputas de tarjetas de pago."
+---
+
+Una disputa ocurre cuando el propietario de una cuenta contacta a su banco para impugnar un pago hecho hacia un merchant por una variedad de posibles razones. Cuando alguien presenta una disputa, el proceso varía ligeramente entre diferentes redes de tarjetas, pero típicamente sigue un patrón estándar.
+
+Cuando el propietario de una cuenta disputa un cargo a su cuenta de pago, Kausanna:
+
+- Te notifica sobre la disputa a través del Dashboard de Kausanna, email, webhooks y la API.
+- Debita el monto disputado, más una tarifa por disputa, de tu cuenta de Kausanna hasta que la disputa se resuelva. [^1]
+- Supervisa el estado de la disputa y te notifica sobre cualquier cambio.
+- Te ayuda a presentar evidencia al banco del propietario de la cuenta para ayudar a resolver la disputa con Inteligencia Artificila.
+
+[^1]: La funcionalidad de auto-debit depende del tipo de plan de Kausanna que tengas.
+
+A lo largo de este proceso, Kausanna facilita tu caso, pero no tiene influencia sobre el resultado, el cual está a discreción exclusiva del banco del propietario de la cuenta.
+
+## Antes de la Disputa
+
+A veces, Kausanna te alerta sobre notificaciones previas a la disputa antes de que se presente una disputa real. Presta atención a estas notificaciones porque:
+
+- Podrías evitar completamente una disputa con un servicio al cliente proactivo y aclaración de la transacción.
+- No responder en la fase previa a la disputa puede tener implicaciones negativas en la fase formal de disputa.
+
+### Advertencias Tempranas de Fraude
+
+Las advertencias tempranas de fraude (EFWs) son mensajes provenientes de informes Visa TC40 y Mastercard SAFE (Sistema para Evitar el Fraude Efectivamente) que los emisores de tarjetas en estas dos redes generan para señalar pagos que sospechan podrían ser fraudulentos. Las redes requieren que los emisores reporten fraude, pero ese requisito no afecta la decisión del emisor de si iniciar una disputa.
+
+Como con cualquier señal de fraude, las EFWs no requieren ninguna acción o respuesta de tu parte. Puedes reembolsar proactivamente el cargo para prevenir que el titular de la tarjeta inicie una disputa, o podrías esperar y ver si ocurre una disputa por fraude. A menos que el pago estuviera cubierto por la regla de cambio de responsabilidad, el 80% de las EFWs se convierten en una disputa por fraude si no haces nada. Si el pago estaba cubierto por cambio de responsabilidad, aún podrías recibir una disputa. En ese caso, Kausanna automáticamente proporciona alguna evidencia por ti, como datos de 3D Secure.
+
+Reembolsar automáticamente todas las EFWs sin considerar la probabilidad de escalada no es una buena estrategia. Si eres demasiado agresivo emitiendo reembolsos para todas las EFWs, inevitablemente reembolsarás algunas transacciones que nunca se habrían convertido en disputas.
+
+Nuestro análisis sugiere que el punto óptimo para emitir un reembolso sobre advertencias tempranas de fraude es en cargos que son aproximadamente iguales o menores a tu tarifa por disputa. Probablemente no valga la pena reembolsar EFWs en cargos más de un 35 por ciento mayores que tu tarifa por disputa.
+
+Reembolsar proactivamente un pago señalado no afecta la advertencia de fraude. La única vez que un reembolso puede prevenir un informe de fraude es cuando se procesa como una reversión, lo cual usualmente sucede dentro de 2 horas de la captura del pago.
+
+### Casos donde Hacer un Reembolso Tiene Más Sentido
+
+La principal excepción a la estrategia óptima de reembolso mencionada arriba es si tienes razones para preocuparte por el efecto de la disputa misma en tu negocio o cuenta.
+
+Si alguna de las condiciones descritas bajo las Mejores prácticas para prevenir fraude se aplica a tu situación, tiene sentido reembolsar EFWs de manera más agresiva.
+
+Aunque se llama una advertencia temprana de fraude, es posible recibir una EFW incluso después de que recibas una disputa por fraude sobre un cargo. Esto generalmente es porque los sistemas que las redes usan para procesar EFWs son separados de los sistemas que usan para procesar disputas, y los dos no necesariamente están sincronizados.
+
+<Info>
+  Por el momento, no disponemos de notificaciones para eventos de origen EFW para consumidores.
+</Info>
+
+### Investigaciones
+
+Algunas redes de tarjetas inician una fase preliminar antes de crear una disputa formal y contracargo. Kausanna llama a esta fase preliminar una investigación, aunque a veces también se le llama “recuperación” o “solicitud de información”. American Express y Discover son las redes que más a menudo usan esta fase, mientras que Mastercard y Visa ya no la usan.
+
+Durante la fase de investigación, el banco del titular de la tarjeta solicita clarificación de la transacción, a menudo porque el titular de la tarjeta no reconoce la descripción de la transacción. Puedes resolver el caso sin incurrir en una tarifa por disputa ya sea proporcionando evidencia satisfactoria que responda al tipo de disputa para la investigación, o emitiendo un reembolso completo. Las investigaciones sobre cargos parcialmente reembolsados aún pueden escalar a un contracargo.
+
+### Contracargos Inganables
+
+Con cargos en tarjetas American Express y Discover, fallar en responder a una investigación puede señalar al emisor tu aceptación implícita de la reclamación, resultando en una escalación a un contracargo formal, y probablemente inganable. A menos que tengas la intención de aceptar la responsabilidad financiera, siempre responde a las investigaciones inmediatamente, y haz todo el esfuerzo para resolver los problemas de manera amigable con tu cliente durante esta etapa.
+
+## Durante la Disputa
+
+Ya sea debido a una investigación que escaló, o por alguna otra razón, cuando el propietario de una cuenta presenta una disputa formal contra un pago, la acción inicia un contracargo donde la red de tarjetas retira los fondos para la disputa del Banco Receptor y lo mantiene por toda la duración de la disputa. Esto podría ser por el monto completo del cargo o un monto diferente.
+
+### Recibir una Disputa
+
+La iniciación de una disputa desencadena varios procesos:
+
+- La red de tarjetas debita al banco receptor [merchant] por tu pago disputado y las tarifas relacionadas con la disputa
+- Tu tasa de disputas con esa red de tarjetas aumenta
+
+### Temporización
+
+Las redes de tarjetas típicamente permiten a los titulares de tarjetas iniciar disputas dentro de 120 días del pago original, pero sus reglas permiten más tiempo en algunas situaciones. Ciertas industrias, como viajes o ticketing de eventos—donde el pago podría hacerse mucho antes de que ocurra el evento—son propensas a intervalos de tiempo más largos entre la compra original y una disputa. Hablando en general, cuando un cliente hace un pago por algo que ocurrirá en el futuro (como una reserva de vacaciones, una cita de servicios profesionales, o un ticket de evento), el reloj comienza en la fecha del evento, no la fecha del pago.
+
+Tras la creación del contracargo, tienes una cantidad limitada de tiempo (usualmente 7-21 días, dependiendo de la red de tarjetas) para responder al emisor de la tarjeta.
+
+Si presentas evidencia, el emisor también tiene una cantidad limitada de tiempo (usualmente 60–75 días, dependiendo de la red de tarjetas) para evaluar la evidencia y decidir el resultado.
+
+El ciclo de vida completo de una disputa, desde la iniciación hasta la decisión final del emisor, puede tomar tanto como 2-3 meses para completarse. No hay acciones que un negocio pueda tomar para acelerar de manera confiable este cronograma, aparte de declinar a impugnar la disputa aceptándola en el Dashboard o API.
+
+Al completarse el proceso de disputa, el emisor o revierte la disputa a tu favor o mantiene la disputa a favor de su titular de tarjeta.
+
+Si el emisor revierte la disputa, ellos retornan el monto del contracargo debitado al banco. En algunas regiones, la tarifa por disputa podría ser retornada.
+
+Si el emisor mantiene la disputa, nada cambia desde tu perspectiva y no se mueve dinero—La red acreditó al emisor cuando ellos iniciaron el contracargo. El emisor retornará los fondos al titular de la tarjeta en algún punto durante—o incluso después—de este proceso. El momento del crédito al titular de la tarjeta está completamente a discreción del emisor.
+
+### Responder a una Disputa
+
+En la mayoría de los casos, tienes la habilidad de impugnar un pago disputado, siempre y cuando presentes evidencia fuerte al emisor de la tarjeta que invalide la reclamación de disputa antes de la fecha límite.
+
+Tan pronto como una disputa está activa, la única manera de revertirla es presentando evidencia en una respuesta. Incluso en casos donde el cliente del merchant afirma haber retirado la disputa, debes responder con evidencia para que la disputa se cierre a tu favor. Presentar evidencia es lo que señala al emisor que no aceptas la disputa y quieres que los fondos te sean retornados.
+
+### Recibir Múltiples Disputas por Pago
+
+En casos extremadamente raros, podrías recibir más de una disputa por pago. Esto puede suceder cuando un cliente presenta una nueva disputa con un diferente código de razón, por un nuevo ítem en la transacción original, en pagos con captura múltiple o simplemente porque el emisor adquirió nueva información sobre el pago permitiéndoles refilear una disputa.
+
+Maneja cada disputa de la misma manera que cualquier otra disputa; cada disputa requiere que aceptes o contrarrestes la disputa. Presta especial atención al monto delineado, moneda, categoría, y detalles de la reclamación antes de manejar la disputa.
+
+### Monto Disputado
+
+Un monto disputado podría ser menor o mayor que el monto de la carga original. La siguiente tabla esboza algunas de las razones más comunes para esta diferencia.
+
+| Razón para Diferencia | Explicación                                                                                                                        |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Conversión de moneda  | El monto disputado es en la moneda del titular de la tarjeta, no la moneda del merchant.                                           |
+| Pagos recurrentes     | El monto disputado es el monto de un solo (o la cantidad desconocida) pago recurrente, no el monto total de los pagos recurrentes. |
+| Cargos parciales      | El monto disputado es el monto de un solo cargo, no el monto total de los cargos.                                                  |
+| Cargos reembolsados   | El monto disputado es el monto de un solo cargo, no el monto total de los cargos.                                                  |
+
+### Arbitraje
+
+Algunas redes de tarjetas soportan una fase de arbitraje para disputas perdidas que lleva una tarifa sustancial de alrededor de 500 USD, pero Kausanna no soporta esta fase de disputa.

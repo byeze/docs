@@ -51,7 +51,13 @@
     },
     {
       "group": "Disputas",
-      "pages": ["disputes/about", "disputes/glossary", "disputes/status"]
+      "pages": [
+        "disputes/how-it-works",
+        "disputes/match-list",
+        "disputes/about",
+        "disputes/glossary",
+        "disputes/status"
+      ]
     },
     {
       "group": "Webhooks",
