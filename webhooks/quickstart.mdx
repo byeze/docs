@@ -1,0 +1,76 @@
+---
+title: "Creación y Uso de Webhooks en Kausanna"
+description: "Guía para la creación y uso de webhooks en Kausanna"
+---
+
+Este documento guía a través del proceso de configuración y uso de webhooks con el servicio de Kausanna, permitiendo a los consumidores recibir notificaciones automáticas sobre eventos específicos, como la creación de contracargos.
+
+## Paso 1: Creación de la Suscripción a Webhooks
+
+Para comenzar a recibir webhooks de Kausanna, primero debes crear una suscripción indicando los eventos de los que deseas ser notificado.
+
+### Ejemplo de Request para Crear una Suscripción
+
+Realiza una solicitud HTTP POST a `/partner/:partnerId/subscriptions` con un body que especifique el estado de actividad, la URL de tu servidor que recibirá los webhooks y los eventos a los que te suscribes.
+
+```json
+POST /partner/:partnerId/subscriptions HTTP/1.1
+Host: kausanna.sonqo.io
+Content-Type: application/json
+x-api-key: abc123
+
+{
+  "isActive": true,
+  "url": "<url del servidor del consumidor>",
+  "subscribedEvents": [
+    "chargeback.created"
+  ]
+}
+```
+
+### Guardar el `secret`
+
+En la respuesta a tu solicitud de suscripción, recibirás un `secret`. Es crucial copiar y guardar este `secret` de forma segura, ya que será necesario para verificar la autenticidad de los webhooks recibidos.
+
+## Paso 2: Informar al Equipo de Kausanna
+
+Una vez creada la suscripción, informa al equipo de Kausanna para que realicen transacciones de prueba. Esto asegurará que la integración esté funcionando correctamente y que tu servidor pueda recibir y procesar webhooks.
+
+## Paso 3: Verificar el Webhook Recibido
+
+Cuando recibas un webhook de Kausanna, deberás verificar su autenticidad usando el `secret` guardado y el hash HMAC incluido en los headers del webhook.
+
+### Ejemplo de Webhook Recibido
+
+```http
+POST /webhooks HTTP/1.1
+Host: example.com
+Content-Type: application/json
+Content-Length: 123
+x-hmac-hash: abcakdaodsdslajsdi12381293ijndaksdjnqd
+
+{
+  "id": "evt_2o3k4j5l6m",
+  "type": "chargeback.created",
+  "timestamp": "2020-01-01T00:00:00Z",
+  "test": true,
+  "data": {
+    "param": "value"
+  }
+}
+```
+
+### Proceso de Verificación
+
+Utiliza el `secret` para generar un hash HMAC de la carga útil del webhook y compáralo con el valor del header `x-hmac-hash`. Si coinciden, puedes confiar en que el webhook es auténtico y proceder con su procesamiento.
+
+Este proceso de verificación es esencial para mantener la integridad y la seguridad de la comunicación entre Kausanna y tu sistema.
+
+<Info>
+  Recuerda que el hash se genera concatenando `url` y `body` del webhook y aplicando la función de
+  HMAC. La URL no debe incluir el protocolo.
+</Info>
+
+## Conclusión
+
+Seguir estos pasos no solo establecerá una integración segura con los webhooks de Kausanna sino que también asegurará que estés informado en tiempo real sobre eventos críticos, como los contracargos, permitiéndote tomar acciones inmediatas y adecuadas.
