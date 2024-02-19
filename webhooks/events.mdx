@@ -62,6 +62,8 @@ x-hmac-hash: abcakdaodsdslajsdi12381293ijndaksdjnqd
 }
 ```
 
+# Webhooks
+
 ## Evento de pruebas
 
 Cuando ejecutas la acción de probar los webhooks de tu cuenta en Kausanna, te llegará un evento como el siguiente:
@@ -75,6 +77,8 @@ Cuando ejecutas la acción de probar los webhooks de tu cuenta en Kausanna, te l
   }
 }
 ```
+
+# Contracargos
 
 ## Evento de nuevo contracargo
 
@@ -286,6 +290,39 @@ El evento de tipo `chargeback.resolved` contiene la siguiente información:
 
 <ParamField path="data.isFraud" type="boolean">
   Indica si el contracargo es por fraude.
+</ParamField>
+
+# Documentación
+
+## Documento rechazado
+
+El evento de tipo `document.rejected` contiene la siguiente información:
+
+```json
+{
+  "event": "documentation.rejected",
+  "message": "The document uploaded didn't pass documentation checks",
+  "disputeId": "1706558731586",
+  "object": ["1706558731586", "01HQ0V0P7A122CR72T3M71H828.png"]
+}
+```
+
+Cuando nuestra plataforma rechaza un documento, te enviamos un evento con la información necesaria para que puedas tomar las acciones necesarias.
+
+<ParamField path="event" type="string">
+  El tipo de evento. Indica la acción que ha ocurrido.
+</ParamField>
+
+<ParamField path="message" type="string">
+  El mensaje que describe el motivo del rechazo.
+</ParamField>
+
+<ParamField path="disputeId" type="string">
+  El identificador único del contracargo.
+</ParamField>
+
+<ParamField path="object" type="array">
+  Un arreglo con los identificadores del contracargo y el documento rechazado.
 </ParamField>
 
 ## Origenes disponibles
