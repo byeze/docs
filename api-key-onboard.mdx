@@ -1,0 +1,58 @@
+---
+title: "Proceso para Recepción de Primera API Key"
+description: "Proceso detallado para que desarrolladores o personal técnico de empresas asociadas a Kausanna reciban su primera API Key."
+---
+
+Este documento describe el proceso detallado para que desarrolladores o personal técnico de empresas asociadas a Kausanna reciban su primera API Key. Este proceso garantiza una comunicación segura mediante el uso de criptografía de clave pública (RSA) para el intercambio de información sensible.
+
+## Paso 1: Generación o Reutilización de Clave RSA
+
+El primer paso es generar una nueva clave RSA o reutilizar una existente. Si necesitas generar una nueva clave, puedes seguir estos pasos utilizando OpenSSL:
+
+### Generar Clave Privada RSA
+
+```bash
+openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
+```
+
+Este comando creará una clave privada RSA de 2048 bits y la guardará en el archivo `private_key.pem`.
+
+### Generar Clave Pública RSA
+
+A partir de la clave privada, genera tu clave pública con el siguiente comando:
+
+```bash
+openssl rsa -pubout -in private_key.pem -out public_key.pem
+```
+
+Este comando tomará tu clave privada `private_key.pem` y generará el archivo `public_key.pem` que contiene tu clave pública RSA.
+
+## Paso 2: Compartir la Llave Pública
+
+Una vez generada la clave pública, deberás enviarla al equipo de Kausanna para proceder con la creación de tu API Key. Envía tu clave pública al email `ongoing-processes-sonqo@naranjax.com` con el asunto "Llave RSA: Onboarding".
+
+## Paso 3: Recepción de la API Key
+
+El equipo de Kausanna procesará tu solicitud y enviará un email de respuesta con tu API Key y datos de cuenta encriptados usando la clave pública proporcionada. Esto asegura que solo el poseedor de la clave privada correspondiente pueda acceder a esta información.
+
+## Paso 4: Desencriptar la Información Recibida
+
+Para desencriptar el texto encriptado recibido, utiliza tu clave privada RSA con el siguiente comando de OpenSSL:
+
+```bash
+openssl rsautl -decrypt -inkey private_key.pem -in encrypted_data.txt -out decrypted_data.txt
+```
+
+- `private_key.pem` es tu clave privada RSA.
+- `encrypted_data.txt` es el archivo que contiene los datos encriptados recibidos.
+- `decrypted_data.txt` será el archivo de salida con los datos desencriptados.
+
+### Ejemplo de Código para Desencriptar
+
+```bash
+openssl rsautl -decrypt -inkey path/to/your/private_key.pem -in path/to/encrypted_data.txt -out path/to/decrypted_data.txt
+```
+
+Reemplaza `path/to/your/private_key.pem`, `path/to/encrypted_data.txt`, y `path/to/decrypted_data.txt` con las rutas correspondientes a tu clave privada, el archivo de datos encriptados recibidos, y donde deseas guardar los datos desencriptados, respectivamente.
+
+Siguiendo estos pasos, asegurarás una recepción segura de tu primera API Key y los datos de cuenta asociados desde Kausanna, manteniendo la integridad y confidencialidad de la información intercambiada.

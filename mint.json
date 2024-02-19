@@ -47,7 +47,7 @@
   "navigation": [
     {
       "group": "Empezando",
-      "pages": ["introduction", "quickstart", "usage", "networks"]
+      "pages": ["introduction", "quickstart", "usage", "networks", "api-key-onboard"]
     },
     {
       "group": "Disputas",
