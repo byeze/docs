@@ -799,6 +799,14 @@ paths:
                       amount:
                         type: string
                         example: 1000.00 ARS
+                      outcome:
+                        type: string
+                        example: in_progress
+                        description: The current outcome. Indicates the current status of the claim. If the merchant won or lost the claim.
+                        enum:
+                          - in_progress
+                          - won
+                          - lost
                       lastModifiedDate:
                         type: string
                         example: "Thu Feb 08 2024 12:27:23 GMT+0000 (Coordinated Universal Time)"
@@ -858,6 +866,7 @@ paths:
                   lastModifiedDate: "Thu Feb 08 2024 12:27:23 GMT+0000 (Coordinated Universal Time)"
                   refundReversalCurrency: USD
                   lastModifiedBy: system
+                  outcome: in_progress
                   claimId: "1707395243157"
                   transactionId: >-
                     TI:FIEaEgnM3bwPijwZgjc3Te+Y0ieLbN9ijUugqNSvJmVbO1xs6Jh5iIlmpOpkbax79L8Yj1rBOWBACx+Vj17rzvOepWobpgWNJNdsgHB4ag=#hqCnaMDqmto4wnL+BSUKSdzROqGJ7YELoKhEvluycwKNg3XTzSfaIJhFDkl9hW081B5tTqFFiAwCpcocPdB2My4t7DtSTk63VXDl1CySA8Y=
@@ -931,6 +940,14 @@ paths:
                         origin:
                           type: string
                           example: mastercard
+                        outcome:
+                          type: string
+                          example: in_progress
+                          description: The current outcome. Indicates the current status of the claim. If the merchant won or lost the claim.
+                          enum:
+                            - in_progress
+                            - won
+                            - lost
                         merchantId:
                           type: string
                           example: "000000000010377"
@@ -1006,6 +1023,7 @@ paths:
                             - chargebackReferenceNumber
                             - createdAt
                             - isOpen
+                            - outcome
               examples:
                 success:
                   summary: "200: with claims"
@@ -1017,6 +1035,7 @@ paths:
                         merchantId: "000000000010377"
                         partnerId: "006355"
                         seen: false
+                        outcome: in_progress
                         data:
                           lastModifiedDate: "2024-01-10T15:30:00Z"
                           lastModifedBy: admin_user
@@ -1329,6 +1348,14 @@ paths:
                         origin:
                           type: string
                           description: Origin of the chargeback case (e.g., Mastercard).
+                        outcome:
+                          type: string
+                          example: in_progress
+                          description: The current outcome. Indicates the current status of the claim. If the merchant won or lost the claim.
+                          enum:
+                            - in_progress
+                            - won
+                            - lost
                         partnerId:
                           type: string
                           description: Identifier for the partner involved in the transaction.
