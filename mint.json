@@ -36,7 +36,7 @@
     {
       "name": "Documentación",
       "icon": "book-open-cover",
-      "url": "https://naranjax.mintlify.app/api-reference"
+      "url": "https://docs-kausanna.sonqo.io/api-reference"
     },
     {
       "name": "Comunidad de Slack",
@@ -45,8 +45,8 @@
     },
     {
       "name": "Changelog",
-      "url": "changelog",
-      "icon": "timeline"
+      "icon": "timeline",
+      "url": "https://docs-kausanna.sonqo.io/changelog"
     }
   ],
   "navigation": [
