@@ -103,6 +103,10 @@
         "api-reference/webhooks/test",
         "api-reference/webhooks/delete"
       ]
+    },
+    {
+      "group": "Changelog",
+      "pages": ["changelog"]
     }
   ],
   "footerSocials": {
