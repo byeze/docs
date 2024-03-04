@@ -882,7 +882,6 @@ paths:
                   issuerId: 00000006195
                   chargebackReferenceNumber: "9000000006"
                   isOpen: OPEN
-                  currency: USD
                   issuerResponseCode: APPROVE
                   issuerRejectReasonCode: A
                   origin: mastercard
@@ -1032,6 +1031,8 @@ paths:
                             - createdAt
                             - isOpen
                             - outcome
+                            - amount
+                            - currency
               examples:
                 success:
                   summary: "200: with claims"
