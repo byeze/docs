@@ -1280,35 +1280,37 @@ paths:
                 properties:
                   success:
                     type: boolean
-                    description: Indicates if the operation was successful.
+                    example: true
                   data:
                     type: array
-                    description: Contains the data of chargeback cases.
                     items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                          description: Unique identifier for the chargeback case.
-                        origin:
-                          type: string
-                          description: Origin of the chargeback case (e.g., Mastercard).
-                        outcome:
-                          type: string
-                          example: in_progress
-                          description: The current outcome. Indicates the current status of the claim. If the merchant won or lost the claim.
-                          enum:
-                            - in_progress
-                            - won
-                            - lost
-                        partnerId:
-                          type: string
-                          description: Identifier for the partner involved in the transaction.
-                        seen:
-                          type: boolean
-                          description: Indicates if the chargeback case has been viewed.
-                        data:
-                          $ref: "#/components/schemas/ChargebackCase"
+                      $ref: "#/components/schemas/Claim"
+                example:
+                  success: true
+                  data:
+                    - id: "200002087418"
+                      primaryAccountNumber: 5450********6048
+                      origin: mastercard
+                      outcome: in_progress
+                      authCode: HOSTOK
+                      rrn: "08032053255308260050318"
+                      status: SECOND_PRESENTATION_STARTED
+                      transactionId: TI:_sWNAY10sn6CItkNj7sQcOBx8wD9FyqjXqv9K3RJclVyLJxlSOk8ZgiPGMdTdi2cXT0gjcknclOWup7aqYtpFhMcsqCGUmhKeFoWLii8944=##ACQ
+                      isOpen: true
+                      partnerId: 01HNBCE7RY395G62BCQFYDCV46
+                      acquirerId: "032314"
+                      issuerId: "999029"
+                      seen: false
+                      events:
+                        - name: CREATED
+                          timestamp: "2024-03-04T21:41:41.292Z"
+                        - name: SECOND_PRESENTATION_STARTED
+                          timestamp: "2024-03-04T21:41:41.292Z"
+                      createdAt: "2024-03-04T21:41:41.292Z"
+                      updatedAt: "2024-03-04T21:52:46.228Z"
+                      amount: 900
+                      currency: ARS
+
   /claims/{claimId}/actions/email:
     post:
       tags:
