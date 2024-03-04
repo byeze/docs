@@ -258,7 +258,7 @@ components:
               type: string
               example: >-
                 TI:FIEaEgnM3bwPijwZgjc3Te+Y0ieLbN9ijUugqNSvJmVbO1xs6Jh5iIlmpOpkbax79L8Yj1rBOWBACx+Vj17rzvOepWobpgWNJNdsgHB4ag=#hqCnaMDqmto4wnL+BSUKSdzROqGJ7YELoKhEvluycwKNg3XTzSfaIJhFDkl9hW081B5tTqFFiAwCpcocPdB2My4t7DtSTk63VXDl1CySA8Y=
-              description: Unique identifier for the transaction. For Mastercard, the transaction ID contains 2 parts separated by a `#`. The first part is the transaction ID and the second part is the auth ID.
+              description: Unique identifier for the transaction. For Mastercard, the transaction ID contains 2 parts separated by a `#`. The first part is the clearing transaction ID and the second part is the authorization transaction ID.
             issuerId:
               type: string
               example: 00000006195
@@ -1119,7 +1119,7 @@ paths:
                     contact:
                       email: No data
                       phone: No data
-                      businessName: NICOLAS ALBERTO HERRERA
+                      businessName: EZEQUIEL CALONGE
                       country: ARG
                     address:
                       country: ARG
