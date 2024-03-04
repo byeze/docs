@@ -5,7 +5,36 @@ description: "Lista de cambios en la API"
 
 # Release Candidates
 
-<Info>No hay cambios en la API en este momento.</Info>
+## 4.2.15 - 2024-03-04
+
+### Añadido
+
+- Campo `createdAt` para representar el momento de creación del caso de chargeback.
+- Arreglo `events` para rastrear eventos significativos en el proceso de chargeback, incluyendo sus nombres y marcas de tiempo.
+- Campo `id` como identificador único del caso de chargeback.
+- Campo `partnerId` para identificar al socio involucrado en la transacción.
+- Campo `seen` para indicar si el caso de chargeback ha sido visto.
+- Campo `status` para representar el estado actual del caso de chargeback.
+- Campo `updatedAt` para representar el último momento de actualización del caso de chargeback.
+- Campo `currency` para representar la moneda de la transacción.
+- Campo `amount` para representar el monto de la transacción.
+- Campo `rrn` para representar el número de referencia de recuperación.
+- Información detallada de `address` dentro del objeto `merchant`, incluyendo `notes`, `number`, `street`, `city`, `country`, `id`, `name`, `state`, y `zip_code`.
+- El objeto `merchant` ahora incluye `mcc`, `name`, `paymentData` con `card_holder_doc_number`, `expiration_month`, `name`, `pan`, `product_id`, y actualiza `taxId` y `taxIdType`.
+
+### Cambiado
+
+- `acquirerId` actualizado.
+- `amount` cambiado a tipo numérico.
+- `isOpen` cambiado de string a booleano.
+- `issuerId` en el root del claim.
+- `primaryAccountNumber` actualizado a formato enmascarado.
+
+### Eliminado
+
+- Campo `success` eliminado.
+- Campos `openClaims`, `lastModifiedDate`, `refundReversalCurrency`, `lastModifiedBy`, `claimId`, `chargebackReferenceNumber`, `merchantId`, `issuerResponseCode`, `issuerRejectReasonCode`, `outcome`, `authCode` dentro del objeto `merchant`.
+- Estructura previa de `paymentData` dentro del objeto `merchant`.
 
 # Changelog
 
@@ -15,3 +44,7 @@ description: "Lista de cambios en la API"
 
 - Se corrigió un error en el endpoint de `POST /documentation` que devolvía una url incorrecta, que corrompía los archivos subidos.
 - Se mejora el procesamiento por IA de documentos.
+
+```
+
+```
