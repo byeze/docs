@@ -37,6 +37,308 @@ components:
         `Bearer `.
 
   schemas:
+    PaymentDataPrivacyEncrypted:
+      type: object
+      properties:
+        data:
+          type: string
+          description: Encrypted data content.
+          example: "test"
+        origin:
+          type: string
+          description: Origin of the data encryption.
+          example: "non_present"
+      description: "Contains details about the data privacy and encryption."
+
+    PaymentMethod:
+      type: object
+      properties:
+        data_privacy:
+          type: object
+          properties:
+            encrypted:
+              $ref: "#/components/schemas/PaymentDataPrivacyEncrypted"
+          description: "Details about the privacy and encryption of payment data."
+        card_method_type:
+          type: string
+          description: Type of card method used.
+          example: "encrypted"
+        card_holder_name:
+          type: string
+          description: Name of the card holder.
+          example: "Test"
+        card_holder_doc_type:
+          type: string
+          description: Type of document of the card holder.
+          example: "DNI"
+        type:
+          type: string
+          description: Type of payment.
+          example: "card_payment"
+        expiration_date:
+          type: string
+          description: Expiration date of the card.
+          example: "04/2029"
+        card_type:
+          type: string
+          description: Type of card used.
+          example: "DEBIT"
+        card_holder_email:
+          type: string
+          description: Email of the card holder.
+          example: "Test@google.com"
+        expiration_year:
+          type: string
+          description: Expiration year of the card.
+          example: "2029"
+        product_id:
+          type: string
+          description: Product identifier.
+          example: "MASTERCARD"
+        expiration_month:
+          type: string
+          description: Expiration month of the card.
+          example: "04"
+        name:
+          type: string
+          description: Name of the payment product.
+          example: "MASTERCARD"
+        pan:
+          type: string
+          description: Partially masked PAN number.
+          example: "553771******3011"
+        card_holder_doc_number:
+          type: string
+          description: Document number of the card holder.
+          example: "002839234234"
+      description: "Contains all details about the payment method used."
+
+    Contact:
+      type: object
+      properties:
+        email:
+          type: string
+          description: Contact email address.
+          example: "No data"
+        phone:
+          type: string
+          description: Contact phone number.
+          example: "No data"
+        businessName:
+          type: string
+          description: Business name of the contact.
+          example: "EZEQUIEL CALONGE"
+        country:
+          type: string
+          description: Country of the contact.
+          example: "ARG"
+      description: "Contact details for the merchant."
+
+    Address:
+      type: object
+      properties:
+        country:
+          type: string
+          description: Country of the address.
+          example: "ARG"
+        address:
+          type: object
+          properties:
+            number:
+              type: string
+              description: Street number of the address.
+              example: "135"
+            notes:
+              type: string
+              description: Additional notes about the address.
+              example: "-"
+            street:
+              type: string
+              description: Street name of the address.
+              example: "Luis piedra buena"
+          description: "Detailed street address."
+        city:
+          type: string
+          description: City of the address.
+          example: "CHIVILCOY"
+        name:
+          type: string
+          description: Name associated with the address.
+          example: "LINK DE PAGO"
+        id:
+          type: string
+          description: Identifier of the address.
+          example: "c231a73b-b1f5-4b1a-b049-675876938605"
+        state:
+          type: string
+          description: State or province of the address.
+          example: "B"
+        zip_code:
+          type: string
+          description: ZIP or postal code of the address.
+          example: "B6620AAA"
+      description: "Address details of the merchant."
+
+    Merchant:
+      type: object
+      properties:
+        storeId:
+          type: string
+          description: Unique identifier of the store.
+          example: "6546e6b2-b0ce-4159-addf-f0147ce08bc4"
+        ownerId:
+          type: string
+          description: Unique identifier of the owner.
+          example: "c6efebfb-b5ba-4e17-8ece-c8c47d27ddf8"
+        name:
+          type: string
+          description: Name of the merchant.
+          example: "Catdog"
+        mcc:
+          type: string
+          description: Merchant category code.
+          example: "7311"
+        taxId:
+          type: string
+          description: Tax identification number of the merchant.
+          example: "23395567659"
+        taxIdType:
+          type: string
+          description: Type of tax identification number.
+          example: "arg.cuit"
+        externalPaymentId:
+          type: string
+          description: External identifier for the payment.
+          example: "8524623"
+        paymentData:
+          $ref: "#/components/schemas/PaymentMethod"
+        contact:
+          $ref: "#/components/schemas/Contact"
+        address:
+          $ref: "#/components/schemas/Address"
+      description: "Contains all the information related to a merchant, including payment and contact details."
+
+    Claim:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              example: "207779219414"
+              description: Unique identifier for the claim.
+            primaryAccountNumber:
+              type: string
+              example: "5450********6048"
+              description: Primary account number for the transaction.
+            merchantId:
+              type: string
+              example: "000000000010377"
+              description: Unique identifier for the merchant.
+            amount:
+              type: number
+              example: 1000.00
+            currency:
+              type: string
+              example: ARS
+              description: ISO 4217 currency code.
+            outcome:
+              type: string
+              example: in_progress
+              description: The current outcome. Indicates the current status of the claim. If the merchant won or lost the claim.
+              enum:
+                - in_progress
+                - won
+                - lost
+            transactionId:
+              type: string
+              example: >-
+                TI:FIEaEgnM3bwPijwZgjc3Te+Y0ieLbN9ijUugqNSvJmVbO1xs6Jh5iIlmpOpkbax79L8Yj1rBOWBACx+Vj17rzvOepWobpgWNJNdsgHB4ag=#hqCnaMDqmto4wnL+BSUKSdzROqGJ7YELoKhEvluycwKNg3XTzSfaIJhFDkl9hW081B5tTqFFiAwCpcocPdB2My4t7DtSTk63VXDl1CySA8Y=
+              description: Unique identifier for the transaction. For Mastercard, the transaction ID contains 2 parts separated by a `#`. The first part is the transaction ID and the second part is the auth ID.
+            issuerId:
+              type: string
+              example: 00000006195
+              description: Identifier for the issuer of the chargeback.
+            acquirerId:
+              type: string
+              example: 006355
+              description: Identifier for the acquirer of the chargeback.
+            partnerId:
+              type: string
+              example: "01HNBCE7RY395G62BCQFYDCV46"
+              description: Kausanna partner identifier.
+            seen:
+              type: boolean
+              example: false
+              description: Indicates if the claim has been seen by the merchant / partner service.
+            events:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: CREATED
+                    description: Name of the event.
+                  timestamp:
+                    type: string
+                    format: date-time
+              example: >-
+                [
+                  {
+                    "name": "CREATED",
+                    "timestamp": "2024-03-04T21:41:41.292Z"
+                  },
+                  {
+                    "name": "SECOND_PRESENTATION_STARTED",
+                    "timestamp": "2024-03-04T21:41:41.292Z"
+                  }
+                ]
+              description: Array of events related to the claim.
+            origin:
+              type: string
+              example: mastercard
+              description: The origin of the claim. Indicates if the claim was originated from Visa, Mastercard or other network.
+            authCode:
+              type: string
+              example: ab3285c5
+              description: Authorization code for the transaction.
+            flow:
+              type: object
+              properties:
+                currentStep:
+                  type: string
+                  example: PENDING_REVIEW
+                  description: The current step in the claim flow.
+            merchant:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Elves Boutique
+                  description: Name of the merchant.
+                mcc:
+                  type: string
+                  example: 5611
+                  description: Merchant category code.
+                taxId:
+                  type: string
+                  example: 30123456789
+                  description: Tax identification number of the merchant.
+                taxIdType:
+                  type: string
+                  example: arg.cuit
+                  description: Type of tax identification number. For Argentina, it is `arg.cuit`. The format is `country.code`.
+                paymentData:
+                  $ref: "#/components/schemas/PaymentMethod"
+                contact:
+                  $ref: "#/components/schemas/Contact"
+                address:
+                  $ref: "#/components/schemas/Address"
     ChargebackCase:
       type: object
       properties:
@@ -760,16 +1062,6 @@ paths:
         - claims > {claimId}
       summary: Obtener información de una reclamación
       parameters:
-        - name: Access-Control-Allow-Credentials
-          in: header
-          schema:
-            type: boolean
-          example: "true"
-        - name: Access-Control-Allow-Origin
-          in: header
-          schema:
-            type: string
-          example: "*"
         - name: x-api-key
           in: header
           schema:
@@ -787,119 +1079,75 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                    example: true
-                  data:
-                    type: object
-                    properties:
-                      openClaims:
-                        type: string
-                        example: "200002020654, 200002020654"
-                      amount:
-                        type: number
-                        example: 1000.00
-                      currency:
-                        type: string
-                        example: ARS
-                        description: ISO 4217 currency code.
-                      outcome:
-                        type: string
-                        example: in_progress
-                        description: The current outcome. Indicates the current status of the claim. If the merchant won or lost the claim.
-                        enum:
-                          - in_progress
-                          - won
-                          - lost
-                      lastModifiedDate:
-                        type: string
-                        example: "Thu Feb 08 2024 12:27:23 GMT+0000 (Coordinated Universal Time)"
-                      refundReversalCurrency:
-                        type: string
-                        example: USD
-                      lastModifiedBy:
-                        type: string
-                        example: system
-                      claimId:
-                        type: string
-                        example: "1707395243157"
-                      transactionId:
-                        type: string
-                        example: >-
-                          TI:FIEaEgnM3bwPijwZgjc3Te+Y0ieLbN9ijUugqNSvJmVbO1xs6Jh5iIlmpOpkbax79L8Yj1rBOWBACx+Vj17rzvOepWobpgWNJNdsgHB4ag=#hqCnaMDqmto4wnL+BSUKSdzROqGJ7YELoKhEvluycwKNg3XTzSfaIJhFDkl9hW081B5tTqFFiAwCpcocPdB2My4t7DtSTk63VXDl1CySA8Y=
-                      retrievalRequestId:
-                        type: string
-                        example: "25859113"
-                      issuerId:
-                        type: string
-                        example: 00000006195
-                      chargebackReferenceNumber:
-                        type: string
-                        example: "9000000006"
-                      isOpen:
-                        type: string
-                        example: OPEN
-                      issuerResponseCode:
-                        type: string
-                        example: APPROVE
-                      issuerRejectReasonCode:
-                        type: string
-                        example: A
-                      origin:
-                        type: string
-                        example: mastercard
-                        description: The origin of the claim. Indicates if the claim was originated from Visa, Mastercard or other network.
-                      authCode:
-                        type: string
-                        example: ab3285c5
-                      merchant:
-                        type: object
-                        properties:
-                          name:
-                            type: string
-                            example: Elves Boutique
-                          mcc:
-                            type: integer
-              example:
-                success: true
-                data:
-                  openClaims: "200002020654, 200002020654"
-                  amount: 1000.00
-                  currency: ARS
-                  lastModifiedDate: "Thu Feb 08 2024 12:27:23 GMT+0000 (Coordinated Universal Time)"
-                  refundReversalCurrency: USD
-                  lastModifiedBy: system
-                  outcome: in_progress
-                  claimId: "1707395243157"
-                  transactionId: >-
-                    TI:FIEaEgnM3bwPijwZgjc3Te+Y0ieLbN9ijUugqNSvJmVbO1xs6Jh5iIlmpOpkbax79L8Yj1rBOWBACx+Vj17rzvOepWobpgWNJNdsgHB4ag=#hqCnaMDqmto4wnL+BSUKSdzROqGJ7YELoKhEvluycwKNg3XTzSfaIJhFDkl9hW081B5tTqFFiAwCpcocPdB2My4t7DtSTk63VXDl1CySA8Y=
-                  retrievalRequestId: "25859113"
-                  issuerId: 00000006195
-                  chargebackReferenceNumber: "9000000006"
-                  isOpen: OPEN
-                  issuerResponseCode: APPROVE
-                  issuerRejectReasonCode: A
-                  origin: mastercard
-                  authCode: ab3285c5
-                  merchant:
-                    name: Elves Boutique
-                    mcc: 5611
-                    cuit: 30-12345678-9
-                    paymentData:
-                      paymentMethod: Credit Card
-                      QRName: ElvesBoutiqueQR
-                    contact:
-                      email: contact@elvesboutique.com
-                      phone: +54 9 11 2345-6789
-                    address:
-                      street: Elm Street
-                      number: "42"
-                      notes: Second Floor
-                      country: ARS
-                  flow:
-                    currentStep: PENDING_REVIEW
+                $ref: "#/components/schemas/Claim"
+              example: >-
+                {
+                  "success": true,
+                  "data": {
+                    "id": "200213896369",
+                    "primaryAccountNumber": "5450********6048",
+                    "origin": "mastercard",
+                    "outcome": "in_progress",
+                    "authCode": "HOSTOK",
+                    "rrn": "08032053255308260050318",
+                    "status": "SECOND_PRESENTATION_STARTED",
+                    "transactionId": "TI:_sWNAY10sn6CItkNj7sQcOBx8wD9FyqjXqv9K3RJclVyLJxlSOk8ZgiPGMdTdi2cXT0gjcknclOWup7aqYtpFhMcsqCGUmhKeFoWLii8944=##ACQ",
+                    "isOpen": true,
+                    "partnerId": "01HNBCE7RY395G62BCQFYDCV46",
+                    "acquirerId": "032314",
+                    "issuerId": "999029",
+                    "seen": false,
+                    "events": [
+                      {
+                        "name": "CREATED",
+                        "timestamp": "2024-03-04T21:41:41.292Z"
+                      },
+                      {
+                        "name": "SECOND_PRESENTATION_STARTED",
+                        "timestamp": "2024-03-04T21:41:41.292Z"
+                      }
+                    ],
+                    "createdAt": "2024-03-04T21:41:41.292Z",
+                    "updatedAt": "2024-03-04T21:52:46.228Z",
+                    "amount": 900,
+                    "currency": "ARS",
+                    "merchant": {
+                      "name": "Elves Boutique",
+                      "mcc": "5611",
+                      "taxId": "30123456789",
+                      "taxIdType": "arg.cuit",
+                      "paymentData": {
+                        "product_id": "MASTERCARD",
+                        "expiration_month": "04",
+                        "name": "MASTERCARD",
+                        "pan": "553771******3011",
+                        "card_holder_doc_number": "002839234234"
+                      },
+                      "contact": {
+                        "email": "No data",
+                        "phone": "No data",
+                        "businessName": "NICOLAS ALBERTO HERRERA",
+                        "country": "ARG"
+                      },
+                      "address": {
+                        "country": "ARG",
+                        "address": {
+                          "number": "135",
+                          "notes": "Negocio de ropa",
+                          "street": "Luis piedra buena"
+                        },
+                        "city": "CHIVILCOY",
+                        "name": "LINK DE PAGO",
+                        "id": "c231a73b-b1f5-4b1a-b049-675876938605",
+                        "state": "B",
+                        "zip_code": "B6620AAA"
+                      }
+                    },
+                    "flow": {
+                      "currentStep": "SECOND_PRESENTATION_STARTED"
+                    }
+                  }
+                }
   /claims/acquirer/{acquirerId}:
     get:
       tags:
@@ -1369,8 +1617,7 @@ paths:
                           type: boolean
                           description: Indicates if the chargeback case has been viewed.
                         data:
-                          description: Detailed information about the chargeback case.
-                          $ref: "#/components/schemas/ChargebackCase"                         
+                          $ref: "#/components/schemas/ChargebackCase"
   /claims/{claimId}/actions/email:
     post:
       tags:
