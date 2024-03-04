@@ -841,9 +841,6 @@ paths:
                       isOpen:
                         type: string
                         example: OPEN
-                      currency:
-                        type: string
-                        example: USD
                       issuerResponseCode:
                         type: string
                         example: APPROVE
