@@ -46,8 +46,9 @@ components:
             type: string
           description: Array of open claim identifiers.
         amount:
-          type: string
+          type: number
           description: Amount involved in the transaction.
+          example: 100.99
         lastModifiedDate:
           type: string
           description: The last date when the case was modified.
@@ -78,6 +79,7 @@ components:
         currency:
           type: string
           description: Currency of the transaction.
+          example: ARS
         issuerResponseCode:
           type: string
           description: Response code from the issuer.
@@ -797,8 +799,12 @@ paths:
                         type: string
                         example: "200002020654, 200002020654"
                       amount:
+                        type: number
+                        example: 1000.00
+                      currency:
                         type: string
-                        example: 1000.00 ARS
+                        example: ARS
+                        description: ISO 4217 currency code.
                       outcome:
                         type: string
                         example: in_progress
@@ -847,6 +853,7 @@ paths:
                       origin:
                         type: string
                         example: mastercard
+                        description: The origin of the claim. Indicates if the claim was originated from Visa, Mastercard or other network.
                       authCode:
                         type: string
                         example: ab3285c5
@@ -862,7 +869,8 @@ paths:
                 success: true
                 data:
                   openClaims: "200002020654, 200002020654"
-                  amount: 1000.00 ARS
+                  amount: 1000.00
+                  currency: ARS
                   lastModifiedDate: "Thu Feb 08 2024 12:27:23 GMT+0000 (Coordinated Universal Time)"
                   refundReversalCurrency: USD
                   lastModifiedBy: system
@@ -996,9 +1004,9 @@ paths:
                             merchantId:
                               type: string
                               example: MER98765
-                            claimValue:
-                              type: string
-                              example: "150.00"
+                            amount:
+                              type: number
+                              example: 150.00
                             currency:
                               type: string
                               example: ARS
@@ -1049,7 +1057,7 @@ paths:
                           createdAt: "2023-12-25T10:00:00Z"
                           isOpen: true
                           merchantId: MER98765
-                          claimValue: "150.00"
+                          amount: 100.99
                           currency: ARS
                           acquirerId: ACQ54321
                           issuerResponseCode: "05"
