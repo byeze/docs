@@ -1080,74 +1080,61 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Claim"
-              example: >-
-                {
-                  "success": true,
-                  "data": {
-                    "id": "200213896369",
-                    "primaryAccountNumber": "5450********6048",
-                    "origin": "mastercard",
-                    "outcome": "in_progress",
-                    "authCode": "HOSTOK",
-                    "rrn": "08032053255308260050318",
-                    "status": "SECOND_PRESENTATION_STARTED",
-                    "transactionId": "TI:_sWNAY10sn6CItkNj7sQcOBx8wD9FyqjXqv9K3RJclVyLJxlSOk8ZgiPGMdTdi2cXT0gjcknclOWup7aqYtpFhMcsqCGUmhKeFoWLii8944=##ACQ",
-                    "isOpen": true,
-                    "partnerId": "01HNBCE7RY395G62BCQFYDCV46",
-                    "acquirerId": "032314",
-                    "issuerId": "999029",
-                    "seen": false,
-                    "events": [
-                      {
-                        "name": "CREATED",
-                        "timestamp": "2024-03-04T21:41:41.292Z"
-                      },
-                      {
-                        "name": "SECOND_PRESENTATION_STARTED",
-                        "timestamp": "2024-03-04T21:41:41.292Z"
-                      }
-                    ],
-                    "createdAt": "2024-03-04T21:41:41.292Z",
-                    "updatedAt": "2024-03-04T21:52:46.228Z",
-                    "amount": 900,
-                    "currency": "ARS",
-                    "merchant": {
-                      "name": "Elves Boutique",
-                      "mcc": "5611",
-                      "taxId": "30123456789",
-                      "taxIdType": "arg.cuit",
-                      "paymentData": {
-                        "product_id": "MASTERCARD",
-                        "expiration_month": "04",
-                        "name": "MASTERCARD",
-                        "pan": "553771******3011",
-                        "card_holder_doc_number": "002839234234"
-                      },
-                      "contact": {
-                        "email": "No data",
-                        "phone": "No data",
-                        "businessName": "NICOLAS ALBERTO HERRERA",
-                        "country": "ARG"
-                      },
-                      "address": {
-                        "country": "ARG",
-                        "address": {
-                          "number": "135",
-                          "notes": "Negocio de ropa",
-                          "street": "Luis piedra buena"
-                        },
-                        "city": "CHIVILCOY",
-                        "name": "LINK DE PAGO",
-                        "id": "c231a73b-b1f5-4b1a-b049-675876938605",
-                        "state": "B",
-                        "zip_code": "B6620AAA"
-                      }
-                    },
-                    "flow": {
-                      "currentStep": "SECOND_PRESENTATION_STARTED"
-                    }
-                  }
-                }
+              example:
+                success: true
+                data:
+                  id: "200213896369"
+                  primaryAccountNumber: 5450********6048
+                  origin: mastercard
+                  outcome: in_progress
+                  authCode: HOSTOK
+                  rrn: "08032053255308260050318"
+                  status: SECOND_PRESENTATION_STARTED
+                  transactionId: TI:_sWNAY10sn6CItkNj7sQcOBx8wD9FyqjXqv9K3RJclVyLJxlSOk8ZgiPGMdTdi2cXT0gjcknclOWup7aqYtpFhMcsqCGUmhKeFoWLii8944=##ACQ
+                  isOpen: true
+                  partnerId: 01HNBCE7RY395G62BCQFYDCV46
+                  acquirerId: "032314"
+                  issuerId: "999029"
+                  seen: false
+                  events:
+                    - name: CREATED
+                      timestamp: "2024-03-04T21:41:41.292Z"
+                    - name: SECOND_PRESENTATION_STARTED
+                      timestamp: "2024-03-04T21:41:41.292Z"
+                  createdAt: "2024-03-04T21:41:41.292Z"
+                  updatedAt: "2024-03-04T21:52:46.228Z"
+                  amount: 900
+                  currency: ARS
+                  merchant:
+                    name: Elves Boutique
+                    mcc: "5611"
+                    taxId: "30123456789"
+                    taxIdType: arg.cuit
+                    paymentData:
+                      product_id: MASTERCARD
+                      expiration_month: "04"
+                      name: MASTERCARD
+                      pan: 553771******3011
+                      card_holder_doc_number: "002839234234"
+                    contact:
+                      email: No data
+                      phone: No data
+                      businessName: NICOLAS ALBERTO HERRERA
+                      country: ARG
+                    address:
+                      country: ARG
+                      address:
+                        number: "135"
+                        notes: Negocio de ropa
+                        street: Luis piedra buena
+                      city: CHIVILCOY
+                      name: LINK DE PAGO
+                      id: c231a73b-b1f5-4b1a-b049-675876938605
+                      state: B
+                      zip_code: B6620AAA
+                  flow:
+                    currentStep: SECOND_PRESENTATION_STARTED
+
   /claims/acquirer/{acquirerId}:
     get:
       tags:
