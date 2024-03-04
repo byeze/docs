@@ -19,22 +19,20 @@ description: "Lista de cambios en la API"
 - Campo `currency` para representar la moneda de la transacción.
 - Campo `amount` para representar el monto de la transacción.
 - Campo `rrn` para representar el número de referencia de recuperación.
+- Campo `acquirerId` para representar el identificador del adquirente, en el root de la disputa.
+- Campo `issuerId` para representar el identificador del emisor, en el root de la disputa.
 - Información detallada de `address` dentro del objeto `merchant`, incluyendo `notes`, `number`, `street`, `city`, `country`, `id`, `name`, `state`, y `zip_code`.
 - El objeto `merchant` ahora incluye `mcc`, `name`, `paymentData` con `card_holder_doc_number`, `expiration_month`, `name`, `pan`, `product_id`, y actualiza `taxId` y `taxIdType`.
 
 ### Cambiado
 
-- `acquirerId` actualizado.
 - `amount` cambiado a tipo numérico.
 - `isOpen` cambiado de string a booleano.
-- `issuerId` en el root del claim.
 - `primaryAccountNumber` actualizado a formato enmascarado.
 
 ### Eliminado
 
-- Campo `success` eliminado.
 - Campos `openClaims`, `lastModifiedDate`, `refundReversalCurrency`, `lastModifiedBy`, `claimId`, `chargebackReferenceNumber`, `merchantId`, `issuerResponseCode`, `issuerRejectReasonCode`, `outcome`, `authCode` dentro del objeto `merchant`.
-- Estructura previa de `paymentData` dentro del objeto `merchant`.
 
 # Changelog
 
