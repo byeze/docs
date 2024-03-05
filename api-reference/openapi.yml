@@ -1083,55 +1083,73 @@ paths:
               example:
                 success: true
                 data:
-                  id: "200213896369"
-                  primaryAccountNumber: 5450********6048
+                  id: "208171594972"
+                  primaryAccountNumber: 5505********9697
                   origin: mastercard
                   outcome: in_progress
-                  authCode: HOSTOK
-                  rrn: "08032053255308260050318"
+                  authCode: "658119"
+                  rrn: "08032054026003400006298"
                   status: SECOND_PRESENTATION_STARTED
-                  transactionId: TI:_sWNAY10sn6CItkNj7sQcOBx8wD9FyqjXqv9K3RJclVyLJxlSOk8ZgiPGMdTdi2cXT0gjcknclOWup7aqYtpFhMcsqCGUmhKeFoWLii8944=##ACQ
+                  transactionId: TI:bnMeLTGLm2Q7jllvf_Of6eHBL7Ef6KRkL-uNEUnhyV7Lgb8piMeU5altPIJpo5DKzBzC3ZGZ-1JVkUmA2a4FGkRm4gpibshDMuDAKk6jb6M=##ACQ
                   isOpen: true
-                  partnerId: 01HNBCE7RY395G62BCQFYDCV46
+                  partnerId: 01HPWX95S4ZNNKPMNKPDKE2E12
                   acquirerId: "032314"
-                  issuerId: "999029"
+                  issuerId: "017670"
                   seen: false
                   events:
                     - name: CREATED
-                      timestamp: "2024-03-04T21:41:41.292Z"
+                      timestamp: "2024-03-05T19:51:58.202Z"
                     - name: SECOND_PRESENTATION_STARTED
-                      timestamp: "2024-03-04T21:41:41.292Z"
-                  createdAt: "2024-03-04T21:41:41.292Z"
-                  updatedAt: "2024-03-04T21:52:46.228Z"
-                  amount: 900
+                      timestamp: "2024-03-05T19:51:58.202Z"
+                  createdAt: "2024-03-05T19:51:58.202Z"
+                  updatedAt: "2024-03-05T19:54:01.709Z"
+                  amount: 111916.69
                   currency: ARS
                   merchant:
-                    name: Elves Boutique
-                    mcc: "5611"
-                    taxId: "30123456789"
+                    storeId: 9b7396a2-9e60-4bd0-b2f6-5c4f911167b1
+                    ownerId: 2c671a9d-5d66-413e-88b2-aca5c3b6219d
+                    name: Sip smart coffee
+                    mcc: "5921"
+                    taxId: "30123452209"
                     taxIdType: arg.cuit
+                    externalPaymentId: 05cfc7cd-6551-44d1-bf02-0d87a151046e
                     paymentData:
-                      product_id: MASTERCARD
-                      expiration_month: "04"
-                      name: MASTERCARD
-                      pan: 553771******3011
-                      card_holder_doc_number: "002839234234"
+                      paymentMethod:
+                        data_privacy:
+                          encrypted:
+                            data: x5tZYXEw0Cej9PHEENbigCoFe2wW+B2qXiVnHeWpu9nLcgMIldmAt708raupdppqwTBtrETeatwFPtZEAeh4z6ZPy/FPLGlZ9jWc35R2NH+ZtaOeuxTqPuR2oVcn6u8a7VA19hrbaRT2408b+bpeIfUkC0wrusqDMhVnn4pVrSnl08pyNYyXaDvYllifDE3R61+jzPbSzaVRKJ/C21IF15yIIm48a+D9Pdcxo10S7xNNyy/FjPD0q9u2VONBbruRURvT2RWey8zNMDpASYV/AClmRScyn/r/599kBWNoMnmbTZb08eSYz51eFAzhxq+7CpzRkmsW7o0QrSgLD+c4lg==
+                            origin: non_present
+                        card_method_type: encrypted
+                        card_holder_name: "Eze Calonge"
+                        wallet_name: galicia
+                        card_holder_doc_type: DNI
+                        type: card_payment
+                        expiration_date: 06/2028
+                        card_type: CREDIT
+                        card_holder_email: eze.calonge@naranjax.com
+                        expiration_year: "2028"
+                        product_id: MASTERCARD
+                        expiration_month: "06"
+                        name: MASTERCARD
+                        pan: 550568******6713
+                        card_holder_doc_number: "12345678"
+                      QRName: bb22707a-457e-4695-a29d-8ed76d4bbe85
                     contact:
                       email: No data
                       phone: No data
-                      businessName: EZEQUIEL CALONGE
+                      businessName: SIPECOFFEE SRL
                       country: ARG
                     address:
                       country: ARG
                       address:
-                        number: "135"
-                        notes: Negocio de ropa
-                        street: Luis piedra buena
-                      city: CHIVILCOY
-                      name: LINK DE PAGO
-                      id: c231a73b-b1f5-4b1a-b049-675876938605
-                      state: B
-                      zip_code: B6620AAA
+                        number: "1130"
+                        notes: "-"
+                        street: migueletes
+                      city: CIUDAD AUTONOMA BUENOS AIRES
+                      name: Torre Galicia ok
+                      id: 35ba1a0c-fb37-41c5-a28d-9208adf4ad9c
+                      state: C
+                      zip_code: C1426BUP
                   flow:
                     currentStep: SECOND_PRESENTATION_STARTED
 
