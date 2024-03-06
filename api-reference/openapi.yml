@@ -1054,6 +1054,18 @@ paths:
                   success:
                     type: boolean
                     description: Indicates success of operation
+                  data:
+                    type: object
+                    description: Additional data
+                    properties:
+                      processed:
+                        type: number
+                        example: 1
+                        description: Number of files processed
+                      uploaded:
+                        type: number
+                        example: 1
+                        description: Number of files uploaded to the network
                 example:
                   success: true
   /claims/{claimId}:
@@ -1152,7 +1164,6 @@ paths:
                       zip_code: C1426BUP
                   flow:
                     currentStep: SECOND_PRESENTATION_STARTED
-
   /claims/acquirer/{acquirerId}:
     get:
       tags:
@@ -1215,7 +1226,6 @@ paths:
                       updatedAt: "2024-03-04T21:52:46.228Z"
                       amount: 900
                       currency: ARS
-
   /claims/acquirer/{acquirerId}/seen:
     post:
       tags:
@@ -1328,7 +1338,6 @@ paths:
                       updatedAt: "2024-03-04T21:52:46.228Z"
                       amount: 900
                       currency: ARS
-
   /claims/{claimId}/actions/email:
     post:
       tags:
