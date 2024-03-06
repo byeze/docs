@@ -1068,6 +1068,9 @@ paths:
                         description: Number of files uploaded to the network
                 example:
                   success: true
+                  data:
+                    processed: 1
+                    uploaded: 1
   /claims/{claimId}:
     get:
       tags:
