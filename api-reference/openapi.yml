@@ -524,6 +524,11 @@ paths:
           required: true
           description: The ID of the partner registered to receive webhooks
           example: "006837"
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: "{{apiKey}}"
       responses:
         "200":
           description: OK
@@ -621,6 +626,11 @@ paths:
           required: true
           description: The ID of the partner registered to receive webhooks
           example: "006837"
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: "{{apiKey}}"
       responses:
         "200":
           description: OK
@@ -674,6 +684,11 @@ paths:
           required: true
           description: The ID of the webhook subscription
           example: 01H9V3F4XJF0PBS2PEVBF01ZA9
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: "{{apiKey}}"
       responses:
         "200":
           description: OK
@@ -720,6 +735,11 @@ paths:
           required: true
           description: The ID of the partner registered to receive webhooks
           example: "006837"
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: "{{apiKey}}"
       responses:
         "200":
           description: Successful test
@@ -770,6 +790,11 @@ paths:
             type: integer
           required: true
           example: "200002031927"
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: "{{apiKey}}"
       responses:
         "200":
           description: OK
@@ -939,6 +964,11 @@ paths:
             type: integer
           required: true
           example: "207779219414"
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: "{{apiKey}}"
       responses:
         "200":
           description: OK
@@ -1012,6 +1042,11 @@ paths:
             type: integer
           required: true
           example: "207779219414"
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: "{{apiKey}}"
       responses:
         "200":
           description: OK
@@ -1038,6 +1073,11 @@ paths:
             type: integer
           required: true
           example: "207779219414"
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: "{{apiKey}}"
       responses:
         "200":
           description: OK
@@ -1249,6 +1289,11 @@ paths:
             type: integer
           required: true
           example: "006355"
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: "{{apiKey}}"
       responses:
         "200":
           description: OK
@@ -1365,6 +1410,11 @@ paths:
           required: true
           description: The claim id
           example: "207779219414"
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: "{{apiKey}}"
       responses:
         "200":
           description: Successful response
