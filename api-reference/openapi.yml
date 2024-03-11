@@ -53,6 +53,9 @@ components:
     PaymentMethod:
       type: object
       properties:
+        id:
+          type: string
+          description: The Ranty payment method identifier.
         data_privacy:
           type: object
           properties:
@@ -1170,6 +1173,7 @@ paths:
                     externalPaymentId: 05cfc7cd-6551-44d1-bf02-0d87a151046e
                     paymentData:
                       paymentMethod:
+                        id: c122707a-457e-4695-a29d-8ed76d4bbe85
                         data_privacy:
                           encrypted:
                             data: x5tZYXEw0Cej9PHEENbigCoFe2wW+B2qXiVnHeWpu9nLcgMIldmAt708raupdppqwTBtrETeatwFPtZEAeh4z6ZPy/FPLGlZ9jWc35R2NH+ZtaOeuxTqPuR2oVcn6u8a7VA19hrbaRT2408b+bpeIfUkC0wrusqDMhVnn4pVrSnl08pyNYyXaDvYllifDE3R61+jzPbSzaVRKJ/C21IF15yIIm48a+D9Pdcxo10S7xNNyy/FjPD0q9u2VONBbruRURvT2RWey8zNMDpASYV/AClmRScyn/r/599kBWNoMnmbTZb08eSYz51eFAzhxq+7CpzRkmsW7o0QrSgLD+c4lg==
