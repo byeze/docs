@@ -1,0 +1,52 @@
+tags:
+  - claims > actions
+summary: Enviar una notificación de nueva reclamación a un merchant
+description: Necesitarás un plan que contenga la funcionalidad de `mailing` para usar este endpoint.
+operationId: postSendMerchantEmail
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          email:
+            type: string
+        example:
+          email: eze.calonge@naranjax.com
+parameters:
+  - name: claimId
+    in: path
+    schema:
+      type: integer
+    required: true
+    description: The claim id
+    example: "207779219414"
+  - name: x-api-key
+    in: header
+    schema:
+      type: string
+    example: "{{apiKey}}"
+responses:
+  "200":
+    description: Successful response
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - success
+            - meta
+          properties:
+            success:
+              type: boolean
+              example: true
+            meta:
+              type: object
+              properties:
+                claimId:
+                  type: string
+                  example: "207779219414"
+        example:
+          $ref: ../../examples/postSendMerchantEmail.example.yaml
+  "401":
+    $ref: ../../schemas/UserNotAuthorized.yaml

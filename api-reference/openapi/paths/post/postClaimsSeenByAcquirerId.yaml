@@ -1,0 +1,52 @@
+tags:
+  - claims > acquirer
+summary: Marcar una reclamación como vista
+operationId: postClaimsSeenByAcquirerId
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        example:
+          claims:
+            - "200002087418"
+parameters:
+  - name: acquirerId
+    in: path
+    schema:
+      type: integer
+    required: true
+    example: "006355"
+  - name: x-api-key
+    in: header
+    schema:
+      type: string
+    example: "{{apiKey}}"
+responses:
+  "200":
+    description: OK
+    headers:
+      Content-Type:
+        schema:
+          type: string
+          example: application/json
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            success:
+              type: boolean
+              example: true
+            data:
+              type: object
+              properties:
+                total:
+                  type: integer
+                  example: 1
+        example:
+          success: true
+          data:
+            total: 1
+  "401":
+    $ref: "../../schemas/UserNotAuthorized.yaml"

@@ -1,0 +1,37 @@
+type: object
+description: "Contains all the information related to a merchant, including payment and contact details."
+properties:
+  storeId:
+    type: string
+    description: Unique identifier of the store.
+    example: "6546e6b2-b0ce-4159-addf-f0147ce08bc4"
+  ownerId:
+    type: string
+    description: Unique identifier of the owner.
+    example: "c6efebfb-b5ba-4e17-8ece-c8c47d27ddf8"
+  name:
+    type: string
+    description: Name of the merchant.
+    example: "Catdog"
+  mcc:
+    type: string
+    description: Merchant category code.
+    example: "7311"
+  taxId:
+    type: string
+    description: Tax identification number of the merchant.
+    example: "23395567659"
+  taxIdType:
+    type: string
+    description: Type of tax identification number.
+    example: "arg.cuit"
+  externalPaymentId:
+    type: string
+    description: External identifier for the payment.
+    example: "8524623"
+  paymentData:
+    $ref: PaymentMethod.yaml
+  contact:
+    $ref: Contact.yaml
+  address:
+    $ref: Address.yaml

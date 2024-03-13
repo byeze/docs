@@ -1,0 +1,11 @@
+type: object
+description: "Contains details about the data privacy and encryption."
+properties:
+  data:
+    type: string
+    description: Encrypted data content.
+    example: "test"
+  origin:
+    type: string
+    description: Origin of the data encryption.
+    example: "non_present"

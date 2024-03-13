@@ -1,0 +1,44 @@
+type: object
+description: "Address details of the merchant."
+properties:
+  country:
+    type: string
+    description: Country of the address.
+    example: "ARG"
+  address:
+    type: object
+    properties:
+      number:
+        type: string
+        description: Street number of the address.
+        example: "135"
+      notes:
+        type: string
+        description: Additional notes about the address.
+        example: "-"
+      street:
+        type: string
+        description: Street name of the address.
+        example: "Luis piedra buena"
+    description: "Detailed street address."
+  city:
+    type: string
+    description: City of the address.
+    example: "CHIVILCOY"
+  name:
+    type: string
+    description: Name associated with the address.
+    example: "LINK DE PAGO"
+  id:
+    type: string
+    description: Identifier of the address.
+    example: "c231a73b-b1f5-4b1a-b049-675876938605"
+  state:
+    type: string
+    description: State or province of the address.
+    example: "B"
+  zip_code:
+    type: string
+    description: ZIP or postal code of the address.
+    example: "B6620AAA"
+

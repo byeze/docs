@@ -1,0 +1,72 @@
+type: object
+description: "Contains all details about the payment method used."
+properties:
+  id:
+    type: string
+    description: The Ranty payment method identifier.
+  data_privacy:
+    type: object
+    properties:
+      encrypted:
+        $ref: PaymentDataPrivacyEncrypted.yaml
+    description: "Details about the privacy and encryption of payment data."
+  card_method_type:
+    type: string
+    description: Type of card method used.
+    example: "encrypted"
+  card_holder_name:
+    type: string
+    description: Name of the card holder.
+    example: "Test"
+  card_holder_doc_type:
+    type: string
+    description: Type of document of the card holder.
+    example: "DNI"
+  type:
+    type: string
+    description: Type of payment.
+    example: "card_payment"
+  expiration_date:
+    type: string
+    description: Expiration date of the card.
+    example: "04/2029"
+  card_type:
+    type: string
+    description: Type of card used.
+    example: "DEBIT"
+  card_holder_email:
+    type: string
+    description: Email of the card holder.
+    example: "Test@google.com"
+  expiration_year:
+    type: string
+    description: Expiration year of the card.
+    example: "2029"
+  product_id:
+    type: string
+    description: Product identifier.
+    example: "MASTERCARD"
+  expiration_month:
+    type: string
+    description: Expiration month of the card.
+    example: "04"
+  name:
+    type: string
+    description: Name of the payment product.
+    example: "MASTERCARD"
+  pan:
+    type: string
+    description: Partially masked PAN number.
+    example: "553771******3011"
+  card_holder_doc_number:
+    type: string
+    description: Document number of the card holder.
+    example: "002839234234"
+  wallet_name:
+    type: string
+    description: Name of the wallet used.
+    example: "galicia"
+  QRName:
+    type: string
+    description: QR name.
+    example: "bb22707a-457e-4695-a29d-8ed76d4bbe85"

@@ -1,0 +1,32 @@
+operationId: getClaimById
+tags:
+  - claims > {claimId}
+summary: Obtener información de una reclamación
+parameters:
+  - name: x-api-key
+    in: header
+    schema:
+      type: string
+    example: "{{apiKey}}"
+  - name: claimId
+    in: path
+    schema:
+      type: integer
+    example: "1706540942200"
+responses:
+  "401":
+    $ref: ../../schemas/UserNotAuthorized.yaml
+  "200":
+    description: Successful response
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            success:
+              type: boolean
+              example: true
+            data:
+              $ref: ../../schemas/Claim.yaml
+        example:
+          $ref: ../../examples/getClaimById.example.yaml

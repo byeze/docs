@@ -1,0 +1,147 @@
+type: object
+properties:
+  openClaims:
+    type: array
+    items:
+      type: string
+    description: Array of open claim identifiers.
+  amount:
+    type: number
+    description: Amount involved in the transaction.
+    example: 100.99
+  lastModifiedDate:
+    type: string
+    description: The last date when the case was modified.
+  refundReversalCurrency:
+    type: string
+    description: Currency of the refund reversal.
+  lastModifiedBy:
+    type: string
+    description: Identifier for the last modifier of the case.
+  claimId:
+    type: string
+    description: Unique identifier for the claim.
+  transactionId:
+    type: string
+    description: Unique identifier for the transaction.
+  retrievalRequestId:
+    type: string
+    description: Unique identifier for the retrieval request.
+  issuerId:
+    type: string
+    description: Identifier for the issuer of the chargeback.
+  chargebackReferenceNumber:
+    type: string
+    description: Reference number for the chargeback.
+  isOpen:
+    type: string
+    description: Status indicating if the case is open.
+  currency:
+    type: string
+    description: Currency of the transaction.
+    example: ARS
+  issuerResponseCode:
+    type: string
+    description: Response code from the issuer.
+  issuerRejectReasonCode:
+    type: string
+    description: Reason code for rejection by the issuer.
+  status:
+    type: string
+    description: Current status of the chargeback case.
+  mcData:
+    type: object
+    properties:
+      caseFilingRespHistory:
+        type: array
+        items: {}
+        description: History of responses for the case filing.
+      clearingNetwork:
+        type: string
+        description: Clearing network information.
+      standardClaims:
+        type: array
+        items:
+          type: string
+        description: Array of standard claim identifiers.
+      chargebackDetails:
+        type: array
+        items:
+          type: object
+          properties:
+            chargebackId:
+              type: string
+              description: Unique identifier for the chargeback.
+            editExclusionCode:
+              type: string
+              description: Exclusion code for editing the chargeback.
+            japanCommonMerchantCode:
+              type: string
+              description: Common merchant code for Japan.
+            chargebackRefNum:
+              type: string
+              description: Reference number for the chargeback.
+            documentIndicator:
+              type: string
+              description: Indicator for the document status.
+            refundNotReceivedIndicator:
+              type: string
+              description: Indicator for refund not received status.
+            isPartialChargeback:
+              type: boolean
+              description: Indicates if it is a partial chargeback.
+            rejectReason:
+              type: string
+              description: Reason for rejection of the chargeback.
+            installmentData:
+              type: string
+              description: Installment data related to the chargeback.
+            currency:
+              type: string
+              description: Currency of the chargeback amount.
+            documentStatus:
+              type: string
+              description: Status of the document related to the chargeback.
+            reasonCode:
+              type: string
+              description: Reason code for the chargeback.
+            createDate:
+              type: string
+              description: Creation date of the chargeback record.
+            messageText:
+              type: string
+              description: Text message related to the chargeback case.
+            amount:
+              type: string
+              description: Amount of the chargeback.
+            reconciliationCurrency:
+              type: string
+              description: Currency used for reconciliation.
+            currencyConversionAssessmentCCAIncluded:
+              type: string
+              description: Indicates if currency conversion assessment CCA is included.
+            chargebackType:
+              type: string
+              description: Type of the chargeback.
+            claimId:
+              type: string
+              description: Unique identifier for the claim related to the chargeback.
+            flexCode:
+              type: string
+              description: Flex code related to the chargeback case.
+            creditVoucherStatus:
+              type: string
+              description: Status of the credit voucher.
+            reversal:
+              type: boolean
+              description: Indicates if the chargeback has been reversed.
+            reconciliationAmount:
+              type: string
+              description: Amount used for reconciliation.
+            currencyConversionAssessmentCCAAmount:
+              type: string
+              description: Amount for currency conversion assessment CCA.
+            reversed:
+              type: boolean
+              description: Indicates if the chargeback has been reversed.
+    description: Mastercard specific data related to the chargeback case.

@@ -1,0 +1,9 @@
+success: true
+data:
+  - url: https://documentations-bucket-develop.s3.us-east-1.amazonaws.com/...
+    name: 1707395243157/01HP7F44S1S92E63MZ5Z4QC114.png
+    status: unapproved
+  - url: https://documentations-bucket-develop.s3.us-east-1.amazonaws.com/...
+    name: 1707395243157/01HP7F44S1S92E63MZ5Z4QC114.png
+    status: approved
+quantity: 1

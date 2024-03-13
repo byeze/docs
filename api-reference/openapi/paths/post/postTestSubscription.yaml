@@ -1,0 +1,42 @@
+tags:
+  - partner > {partnerId}
+operationId: postTestSubscription
+summary: Probar las subscripciones webhook
+description: Test the webhook integration by sending a JSON test message.
+parameters:
+  - name: partnerId
+    in: path
+    schema:
+      type: integer
+    required: true
+    description: The ID of the partner registered to receive webhooks
+    example: "006837"
+  - name: x-api-key
+    in: header
+    schema:
+      type: string
+    example: "{{apiKey}}"
+responses:
+  "200":
+    description: Successful test
+    content:
+      application/json:
+        schema:
+          type: object
+        example:
+          success: true
+  "409":
+    description: Conflict
+    headers:
+      Content-Type:
+        schema:
+          type: string
+          example: application/json
+    content:
+      application/json:
+        schema:
+          type: object
+        example:
+          success: false
+          code: PARTNER.TEST_PARTNER_SUBSCRIPTION_ERROR
+          message: Error sending test webhook to some subscriptions

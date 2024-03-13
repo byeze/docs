@@ -1,0 +1,54 @@
+tags:
+  - partner > {partnerId}
+operationId: deleteSubscription
+summary: Eliminar una subscripción webhook
+parameters:
+  - name: partnerId
+    in: path
+    schema:
+      type: integer
+    required: true
+    description: The ID of the partner registered to receive webhooks
+    example: "006837"
+  - name: subscriptionId
+    in: path
+    schema:
+      type: string
+    required: true
+    description: The ID of the webhook subscription
+    example: 01H9V3F4XJF0PBS2PEVBF01ZA9
+  - name: x-api-key
+    in: header
+    schema:
+      type: string
+    example: "{{apiKey}}"
+responses:
+  "200":
+    description: OK
+    headers:
+      Content-Type:
+        schema:
+          type: string
+          example: application/json
+    content:
+      application/json:
+        schema:
+          type: object
+        example:
+          success: true
+  "404":
+    description: Not Found
+    headers:
+      Content-Type:
+        schema:
+          type: string
+          example: application/json
+    content:
+      application/json:
+        schema:
+          type: object
+        example:
+          success: false
+          exception: Not Found
+          code: PARTNER.PARTNER_SUBSCRIPTION_NOT_FOUND
+          message: Subscription not found in your account

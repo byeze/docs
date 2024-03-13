@@ -1,0 +1,49 @@
+summary: Finalizar la subida de documentación de un reclamo. Cuando se finaliza la subida de documentación, se notifica al sistema que la documentación está completa y se puede proceder con la revisión por parte de las marcas.
+operationId: postDocumentationFinish
+parameters:
+  - name: claimId
+    in: path
+    schema:
+      type: integer
+    required: true
+    example: "207779219414"
+  - name: x-api-key
+    in: header
+    schema:
+      type: string
+    example: "{{apiKey}}"
+responses:
+  "200":
+    description: OK
+    headers:
+      Content-Type:
+        schema:
+          type: string
+          example: application/json
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            success:
+              type: boolean
+              description: Indicates success of operation
+            data:
+              type: object
+              description: Additional data
+              properties:
+                processed:
+                  type: number
+                  example: 1
+                  description: Number of files processed
+                uploaded:
+                  type: number
+                  example: 1
+                  description: Number of files uploaded to the network
+          example:
+            success: true
+            data:
+              processed: 1
+              uploaded: 1
+  "401":
+    $ref: ../../schemas/UserNotAuthorized.yaml

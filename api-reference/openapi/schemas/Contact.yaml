@@ -1,0 +1,19 @@
+type: object
+description: "Contact details for the merchant."
+properties:
+  email:
+    type: string
+    description: Contact email address.
+    example: "No data"
+  phone:
+    type: string
+    description: Contact phone number.
+    example: "No data"
+  businessName:
+    type: string
+    description: Business name of the contact.
+    example: "EZEQUIEL CALONGE"
+  country:
+    type: string
+    description: Country of the contact.
+    example: "ARG"

@@ -1,0 +1,39 @@
+tags:
+  - claims > merchants
+summary: Obtener reclamaciones usando el ID del comercio
+operationId: getClaimsByMerchantId
+parameters:
+  - name: x-api-key
+    in: header
+    schema:
+      type: string
+    example: "key_bd90853656fadc507077e15b4d78d4a989aa8f92287d3ae80ad7d2cea6ace3c1"
+    required: true
+  - name: merchantId
+    in: path
+    schema:
+      type: integer
+    required: true
+    example: "200002087418"
+responses:
+  "200":
+    description: OK
+    headers:
+      Content-Type:
+        schema:
+          type: string
+          example: application/json
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            success:
+              type: boolean
+              example: true
+            data:
+              type: array
+              items:
+                $ref: ../../schemas/Claim.yaml
+  "401":
+    $ref: ../../schemas/UserNotAuthorized.yaml

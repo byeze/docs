@@ -1,0 +1,33 @@
+tags:
+  - claims > acquirer
+summary: Obtener reclamaciónes usando el ID del adquirente
+description: Obtener reclamaciones usando el ID del adquirente. Este ID se obtiene desde el `api-key` utilizado para invocar nuestra API.
+operationId: getClaimsByAcquirerId
+parameters:
+  - name: x-api-key
+    in: header
+    schema:
+      type: string
+    example: "{{apiKey}}"
+responses:
+  "401":
+    $ref: "../../schemas/UserNotAuthorized.yaml"
+  "200":
+    description: OK
+    headers:
+      content-type:
+        schema:
+          type: string
+          example: application/json
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            success:
+              type: boolean
+              example: true
+            data:
+              type: array
+              items:
+                $ref: "../../schemas/Claim.yaml"

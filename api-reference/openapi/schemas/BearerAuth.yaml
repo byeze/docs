@@ -1,0 +1,6 @@
+bearerAuth:
+  type: http
+  scheme: bearer
+  description: >-
+    API Token generated for your account. The token must be prefixed with
+    `Bearer `.

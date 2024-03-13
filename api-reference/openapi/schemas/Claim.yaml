@@ -1,0 +1,156 @@
+type: object
+properties:
+  id:
+    type: string
+    example: "207779219414"
+    description: Unique identifier for the claim.
+  primaryAccountNumber:
+    type: string
+    example: "5450********6048"
+    description: Primary account number for the transaction.
+  rrn:
+    type: string
+    example: "08032054026003400006298"
+    description: Retrieval reference number for the transaction.
+  status:
+    type: string
+    example: SECOND_PRESENTATION_STARTED
+    description: The current status of the claim.
+    enum:
+      - PENDING_REVIEW
+      - COLLABORATION_ACCEPTED
+      - COLLABORATION_REJECTED
+      - SECOND_PRESENTATION_STARTED
+      - SECOND_PRESENTATION_COMPLETED
+      - SECOND_PRESENTATION_ACCEPTED
+      - COMPLETED
+  isOpen:
+    type: boolean
+    example: true
+    description: Indicates if the claim is open or closed.
+  createdAt:
+    type: string
+    format: date-time
+    example: "2024-03-05T19:51:58.202Z"
+    description: Date and time when the claim was created.
+  updatedAt:
+    type: string
+    format: date-time
+    example: "2024-03-05T19:54:01.709Z"
+    description: Date and time when the claim was last updated.
+  merchantId:
+    type: string
+    example: "000000000010377"
+    description: Unique identifier for the merchant.
+  amount:
+    type: number
+    example: 1000.00
+  currency:
+    type: string
+    example: ARS
+    description: ISO 4217 currency code.
+  outcome:
+    type: string
+    example: in_progress
+    description: The current outcome. Indicates the current status of the claim. If the merchant won or lost the claim.
+    enum:
+      - in_progress
+      - won
+      - lost
+  transactionId:
+    type: string
+    example: >-
+      TI:FIEaEgnM3bwPijwZgjc3Te+Y0ieLbN9ijUugqNSvJmVbO1xs6Jh5iIlmpOpkbax79L8Yj1rBOWBACx+Vj17rzvOepWobpgWNJNdsgHB4ag=#hqCnaMDqmto4wnL+BSUKSdzROqGJ7YELoKhEvluycwKNg3XTzSfaIJhFDkl9hW081B5tTqFFiAwCpcocPdB2My4t7DtSTk63VXDl1CySA8Y=
+    description: Unique identifier for the transaction. For Mastercard, the transaction ID contains 2 parts separated by a `#`. The first part is the clearing transaction ID and the second part is the authorization transaction ID.
+  issuerId:
+    type: string
+    example: 00000006195
+    description: Identifier for the issuer of the chargeback.
+  acquirerId:
+    type: string
+    example: 006355
+    description: Identifier for the acquirer of the chargeback.
+  partnerId:
+    type: string
+    example: "01HNBCE7RY395G62BCQFYDCV46"
+    description: Kausanna partner identifier.
+  seen:
+    type: boolean
+    example: false
+    description: Indicates if the claim has been seen by the merchant / partner service.
+  events:
+    type: array
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+          example: CREATED
+          description: Name of the event.
+        timestamp:
+          type: string
+          format: date-time
+    example: >-
+      [
+        {
+          "name": "CREATED",
+          "timestamp": "2024-03-04T21:41:41.292Z"
+        },
+        {
+          "name": "SECOND_PRESENTATION_STARTED",
+          "timestamp": "2024-03-04T21:41:41.292Z"
+        }
+      ]
+    description: Array of events related to the claim.
+  origin:
+    type: string
+    example: mastercard
+    description: The origin of the claim. Indicates if the claim was originated from Visa, Mastercard or other network.
+  authCode:
+    type: string
+    example: ab3285c5
+    description: Authorization code for the transaction.
+  flow:
+    type: object
+    properties:
+      currentStep:
+        type: string
+        example: PENDING_REVIEW
+        description: The current step in the claim flow.
+  merchant:
+    type: object
+    properties:
+      storeId:
+        type: string
+        example: 9b7396a2-9e60-4bd0-b2f6-5c4f911167b1
+        description: Unique identifier for the store.
+      ownerId:
+        type: string
+        example: 2c671a9d-5d66-413e-88b2-aca5c3b6219d
+        description: Unique identifier for the owner of the store.
+      externalPaymentId:
+        type: string
+        example: 05cfc7cd-6551-44d1-bf02-0d87a151046e
+        description: Unique identifier for the payment. This is the payment ID from the partner service.
+      name:
+        type: string
+        example: Elves Boutique
+        description: Name of the merchant.
+      mcc:
+        type: string
+        example: 5611
+        description: Merchant category code.
+      taxId:
+        type: string
+        example: 30123456789
+        description: Tax identification number of the merchant.
+      taxIdType:
+        type: string
+        example: arg.cuit
+        description: Type of tax identification number. For Argentina, it is `arg.cuit`. The format is `country.code`.
+      paymentData:
+        $ref: PaymentMethod.yaml
+      contact:
+        $ref: Contact.yaml
+      address:
+        $ref: Address.yaml

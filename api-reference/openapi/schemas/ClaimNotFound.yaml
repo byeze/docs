@@ -1,0 +1,28 @@
+description: Not Found
+headers:
+  Content-Type:
+    schema:
+      type: string
+      example: application/json
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        exception:
+          type: string
+          example: Not Found
+        code:
+          type: string
+          example: KAUSANA.CLAIM_NOT_FOUND
+        message:
+          type: string
+          example: Claim not found
+    example:
+      success: false
+      exception: Not Found
+      code: KAUSANA.CLAIM_NOT_FOUND
+      message: Claim not found

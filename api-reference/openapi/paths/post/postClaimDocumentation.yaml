@@ -1,0 +1,58 @@
+tags:
+  - claims > {claimId}
+summary: Subir documentación de una reclamación
+operationId: postClaimDocumentation
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        example:
+          extension: png
+        properties:
+          extension:
+            type: string
+            example: png
+            enum:
+              - png
+              - jpg
+              - jpeg
+parameters:
+  - name: claimId
+    in: path
+    schema:
+      type: integer
+    required: true
+    example: "207779219414"
+  - name: x-api-key
+    in: header
+    schema:
+      type: string
+    example: "{{apiKey}}"
+responses:
+  "200":
+    description: OK
+    headers:
+      Content-Type:
+        schema:
+          type: string
+          example: application/json
+    content:
+      application/json:
+        schema:
+          type: object
+        example:
+          success: true
+          url: >-
+            https://first-presentation-document-bucket-develop.s3.us-east-1.amazonaws.com/1234567890/...
+  "400":
+    description: Document extension not allowed
+    content:
+      application/json:
+        schema:
+          type: object
+        example:
+          success: false
+          expection: HttpError
+          message: "File extension  not allowed. Allowed extensions: png, jpg, jpeg."
+          code: "BAD_REQUEST"

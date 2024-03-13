@@ -1,0 +1,134 @@
+operationId: putStatusByClaimId
+tags:
+  - claims > {claimId}
+summary: Actualizar el estado de una reclamación
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          status:
+            type: string
+            example: REJECTED
+            enum:
+              - ACCEPTED
+              - REJECTED
+        example:
+          status: REJECTED
+parameters:
+  - name: claimId
+    in: path
+    schema:
+      type: integer
+    required: true
+    example: "200002031927"
+  - name: x-api-key
+    in: header
+    schema:
+      type: string
+    example: "{{apiKey}}"
+responses:
+  "200":
+    description: OK
+    headers:
+      Content-Type:
+        schema:
+          type: string
+          example: application/json
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            success:
+              type: boolean
+              description: Indica si la operación fue exitosa
+            transitionedTo:
+              type: string
+              description: El estado al que se ha cambiado la reclamación
+            data:
+              type: object
+              $ref: ../../schemas/Claim.yaml
+        example:
+          success: true
+          transitionedTo: COLLABORATION_REJECTED
+          data: {}
+  "400":
+    description: Bad Request
+    headers:
+      Content-Type:
+        schema:
+          type: string
+          example: application/json
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            success:
+              type: boolean
+              example: false
+            exception:
+              type: string
+              example: Bad Request
+            code:
+              type: string
+              example: VALIDATION_ERROR
+            message:
+              type: string
+              example: Validation error
+            issues:
+              type: array
+              items:
+                type: object
+                properties:
+                  received:
+                    type: string
+                    example: ACCEPTED-1
+                  code:
+                    type: string
+                    example: invalid_enum_value
+                  options:
+                    type: array
+                    items:
+                      type: string
+                      example: ACCEPTED
+                  path:
+                    type: array
+                    items:
+                      type: string
+                      example: status
+                  message:
+                    type: string
+                    example: >-
+                      Invalid enum value. Expected 'ACCEPTED' | 'REJECTED',
+                      received 'ACCEPTED-1'
+        examples:
+          example-0:
+            summary: "400: Validation Error"
+            value:
+              success: false
+              exception: Bad Request
+              code: VALIDATION_ERROR
+              message: Validation error
+              issues:
+                - received: ACCEPTED-1
+                  code: invalid_enum_value
+                  options:
+                    - ACCEPTED
+                    - REJECTED
+                  path:
+                    - status
+                  message: >-
+                    Invalid enum value. Expected 'ACCEPTED' | 'REJECTED',
+                    received 'ACCEPTED-1'
+          example-1:
+            summary: "400: Not pending action"
+            value:
+              success: false
+              exception: Bad Request
+              code: KAUSANA.CLAIM_NOT_PENDING_MERCHANT_ACTION
+              message: Claim is not pending merchant action
+  "404":
+    $ref: ../../schemas/ClaimNotFound.yaml

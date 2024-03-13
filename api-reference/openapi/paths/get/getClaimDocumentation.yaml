@@ -1,0 +1,30 @@
+summary: Obtener documentación subida de un reclamo
+operationId: getClaimDocumentation
+parameters:
+  - name: claimId
+    in: path
+    schema:
+      type: integer
+    required: true
+    example: "207779219414"
+  - name: x-api-key
+    in: header
+    schema:
+      type: string
+    example: "{{apiKey}}"
+responses:
+  "200":
+    description: OK
+    headers:
+      Content-Type:
+        schema:
+          type: string
+          example: application/json
+    content:
+      application/json:
+        schema:
+          $ref: ../../schemas/Documentation.yaml
+          example:
+            $ref: ../../examples/getClaimDocumentation.example.yaml
+  "401":
+    $ref: ../../schemas/UserNotAuthorized.yaml
