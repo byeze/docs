@@ -6,6 +6,7 @@ operationId: getClaimsByAcquirerId
 parameters:
   - name: x-api-key
     in: header
+    required: true
     schema:
       type: string
     example: "{{apiKey}}"
@@ -21,6 +22,8 @@ responses:
           example: application/json
     content:
       application/json:
+        example:
+          $ref: "../../examples/getClaimsByAcquirerId.example.yaml"
         schema:
           type: object
           properties:

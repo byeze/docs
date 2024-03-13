@@ -13,6 +13,7 @@ parameters:
     example: "006355"
   - name: x-api-key
     in: header
+    required: true
     schema:
       type: string
     example: "{{apiKey}}"

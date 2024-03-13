@@ -19,6 +19,7 @@ parameters:
     example: 01H9V3F4XJF0PBS2PEVBF01ZA9
   - name: x-api-key
     in: header
+    required: true
     schema:
       type: string
     example: "{{apiKey}}"

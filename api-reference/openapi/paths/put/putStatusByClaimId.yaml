@@ -25,6 +25,7 @@ parameters:
     example: "200002031927"
   - name: x-api-key
     in: header
+    required: true
     schema:
       type: string
     example: "{{apiKey}}"
