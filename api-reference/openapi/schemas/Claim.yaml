@@ -80,12 +80,12 @@ properties:
     description: Indicates if the claim has been seen by the merchant / partner service.
   events:
     type: array
+    description: Array of events related to the claim.
     items:
       type: object
       properties:
         name:
           type: string
-          example: CREATED
           description: Name of the event.
         timestamp:
           type: string
@@ -97,7 +97,6 @@ properties:
         timestamp: "2024-03-04T21:41:41.292Z"
       - name: SECOND_PRESENTATION_COMPLETED
         timestamp: "2024-03-04T21:41:41.292Z"
-    description: Array of events related to the claim.
   origin:
     type: string
     example: mastercard
