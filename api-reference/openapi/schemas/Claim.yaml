@@ -90,17 +90,13 @@ properties:
         timestamp:
           type: string
           format: date-time
-    example: >-
-      [
-        {
-          "name": "CREATED",
-          "timestamp": "2024-03-04T21:41:41.292Z"
-        },
-        {
-          "name": "SECOND_PRESENTATION_STARTED",
-          "timestamp": "2024-03-04T21:41:41.292Z"
-        }
-      ]
+    example:
+      - name: CREATED
+        timestamp: "2024-03-04T21:41:41.292Z"
+      - name: SECOND_PRESENTATION_STARTED
+        timestamp: "2024-03-04T21:41:41.292Z"
+      - name: SECOND_PRESENTATION_COMPLETED
+        timestamp: "2024-03-04T21:41:41.292Z"
     description: Array of events related to the claim.
   origin:
     type: string
