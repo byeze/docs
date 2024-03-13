@@ -1,0 +1,14 @@
+content:
+  application/json:
+    schema:
+      type: object
+      example:
+        extension: png
+      properties:
+        extension:
+          type: string
+          example: png
+          enum:
+            - png
+            - jpg
+            - jpeg

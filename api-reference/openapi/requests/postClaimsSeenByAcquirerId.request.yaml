@@ -1,0 +1,7 @@
+content:
+  application/json:
+    schema:
+      type: object
+      example:
+        claims:
+          - "200002087418"

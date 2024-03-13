@@ -4,15 +4,7 @@ summary: Enviar una notificación de nueva reclamación a un merchant
 description: Necesitarás un plan que contenga la funcionalidad de `mailing` para usar este endpoint.
 operationId: postSendMerchantEmail
 requestBody:
-  content:
-    application/json:
-      schema:
-        type: object
-        properties:
-          email:
-            type: string
-        example:
-          email: eze.calonge@naranjax.com
+  $ref: ../../requests/postSendMerchantEmail.request.yaml
 parameters:
   - name: claimId
     in: path

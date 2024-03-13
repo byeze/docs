@@ -3,20 +3,7 @@ tags:
 summary: Subir documentación de una reclamación
 operationId: postClaimDocumentation
 requestBody:
-  content:
-    application/json:
-      schema:
-        type: object
-        example:
-          extension: png
-        properties:
-          extension:
-            type: string
-            example: png
-            enum:
-              - png
-              - jpg
-              - jpeg
+  $ref: ../../requests/postClaimDocumentation.request.yaml
 parameters:
   - name: claimId
     in: path

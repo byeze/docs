@@ -1,0 +1,1282 @@
+openapi: 3.0.0
+info:
+  version: 4.3.0
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  title: Kausanna API
+  description: |
+    Bienvenido a Kausana, el servicio ofrecido por SONQO, dedicado a procesar los contracargos de tus clientes en tiempo real, 
+    brindando una solución integral que te permite concentrarte en tu negocio sin preocuparte por la complejidad de las redes de 
+    Visa y Mastercard.
+
+    En el mundo de los negocios, los contracargos pueden ser una preocupación constante para los comercios y las empresas.
+    La necesidad de enfrentar disputas de pagos, desconocimientos o reclamaciones de clientes puede ser un desafío significativo,
+    especialmente cuando se trabaja con múltiples proveedores de tarjetas y redes de pago.
+    Es en este punto donde Kausana se convierte en tu mejor aliado.
+
+    Nuestra plataforma Kausana se ha desarrollado pensando en la simplicidad y eficiencia, 
+    ofreciendo un sistema escalable y seguro que te permitirá manejar los contracargos de manera rápida y efectiva.
+    Olvídate de la complejidad técnica y los detalles burocráticos, Kausana se encarga de abstraer toda la
+    complejidad de las redes de Visa y Mastercard para que puedas enfocarte en lo que realmente importa: hacer crecer tu negocio.
+
+    Verificá el estado de nuestras APIs en [Kausana Status](https://kausana.instatus.com/)
+  contact:
+    email: ongoing-processes@sonqo.io
+  x-logo:
+    url: https://www.naranjax.com/assets/img/logo-nx.svg
+    altText: SONQO Logo
+servers:
+  - url: https://e1-kausana.sonqo.io
+    description: Entorno de desarrollo
+  - url: https://e3-kausana.sonqo.io
+    description: Entorno de pruebas
+  - url: https://kausana.sonqo.io
+    description: Entorno de producción
+security:
+  - bearerAuth: []
+paths:
+  /partner/{partnerId}/subscriptions:
+    post:
+      summary: Crear una subscripción webhook
+      operationId: postWebook
+      requestBody:
+        $ref: '#/components/requestBodies/postSubscription.request'
+      parameters:
+        - name: partnerId
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: The ID of the partner registered to receive webhooks
+          example: '006837'
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: '{{apiKey}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+        '400':
+          description: Bad Request
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: false
+                code: VALIDATION_ERROR
+                error:
+                  - code: invalid_string
+                    validation:
+                      startsWith: https://
+                    message: Webhook URL must be HTTPS. Only secure connections are allowed.
+                    path:
+                      - url
+    get:
+      operationId: getSubscription
+      tags:
+        - partner > {partnerId}
+      summary: Obtener subscripciones webhook
+      parameters:
+        - name: isActive
+          in: query
+          schema:
+            type: boolean
+          example: 'true'
+        - name: partnerId
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: The ID of the partner registered to receive webhooks
+          example: '006837'
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: '{{apiKey}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+              example:
+                success: true
+                data:
+                  id: 01H69QY2PXZS6RV33JRZF20PZ1
+                  url: https://google.com
+                  subscribedEvents:
+                    - chargeback.created
+                  partnerId: '006837'
+                  isActive: true
+                  createdAt: '2023-07-26T18:38:43.941Z'
+                  updatedAt: '2023-07-26T18:38:43.942Z'
+        '400':
+          description: Bad Request
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: false
+                message: Invalid partnerId
+  /partner/{partnerId}/subscriptions/{subscriptionId}:
+    delete:
+      tags:
+        - partner > {partnerId}
+      operationId: deleteSubscription
+      summary: Eliminar una subscripción webhook
+      parameters:
+        - name: partnerId
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: The ID of the partner registered to receive webhooks
+          example: '006837'
+        - name: subscriptionId
+          in: path
+          schema:
+            type: string
+          required: true
+          description: The ID of the webhook subscription
+          example: 01H9V3F4XJF0PBS2PEVBF01ZA9
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: '{{apiKey}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+        '404':
+          description: Not Found
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: false
+                exception: Not Found
+                code: PARTNER.PARTNER_SUBSCRIPTION_NOT_FOUND
+                message: Subscription not found in your account
+  /partner/{partnerId}/subscriptions/test:
+    post:
+      tags:
+        - partner > {partnerId}
+      operationId: postTestSubscription
+      summary: Probar las subscripciones webhook
+      description: Test the webhook integration by sending a JSON test message.
+      parameters:
+        - name: partnerId
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: The ID of the partner registered to receive webhooks
+          example: '006837'
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: '{{apiKey}}'
+      responses:
+        '200':
+          description: Successful test
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+        '409':
+          description: Conflict
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: false
+                code: PARTNER.TEST_PARTNER_SUBSCRIPTION_ERROR
+                message: Error sending test webhook to some subscriptions
+  /claims/{claimId}/status:
+    put:
+      operationId: putStatusByClaimId
+      tags:
+        - claims > {claimId}
+      summary: Actualizar el estado de una reclamación
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: REJECTED
+                  enum:
+                    - ACCEPTED
+                    - REJECTED
+              example:
+                status: REJECTED
+      parameters:
+        - name: claimId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '200002031927'
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: '{{apiKey}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Indica si la operación fue exitosa
+                  transitionedTo:
+                    type: string
+                    description: El estado al que se ha cambiado la reclamación
+                  data:
+                    type: object
+                    $ref: '#/components/schemas/Claim'
+              example:
+                success: true
+                transitionedTo: COLLABORATION_REJECTED
+                data: {}
+        '400':
+          description: Bad Request
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  exception:
+                    type: string
+                    example: Bad Request
+                  code:
+                    type: string
+                    example: VALIDATION_ERROR
+                  message:
+                    type: string
+                    example: Validation error
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        received:
+                          type: string
+                          example: ACCEPTED-1
+                        code:
+                          type: string
+                          example: invalid_enum_value
+                        options:
+                          type: array
+                          items:
+                            type: string
+                            example: ACCEPTED
+                        path:
+                          type: array
+                          items:
+                            type: string
+                            example: status
+                        message:
+                          type: string
+                          example: Invalid enum value. Expected 'ACCEPTED' | 'REJECTED', received 'ACCEPTED-1'
+              examples:
+                example-0:
+                  summary: '400: Validation Error'
+                  value:
+                    success: false
+                    exception: Bad Request
+                    code: VALIDATION_ERROR
+                    message: Validation error
+                    issues:
+                      - received: ACCEPTED-1
+                        code: invalid_enum_value
+                        options:
+                          - ACCEPTED
+                          - REJECTED
+                        path:
+                          - status
+                        message: Invalid enum value. Expected 'ACCEPTED' | 'REJECTED', received 'ACCEPTED-1'
+                example-1:
+                  summary: '400: Not pending action'
+                  value:
+                    success: false
+                    exception: Bad Request
+                    code: KAUSANA.CLAIM_NOT_PENDING_MERCHANT_ACTION
+                    message: Claim is not pending merchant action
+        '404':
+          $ref: '#/components/responses/ClaimNotFound'
+  /claims/{claimId}/documentation:
+    get:
+      summary: Obtener documentación subida de un reclamo
+      operationId: getClaimDocumentation
+      parameters:
+        - name: claimId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '207779219414'
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: '{{apiKey}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Documentation'
+                example:
+                  success: true
+                  data:
+                    - url: https://documentations-bucket-develop.s3.us-east-1.amazonaws.com/...
+                      name: 1707395243157/01HP7F44S1S92E63MZ5Z4QC114.png
+                      status: unapproved
+                    - url: https://documentations-bucket-develop.s3.us-east-1.amazonaws.com/...
+                      name: 1707395243157/01HP7F44S1S92E63MZ5Z4QC114.png
+                      status: approved
+                  quantity: 1
+        '401':
+          $ref: '#/components/responses/UserNotAuthorized'
+    post:
+      tags:
+        - claims > {claimId}
+      summary: Subir documentación de una reclamación
+      operationId: postClaimDocumentation
+      requestBody:
+        $ref: '#/components/requestBodies/postClaimDocumentation.request'
+      parameters:
+        - name: claimId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '207779219414'
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: '{{apiKey}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                url: https://first-presentation-document-bucket-develop.s3.us-east-1.amazonaws.com/1234567890/...
+        '400':
+          description: Document extension not allowed
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: false
+                expection: HttpError
+                message: 'File extension  not allowed. Allowed extensions: png, jpg, jpeg.'
+                code: BAD_REQUEST
+  /claims/{claimId}/documentation/finish:
+    post:
+      summary: Finalizar la subida de documentación de un reclamo. Cuando se finaliza la subida de documentación, se notifica al sistema que la documentación está completa y se puede proceder con la revisión por parte de las marcas.
+      operationId: postDocumentationFinish
+      parameters:
+        - name: claimId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '207779219414'
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: '{{apiKey}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Indicates success of operation
+                  data:
+                    type: object
+                    description: Additional data
+                    properties:
+                      processed:
+                        type: number
+                        example: 1
+                        description: Number of files processed
+                      uploaded:
+                        type: number
+                        example: 1
+                        description: Number of files uploaded to the network
+                example:
+                  success: true
+                  data:
+                    processed: 1
+                    uploaded: 1
+        '401':
+          $ref: '#/components/responses/UserNotAuthorized'
+  /claims/acquirer:
+    get:
+      tags:
+        - claims > acquirer
+      summary: Obtener reclamaciónes usando el ID del adquirente
+      description: Obtener reclamaciones usando el ID del adquirente. Este ID se obtiene desde el `api-key` utilizado para invocar nuestra API.
+      operationId: getClaimsByAcquirerId
+      parameters:
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: '{{apiKey}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            content-type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Claim'
+        '401':
+          $ref: '#/components/responses/UserNotAuthorized'
+  /claims/{claimId}:
+    get:
+      operationId: getClaimById
+      tags:
+        - claims > {claimId}
+      summary: Obtener información de una reclamación
+      parameters:
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          example: '{{apiKey}}'
+        - name: claimId
+          required: true
+          in: path
+          schema:
+            type: integer
+          example: '1706540942200'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    $ref: '#/components/schemas/Claim'
+              example:
+                success: true
+                data:
+                  id: '208171594972'
+                  primaryAccountNumber: 5505********9697
+                  origin: mastercard
+                  outcome: in_progress
+                  authCode: '658119'
+                  flow:
+                    currentStep: SECOND_PRESENTATION_STARTED
+                  rrn: '08032054026003400006298'
+                  status: SECOND_PRESENTATION_STARTED
+                  transactionId: TI:bnMeLTGLm2Q7jllvf_Of6eHBL7Ef6KRkL-uNEUnhyV7Lgb8piMeU5altPIJpo5DKzBzC3ZGZ-1JVkUmA2a4FGkRm4gpibshDMuDAKk6jb6M=##ACQ
+                  isOpen: true
+                  partnerId: 01HPWX95S4ZNNKPMNKPDKE2E12
+                  acquirerId: '032314'
+                  issuerId: '017670'
+                  seen: false
+                  events:
+                    - name: CREATED
+                      timestamp: '2024-03-05T19:51:58.202Z'
+                    - name: SECOND_PRESENTATION_STARTED
+                      timestamp: '2024-03-05T19:51:58.202Z'
+                  createdAt: '2024-03-05T19:51:58.202Z'
+                  updatedAt: '2024-03-05T19:54:01.709Z'
+                  amount: 111916.69
+                  currency: ARS
+                  merchant:
+                    storeId: 9b7396a2-9e60-4bd0-b2f6-5c4f911167b1
+                    ownerId: 2c671a9d-5d66-413e-88b2-aca5c3b6219d
+                    name: Sip smart coffee
+                    mcc: '5921'
+                    taxId: '30123452209'
+                    taxIdType: arg.cuit
+                    externalPaymentId: 05cfc7cd-6551-44d1-bf02-0d87a151046e
+                    paymentData:
+                      data_privacy:
+                        encrypted:
+                          data: x5tZYXEw0Cej9PHEENbigCoFe2wW+B2qXiVnHeWpu9nLcgMIldmAt708raupdppqwTBtrETeatwFPtZEAeh4z6ZPy/FPLGlZ9jWc35R2NH+ZtaOeuxTqPuR2oVcn6u8a7VA19hrbaRT2408b+bpeIfUkC0wrusqDMhVnn4pVrSnl08pyNYyXaDvYllifDE3R61+jzPbSzaVRKJ/C21IF15yIIm48a+D9Pdcxo10S7xNNyy/FjPD0q9u2VONBbruRURvT2RWey8zNMDpASYV/AClmRScyn/r/599kBWNoMnmbTZb08eSYz51eFAzhxq+7CpzRkmsW7o0QrSgLD+c4lg==
+                          origin: non_present
+                      card_method_type: encrypted
+                      card_holder_name: Eze Calonge
+                      wallet_name: galicia
+                      card_holder_doc_type: DNI
+                      type: card_payment
+                      expiration_date: 06/2028
+                      card_type: CREDIT
+                      card_holder_email: eze.calonge@naranjax.com
+                      expiration_year: '2028'
+                      product_id: MASTERCARD
+                      expiration_month: '06'
+                      name: MASTERCARD
+                      pan: 550568******6713
+                      card_holder_doc_number: '12345678'
+                      QRName: bb22707a-457e-4695-a29d-8ed76d4bbe85
+                    contact:
+                      email: No data
+                      phone: No data
+                      businessName: SIPECOFFEE SRL
+                      country: ARG
+                    address:
+                      country: ARG
+                      address:
+                        number: '1130'
+                        notes: '-'
+                        street: migueletes
+                      city: CIUDAD AUTONOMA BUENOS AIRES
+                      name: Torre Galicia ok
+                      id: 35ba1a0c-fb37-41c5-a28d-9208adf4ad9c
+                      state: C
+                      zip_code: C1426BUP
+        '401':
+          $ref: '#/components/responses/UserNotAuthorized'
+  /claims/acquirer/{acquirerId}/seen:
+    post:
+      tags:
+        - claims > acquirer
+      summary: Marcar una reclamación como vista
+      operationId: postClaimsSeenByAcquirerId
+      requestBody:
+        $ref: '#/components/requestBodies/postClaimsSeenByAcquirerId.request'
+      parameters:
+        - name: acquirerId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '006355'
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: '{{apiKey}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                        example: 1
+              example:
+                success: true
+                data:
+                  total: 1
+        '401':
+          $ref: '#/components/responses/UserNotAuthorized'
+  /merchants/{merchantId}/claims:
+    get:
+      tags:
+        - claims > merchants
+      summary: Obtener reclamaciones usando el ID del comercio
+      operationId: getClaimsByMerchantId
+      parameters:
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: key_bd90853656fadc507077e15b4d78d4a989aa8f92287d3ae80ad7d2cea6ace3c1
+          required: true
+        - name: merchantId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '200002087418'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Claim'
+        '401':
+          $ref: '#/components/responses/UserNotAuthorized'
+  /claims/{claimId}/actions/email:
+    post:
+      tags:
+        - claims > actions
+      summary: Enviar una notificación de nueva reclamación a un merchant
+      description: Necesitarás un plan que contenga la funcionalidad de `mailing` para usar este endpoint.
+      operationId: postSendMerchantEmail
+      requestBody:
+        $ref: '#/components/requestBodies/postSendMerchantEmail.request'
+      parameters:
+        - name: claimId
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: The claim id
+          example: '207779219414'
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: '{{apiKey}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - success
+                  - meta
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  meta:
+                    type: object
+                    properties:
+                      claimId:
+                        type: string
+                        example: '207779219414'
+              example:
+                success: true
+                meta:
+                  claimId: '207779219414'
+        '401':
+          $ref: '#/components/responses/UserNotAuthorized'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API Token generated for your account. The token must be prefixed with `Bearer `.
+  schemas:
+    Webhook:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              example: 01H69QTYGPZCFWJJMQC9HDC9PC
+            url:
+              type: string
+              example: https://google.com
+            secret:
+              type: string
+              example: sq_2Wn5QwBo8x3RTOF-az0_f52e5TUzwh0waOAqAtwtht4
+            subscribedEvents:
+              type: array
+              items:
+                type: string
+                example: chargeback.created
+            partnerId:
+              type: string
+              example: '006837'
+            isActive:
+              type: boolean
+              example: true
+            createdAt:
+              type: string
+              example: '2023-07-26T18:37:01.334Z'
+            updatedAt:
+              type: string
+              example: '2023-07-26T18:37:01.334Z'
+      example:
+        success: true
+        data:
+          id: 01H69QTYGPZCFWJJMQC9HDC9PC
+          url: https://google.com
+          secret: sq_2Wn5QwBo8x3RTOF-az0_f52e5TUzwh0waOAqAtwtht4
+          subscribedEvents:
+            - chargeback.created
+          partnerId: '006837'
+          isActive: true
+          createdAt: '2023-07-26T18:37:01.334Z'
+          updatedAt: '2023-07-26T18:37:01.334Z'
+    PaymentDataPrivacyEncrypted:
+      type: object
+      description: Contains details about the data privacy and encryption.
+      properties:
+        data:
+          type: string
+          description: Encrypted data content.
+          example: test
+        origin:
+          type: string
+          description: Origin of the data encryption.
+          example: non_present
+    PaymentMethod:
+      type: object
+      description: Contains all details about the payment method used.
+      properties:
+        id:
+          type: string
+          description: The Ranty payment method identifier.
+        data_privacy:
+          type: object
+          properties:
+            encrypted:
+              $ref: '#/components/schemas/PaymentDataPrivacyEncrypted'
+          description: Details about the privacy and encryption of payment data.
+        card_method_type:
+          type: string
+          description: Type of card method used.
+          example: encrypted
+        card_holder_name:
+          type: string
+          description: Name of the card holder.
+          example: Test
+        card_holder_doc_type:
+          type: string
+          description: Type of document of the card holder.
+          example: DNI
+        type:
+          type: string
+          description: Type of payment.
+          example: card_payment
+        expiration_date:
+          type: string
+          description: Expiration date of the card.
+          example: 04/2029
+        card_type:
+          type: string
+          description: Type of card used.
+          example: DEBIT
+        card_holder_email:
+          type: string
+          description: Email of the card holder.
+          example: Test@google.com
+        expiration_year:
+          type: string
+          description: Expiration year of the card.
+          example: '2029'
+        product_id:
+          type: string
+          description: Product identifier.
+          example: MASTERCARD
+        expiration_month:
+          type: string
+          description: Expiration month of the card.
+          example: '04'
+        name:
+          type: string
+          description: Name of the payment product.
+          example: MASTERCARD
+        pan:
+          type: string
+          description: Partially masked PAN number.
+          example: 553771******3011
+        card_holder_doc_number:
+          type: string
+          description: Document number of the card holder.
+          example: '002839234234'
+        wallet_name:
+          type: string
+          description: Name of the wallet used.
+          example: galicia
+        QRName:
+          type: string
+          description: QR name.
+          example: bb22707a-457e-4695-a29d-8ed76d4bbe85
+    Contact:
+      type: object
+      description: Contact details for the merchant.
+      properties:
+        email:
+          type: string
+          description: Contact email address.
+          example: No data
+        phone:
+          type: string
+          description: Contact phone number.
+          example: No data
+        businessName:
+          type: string
+          description: Business name of the contact.
+          example: EZEQUIEL CALONGE
+        country:
+          type: string
+          description: Country of the contact.
+          example: ARG
+    Address:
+      type: object
+      description: Address details of the merchant.
+      properties:
+        country:
+          type: string
+          description: Country of the address.
+          example: ARG
+        address:
+          type: object
+          properties:
+            number:
+              type: string
+              description: Street number of the address.
+              example: '135'
+            notes:
+              type: string
+              description: Additional notes about the address.
+              example: '-'
+            street:
+              type: string
+              description: Street name of the address.
+              example: Luis piedra buena
+          description: Detailed street address.
+        city:
+          type: string
+          description: City of the address.
+          example: CHIVILCOY
+        name:
+          type: string
+          description: Name associated with the address.
+          example: LINK DE PAGO
+        id:
+          type: string
+          description: Identifier of the address.
+          example: c231a73b-b1f5-4b1a-b049-675876938605
+        state:
+          type: string
+          description: State or province of the address.
+          example: B
+        zip_code:
+          type: string
+          description: ZIP or postal code of the address.
+          example: B6620AAA
+    Claim:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '207779219414'
+          description: Unique identifier for the claim.
+        primaryAccountNumber:
+          type: string
+          example: 5450********6048
+          description: Primary account number for the transaction.
+        rrn:
+          type: string
+          example: '08032054026003400006298'
+          description: Retrieval reference number for the transaction.
+        status:
+          type: string
+          example: SECOND_PRESENTATION_STARTED
+          description: The current status of the claim.
+          enum:
+            - PENDING_REVIEW
+            - COLLABORATION_ACCEPTED
+            - COLLABORATION_REJECTED
+            - SECOND_PRESENTATION_STARTED
+            - SECOND_PRESENTATION_COMPLETED
+            - SECOND_PRESENTATION_ACCEPTED
+            - COMPLETED
+        isOpen:
+          type: boolean
+          example: true
+          description: Indicates if the claim is open or closed.
+        createdAt:
+          type: string
+          format: date-time
+          example: '2024-03-05T19:51:58.202Z'
+          description: Date and time when the claim was created.
+        updatedAt:
+          type: string
+          format: date-time
+          example: '2024-03-05T19:54:01.709Z'
+          description: Date and time when the claim was last updated.
+        merchantId:
+          type: string
+          example: '000000000010377'
+          description: Unique identifier for the merchant.
+        amount:
+          type: number
+          example: 1000
+        currency:
+          type: string
+          example: ARS
+          description: ISO 4217 currency code.
+        outcome:
+          type: string
+          example: in_progress
+          description: The current outcome. Indicates the current status of the claim. If the merchant won or lost the claim.
+          enum:
+            - in_progress
+            - won
+            - lost
+        transactionId:
+          type: string
+          example: TI:FIEaEgnM3bwPijwZgjc3Te+Y0ieLbN9ijUugqNSvJmVbO1xs6Jh5iIlmpOpkbax79L8Yj1rBOWBACx+Vj17rzvOepWobpgWNJNdsgHB4ag=#hqCnaMDqmto4wnL+BSUKSdzROqGJ7YELoKhEvluycwKNg3XTzSfaIJhFDkl9hW081B5tTqFFiAwCpcocPdB2My4t7DtSTk63VXDl1CySA8Y=
+          description: Unique identifier for the transaction. For Mastercard, the transaction ID contains 2 parts separated by a `#`. The first part is the clearing transaction ID and the second part is the authorization transaction ID.
+        issuerId:
+          type: string
+          example: 6195
+          description: Identifier for the issuer of the chargeback.
+        acquirerId:
+          type: string
+          example: 6355
+          description: Identifier for the acquirer of the chargeback.
+        partnerId:
+          type: string
+          example: 01HNBCE7RY395G62BCQFYDCV46
+          description: Kausanna partner identifier.
+        seen:
+          type: boolean
+          example: false
+          description: Indicates if the claim has been seen by the merchant / partner service.
+        events:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                example: CREATED
+                description: Name of the event.
+              timestamp:
+                type: string
+                format: date-time
+          example: |-
+            [
+              {
+                "name": "CREATED",
+                "timestamp": "2024-03-04T21:41:41.292Z"
+              },
+              {
+                "name": "SECOND_PRESENTATION_STARTED",
+                "timestamp": "2024-03-04T21:41:41.292Z"
+              }
+            ]
+          description: Array of events related to the claim.
+        origin:
+          type: string
+          example: mastercard
+          description: The origin of the claim. Indicates if the claim was originated from Visa, Mastercard or other network.
+        authCode:
+          type: string
+          example: ab3285c5
+          description: Authorization code for the transaction.
+        flow:
+          type: object
+          properties:
+            currentStep:
+              type: string
+              example: PENDING_REVIEW
+              description: The current step in the claim flow.
+        merchant:
+          type: object
+          properties:
+            storeId:
+              type: string
+              example: 9b7396a2-9e60-4bd0-b2f6-5c4f911167b1
+              description: Unique identifier for the store.
+            ownerId:
+              type: string
+              example: 2c671a9d-5d66-413e-88b2-aca5c3b6219d
+              description: Unique identifier for the owner of the store.
+            externalPaymentId:
+              type: string
+              example: 05cfc7cd-6551-44d1-bf02-0d87a151046e
+              description: Unique identifier for the payment. This is the payment ID from the partner service.
+            name:
+              type: string
+              example: Elves Boutique
+              description: Name of the merchant.
+            mcc:
+              type: string
+              example: 5611
+              description: Merchant category code.
+            taxId:
+              type: string
+              example: 30123456789
+              description: Tax identification number of the merchant.
+            taxIdType:
+              type: string
+              example: arg.cuit
+              description: Type of tax identification number. For Argentina, it is `arg.cuit`. The format is `country.code`.
+            paymentData:
+              $ref: '#/components/schemas/PaymentMethod'
+            contact:
+              $ref: '#/components/schemas/Contact'
+            address:
+              $ref: '#/components/schemas/Address'
+    Documentation:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+                example: https://documentations-bucket-develop.s3.us-east-1.amazonaws.com/...
+                description: The URL of the file
+              name:
+                type: string
+                example: 1707395243157/01HP7F44S1S92E63MZ5Z4QC114.png
+                description: The name of the file
+              status:
+                type: string
+                example: unapproved
+                description: The status of the file. Our IA will review the file and approve or reject it.
+                enum:
+                  - approved
+                  - unapproved
+        quantity:
+          type: integer
+          example: 1
+  requestBodies:
+    postSubscription.request:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              url:
+                type: string
+                example: https://webhook.site/e52e639b-80b7-4493-9588-4ba8d883a945
+              subscribedEvents:
+                type: array
+                items:
+                  type: string
+                  example: chargeback.created
+              isActive:
+                type: boolean
+                example: true
+            example:
+              isActive: true
+              url: https://webhook.site/e52e639b-80b7-4493-9588-4ba8d883a945
+              subscribedEvents:
+                - chargeback.created
+    postClaimDocumentation.request:
+      content:
+        application/json:
+          schema:
+            type: object
+            example:
+              extension: png
+            properties:
+              extension:
+                type: string
+                example: png
+                enum:
+                  - png
+                  - jpg
+                  - jpeg
+    postClaimsSeenByAcquirerId.request:
+      content:
+        application/json:
+          schema:
+            type: object
+            example:
+              claims:
+                - '200002087418'
+    postSendMerchantEmail.request:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+            example:
+              email: eze.calonge@naranjax.com
+  responses:
+    ClaimNotFound:
+      description: Not Found
+      headers:
+        Content-Type:
+          schema:
+            type: string
+            example: application/json
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              exception:
+                type: string
+                example: Not Found
+              code:
+                type: string
+                example: KAUSANA.CLAIM_NOT_FOUND
+              message:
+                type: string
+                example: Claim not found
+          example:
+            success: false
+            exception: Not Found
+            code: KAUSANA.CLAIM_NOT_FOUND
+            message: Claim not found
+    UserNotAuthorized:
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: User not authorized

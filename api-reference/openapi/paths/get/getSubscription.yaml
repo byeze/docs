@@ -31,28 +31,9 @@ responses:
     content:
       application/json:
         schema:
-          type: object
-        examples:
-          example-0:
-            summary: "200"
-            value:
-              success: true
-              count: 1
-              data:
-                - id: 01H69QY2PXZS6RV33JRZF20PZ1
-                  url: https://google.com
-                  subscribedEvents:
-                    - chargeback.created
-                  partnerId: "006837"
-                  isActive: true
-                  createdAt: "2023-07-26T18:38:43.941Z"
-                  updatedAt: "2023-07-26T18:38:43.942Z"
-          example-1:
-            summary: "200: no subscriptions"
-            value:
-              success: true
-              count: 0
-              data: []
+          $ref: ../../schemas/Webhook.yaml
+        example:
+          $ref: ../../examples/getSubscription.example.yaml
   "400":
     description: Bad Request
     headers:

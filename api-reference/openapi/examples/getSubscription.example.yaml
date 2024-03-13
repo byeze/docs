@@ -1,0 +1,10 @@
+success: true
+data:
+  id: 01H69QY2PXZS6RV33JRZF20PZ1
+  url: https://google.com
+  subscribedEvents:
+    - chargeback.created
+  partnerId: "006837"
+  isActive: true
+  createdAt: "2023-07-26T18:38:43.941Z"
+  updatedAt: "2023-07-26T18:38:43.942Z"
