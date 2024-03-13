@@ -9,6 +9,13 @@ description: "Lista de cambios en la API"
 
 # Changelog
 
+## 4.3.0 - 2024-03-13
+
+### Eliminado
+
+- El parametro `acquirerId` en la request `GET /claims/acquirer/{acquirerId}` fue eliminado. Ahora el ID se obtiene usando la api key.
+  Por lo que se tendría que cambiar de `GET /claims/acquirer/{acquirerId}` a `GET /claims/acquirer`.
+
 ## 4.2.21 - 2024-03-06
 
 ### Cambiado
