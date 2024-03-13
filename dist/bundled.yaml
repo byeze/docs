@@ -52,6 +52,7 @@ paths:
           example: '006837'
         - name: x-api-key
           in: header
+          required: true
           schema:
             type: string
           example: '{{apiKey}}'
@@ -108,6 +109,7 @@ paths:
           example: '006837'
         - name: x-api-key
           in: header
+          required: true
           schema:
             type: string
           example: '{{apiKey}}'
@@ -171,6 +173,7 @@ paths:
           example: 01H9V3F4XJF0PBS2PEVBF01ZA9
         - name: x-api-key
           in: header
+          required: true
           schema:
             type: string
           example: '{{apiKey}}'
@@ -221,6 +224,7 @@ paths:
           example: '006837'
         - name: x-api-key
           in: header
+          required: true
           schema:
             type: string
           example: '{{apiKey}}'
@@ -277,6 +281,7 @@ paths:
           example: '200002031927'
         - name: x-api-key
           in: header
+          required: true
           schema:
             type: string
           example: '{{apiKey}}'
@@ -393,6 +398,7 @@ paths:
           example: '207779219414'
         - name: x-api-key
           in: header
+          required: true
           schema:
             type: string
           example: '{{apiKey}}'
@@ -436,6 +442,7 @@ paths:
           example: '207779219414'
         - name: x-api-key
           in: header
+          required: true
           schema:
             type: string
           example: '{{apiKey}}'
@@ -478,6 +485,7 @@ paths:
           example: '207779219414'
         - name: x-api-key
           in: header
+          required: true
           schema:
             type: string
           example: '{{apiKey}}'
@@ -526,6 +534,7 @@ paths:
       parameters:
         - name: x-api-key
           in: header
+          required: true
           schema:
             type: string
           example: '{{apiKey}}'
@@ -539,6 +548,77 @@ paths:
                 example: application/json
           content:
             application/json:
+              example:
+                success: true
+                data:
+                  - id: '208171594972'
+                    primaryAccountNumber: 5505********9697
+                    origin: mastercard
+                    outcome: in_progress
+                    authCode: '658119'
+                    flow:
+                      currentStep: SECOND_PRESENTATION_STARTED
+                    rrn: '08032054026003400006298'
+                    status: SECOND_PRESENTATION_STARTED
+                    transactionId: TI:bnMeLTGLm2Q7jllvf_Of6eHBL7Ef6KRkL-uNEUnhyV7Lgb8piMeU5altPIJpo5DKzBzC3ZGZ-1JVkUmA2a4FGkRm4gpibshDMuDAKk6jb6M=##ACQ
+                    isOpen: true
+                    partnerId: 01HPWX95S4ZNNKPMNKPDKE2E12
+                    acquirerId: '032314'
+                    issuerId: '017670'
+                    seen: false
+                    events:
+                      - name: CREATED
+                        timestamp: '2024-03-05T19:51:58.202Z'
+                      - name: SECOND_PRESENTATION_STARTED
+                        timestamp: '2024-03-05T19:51:58.202Z'
+                    createdAt: '2024-03-05T19:51:58.202Z'
+                    updatedAt: '2024-03-05T19:54:01.709Z'
+                    amount: 111916.69
+                    currency: ARS
+                    merchant:
+                      storeId: 9b7396a2-9e60-4bd0-b2f6-5c4f911167b1
+                      ownerId: 2c671a9d-5d66-413e-88b2-aca5c3b6219d
+                      name: Sip smart coffee
+                      mcc: '5921'
+                      taxId: '30123452209'
+                      taxIdType: arg.cuit
+                      externalPaymentId: 05cfc7cd-6551-44d1-bf02-0d87a151046e
+                      paymentData:
+                        data_privacy:
+                          encrypted:
+                            data: x5tZYXEw0Cej9PHEENbigCoFe2wW+B2qXiVnHeWpu9nLcgMIldmAt708raupdppqwTBtrETeatwFPtZEAeh4z6ZPy/FPLGlZ9jWc35R2NH+ZtaOeuxTqPuR2oVcn6u8a7VA19hrbaRT2408b+bpeIfUkC0wrusqDMhVnn4pVrSnl08pyNYyXaDvYllifDE3R61+jzPbSzaVRKJ/C21IF15yIIm48a+D9Pdcxo10S7xNNyy/FjPD0q9u2VONBbruRURvT2RWey8zNMDpASYV/AClmRScyn/r/599kBWNoMnmbTZb08eSYz51eFAzhxq+7CpzRkmsW7o0QrSgLD+c4lg==
+                            origin: non_present
+                        card_method_type: encrypted
+                        card_holder_name: Eze Calonge
+                        wallet_name: galicia
+                        card_holder_doc_type: DNI
+                        type: card_payment
+                        expiration_date: 06/2028
+                        card_type: CREDIT
+                        card_holder_email: eze.calonge@naranjax.com
+                        expiration_year: '2028'
+                        product_id: MASTERCARD
+                        expiration_month: '06'
+                        name: MASTERCARD
+                        pan: 550568******6713
+                        card_holder_doc_number: '12345678'
+                        QRName: bb22707a-457e-4695-a29d-8ed76d4bbe85
+                      contact:
+                        email: No data
+                        phone: No data
+                        businessName: SIPECOFFEE SRL
+                        country: ARG
+                      address:
+                        country: ARG
+                        address:
+                          number: '1130'
+                          notes: '-'
+                          street: migueletes
+                        city: CIUDAD AUTONOMA BUENOS AIRES
+                        name: Torre Galicia ok
+                        id: 35ba1a0c-fb37-41c5-a28d-9208adf4ad9c
+                        state: C
+                        zip_code: C1426BUP
               schema:
                 type: object
                 properties:
@@ -673,6 +753,7 @@ paths:
           example: '006355'
         - name: x-api-key
           in: header
+          required: true
           schema:
             type: string
           example: '{{apiKey}}'
@@ -764,6 +845,7 @@ paths:
           example: '207779219414'
         - name: x-api-key
           in: header
+          required: true
           schema:
             type: string
           example: '{{apiKey}}'
@@ -1078,28 +1160,23 @@ components:
           description: Indicates if the claim has been seen by the merchant / partner service.
         events:
           type: array
+          description: Array of events related to the claim.
           items:
             type: object
             properties:
               name:
                 type: string
-                example: CREATED
                 description: Name of the event.
               timestamp:
                 type: string
                 format: date-time
-          example: |-
-            [
-              {
-                "name": "CREATED",
-                "timestamp": "2024-03-04T21:41:41.292Z"
-              },
-              {
-                "name": "SECOND_PRESENTATION_STARTED",
-                "timestamp": "2024-03-04T21:41:41.292Z"
-              }
-            ]
-          description: Array of events related to the claim.
+          example:
+            - name: CREATED
+              timestamp: '2024-03-04T21:41:41.292Z'
+            - name: SECOND_PRESENTATION_STARTED
+              timestamp: '2024-03-04T21:41:41.292Z'
+            - name: SECOND_PRESENTATION_COMPLETED
+              timestamp: '2024-03-04T21:41:41.292Z'
         origin:
           type: string
           example: mastercard
@@ -1268,7 +1345,7 @@ components:
             code: KAUSANA.CLAIM_NOT_FOUND
             message: Claim not found
     UserNotAuthorized:
-      description: Successful response
+      description: The user is not authorized to access this resource.
       content:
         application/json:
           schema:
