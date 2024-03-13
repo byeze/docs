@@ -1,0 +1,26 @@
+version: 4.3.0
+license:
+  name: MIT
+  url: https://opensource.org/licenses/MIT
+title: "Kausanna API"
+description: |
+  Bienvenido a Kausana, el servicio ofrecido por SONQO, dedicado a procesar los contracargos de tus clientes en tiempo real, 
+  brindando una solución integral que te permite concentrarte en tu negocio sin preocuparte por la complejidad de las redes de 
+  Visa y Mastercard.
+
+  En el mundo de los negocios, los contracargos pueden ser una preocupación constante para los comercios y las empresas.
+  La necesidad de enfrentar disputas de pagos, desconocimientos o reclamaciones de clientes puede ser un desafío significativo,
+  especialmente cuando se trabaja con múltiples proveedores de tarjetas y redes de pago.
+  Es en este punto donde Kausana se convierte en tu mejor aliado.
+
+  Nuestra plataforma Kausana se ha desarrollado pensando en la simplicidad y eficiencia, 
+  ofreciendo un sistema escalable y seguro que te permitirá manejar los contracargos de manera rápida y efectiva.
+  Olvídate de la complejidad técnica y los detalles burocráticos, Kausana se encarga de abstraer toda la
+  complejidad de las redes de Visa y Mastercard para que puedas enfocarte en lo que realmente importa: hacer crecer tu negocio.
+
+  Verificá el estado de nuestras APIs en [Kausana Status](https://kausana.instatus.com/)
+contact:
+  email: ongoing-processes@sonqo.io
+x-logo:
+  url: "https://www.naranjax.com/assets/img/logo-nx.svg"
+  altText: "SONQO Logo"

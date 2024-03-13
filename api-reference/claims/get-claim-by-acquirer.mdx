@@ -2,3 +2,7 @@
 title: "Listar claims por acquirerId"
 openapi: GET /claims/acquirer
 ---
+
+Este endpoint permite a los adquirentes poder listar todos sus claims recibidos por el sistema utilizando su `acquirerId`.
+El `acquirerId` es un identificador único que se le asigna a cada adquirente, y este se utiliza para poder identificar a que adquirente pertenece cada claim.
+Se obtiene utilizando la API Key que se le asigna a cada adquirente al momento de hacer onboarding en nuestro sistema.
