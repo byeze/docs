@@ -4,10 +4,10 @@ info:
   $ref: "info.yaml"
 
 servers:
-  - url: https://e1-kausana.sonqo.io
-    description: "Entorno de desarrollo"
+  # - url: https://e1-kausana.sonqo.io
+  #   description: "Entorno de desarrollo"
   - url: https://e3-kausana.sonqo.io
-    description: "Entorno de pruebas"
+    description: "Sandbox"
   - url: https://kausana.sonqo.io
     description: "Entorno de producción"
 
