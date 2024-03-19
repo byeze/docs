@@ -1,4 +1,5 @@
-summary: Finalizar la subida de documentación de un reclamo. Cuando se finaliza la subida de documentación, se notifica al sistema que la documentación está completa y se puede proceder con la revisión por parte de las marcas.
+summary: Finalizar la subida de documentación de un reclamo.
+description: Cuando se finaliza la subida de documentación, se notifica al sistema que la documentación está completa y se puede proceder con la revisión por parte de las marcas.
 operationId: postDocumentationFinish
 parameters:
   - name: claimId

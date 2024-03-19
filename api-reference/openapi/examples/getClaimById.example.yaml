@@ -32,26 +32,6 @@ data:
     taxId: "30123452209"
     taxIdType: arg.cuit
     externalPaymentId: 05cfc7cd-6551-44d1-bf02-0d87a151046e
-    paymentData:
-      data_privacy:
-        encrypted:
-          data: x5tZYXEw0Cej9PHEENbigCoFe2wW+B2qXiVnHeWpu9nLcgMIldmAt708raupdppqwTBtrETeatwFPtZEAeh4z6ZPy/FPLGlZ9jWc35R2NH+ZtaOeuxTqPuR2oVcn6u8a7VA19hrbaRT2408b+bpeIfUkC0wrusqDMhVnn4pVrSnl08pyNYyXaDvYllifDE3R61+jzPbSzaVRKJ/C21IF15yIIm48a+D9Pdcxo10S7xNNyy/FjPD0q9u2VONBbruRURvT2RWey8zNMDpASYV/AClmRScyn/r/599kBWNoMnmbTZb08eSYz51eFAzhxq+7CpzRkmsW7o0QrSgLD+c4lg==
-          origin: non_present
-      card_method_type: encrypted
-      card_holder_name: "Eze Calonge"
-      wallet_name: galicia
-      card_holder_doc_type: DNI
-      type: card_payment
-      expiration_date: 06/2028
-      card_type: CREDIT
-      card_holder_email: eze.calonge@naranjax.com
-      expiration_year: "2028"
-      product_id: MASTERCARD
-      expiration_month: "06"
-      name: MASTERCARD
-      pan: 550568******6713
-      card_holder_doc_number: "12345678"
-      QRName: bb22707a-457e-4695-a29d-8ed76d4bbe85
     contact:
       email: No data
       phone: No data
@@ -68,3 +48,23 @@ data:
       id: 35ba1a0c-fb37-41c5-a28d-9208adf4ad9c
       state: C
       zip_code: C1426BUP
+  payment:
+    data_privacy:
+      encrypted:
+        data: x5tZYXEw0Cej9PHEENbigCoFe2wW+B2qXiVnHeWpu9nLcgMIldmAt708raupdppqwTBtrETeatwFPtZEAeh4z6ZPy/FPLGlZ9jWc35R2NH+ZtaOeuxTqPuR2oVcn6u8a7VA19hrbaRT2408b+bpeIfUkC0wrusqDMhVnn4pVrSnl08pyNYyXaDvYllifDE3R61+jzPbSzaVRKJ/C21IF15yIIm48a+D9Pdcxo10S7xNNyy/FjPD0q9u2VONBbruRURvT2RWey8zNMDpASYV/AClmRScyn/r/599kBWNoMnmbTZb08eSYz51eFAzhxq+7CpzRkmsW7o0QrSgLD+c4lg==
+        origin: non_present
+    card_method_type: encrypted
+    card_holder_name: "Eze Calonge"
+    wallet_name: galicia
+    card_holder_doc_type: DNI
+    type: card_payment
+    expiration_date: 06/2028
+    card_type: CREDIT
+    card_holder_email: eze.calonge@naranjax.com
+    expiration_year: "2028"
+    product_id: MASTERCARD
+    expiration_month: "06"
+    name: MASTERCARD
+    pan: 550568******6713
+    card_holder_doc_number: "12345678"
+    QRName: bb22707a-457e-4695-a29d-8ed76d4bbe85

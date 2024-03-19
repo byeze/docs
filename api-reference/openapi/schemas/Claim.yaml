@@ -105,6 +105,8 @@ properties:
         type: string
         example: PENDING_REVIEW
         description: The current step in the claim flow.
+  payment:
+    $ref: PaymentMethod.yaml
   merchant:
     type: object
     properties:
@@ -136,8 +138,6 @@ properties:
         type: string
         example: arg.cuit
         description: Type of tax identification number. For Argentina, it is `arg.cuit`. The format is `country.code`.
-      paymentData:
-        $ref: PaymentMethod.yaml
       contact:
         $ref: Contact.yaml
       address:
