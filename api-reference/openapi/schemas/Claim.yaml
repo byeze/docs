@@ -108,37 +108,4 @@ properties:
   payment:
     $ref: PaymentMethod.yaml
   merchant:
-    type: object
-    properties:
-      storeId:
-        type: string
-        example: 9b7396a2-9e60-4bd0-b2f6-5c4f911167b1
-        description: Unique identifier for the store.
-      ownerId:
-        type: string
-        example: 2c671a9d-5d66-413e-88b2-aca5c3b6219d
-        description: Unique identifier for the owner of the store.
-      externalPaymentId:
-        type: string
-        example: 05cfc7cd-6551-44d1-bf02-0d87a151046e
-        description: Unique identifier for the payment. This is the payment ID from the partner service.
-      name:
-        type: string
-        example: Elves Boutique
-        description: Name of the merchant.
-      mcc:
-        type: string
-        example: 5611
-        description: Merchant category code.
-      taxId:
-        type: string
-        example: 30123456789
-        description: Tax identification number of the merchant.
-      taxIdType:
-        type: string
-        example: arg.cuit
-        description: Type of tax identification number. For Argentina, it is `arg.cuit`. The format is `country.code`.
-      contact:
-        $ref: Contact.yaml
-      address:
-        $ref: Address.yaml
+    $ref: Merchant.yaml

@@ -29,8 +29,6 @@ properties:
     type: string
     description: External identifier for the payment.
     example: "8524623"
-  paymentData:
-    $ref: PaymentMethod.yaml
   contact:
     $ref: Contact.yaml
   address:
