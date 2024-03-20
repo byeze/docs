@@ -73,38 +73,8 @@
         "webhooks/events"
       ]
     },
-    {
-      "group": "Documentación API",
-      "pages": ["api-reference/introduction"]
-    },
-    {
-      "group": "Claims",
-      "pages": [
-        "api-reference/claims/get-claim",
-        "api-reference/claims/get-claim-by-acquirer",
-        "api-reference/claims/get-claims-by-merchant",
-        "api-reference/claims/put-status",
-        "api-reference/claims/mark-as-seen",
-        "api-reference/claims/email"
-      ]
-    },
-    {
-      "group": "Documentación de claim",
-      "pages": [
-        "api-reference/claims/get-docs",
-        "api-reference/claims/upload-docs",
-        "api-reference/claims/finish-docs"
-      ]
-    },
-    {
-      "group": "Webhooks",
-      "pages": [
-        "api-reference/webhooks/create",
-        "api-reference/webhooks/get",
-        "api-reference/webhooks/test",
-        "api-reference/webhooks/delete"
-      ]
-    },
+   
+  
     {
       "group": "Changelog",
       "pages": ["changelog"]
