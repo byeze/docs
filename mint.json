@@ -1,6 +1,5 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "openapi": ["api-reference/openapi/openapi.yml"],
   "name": "Kausanna API",
   "logo": {
     "dark": "https://www.naranjax.com/assets/images/navbar-isologo-naranjax.png",
