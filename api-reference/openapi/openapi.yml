@@ -30,6 +30,9 @@ paths:
   /partner/{partnerId}/subscriptions/test:
     post:
       $ref: "paths/post/postTestSubscription.yaml"
+  /claims/{claimId}:
+    get:
+      $ref: "paths/get/getClaimById.yaml"
   /claims/{claimId}/status:
     put:
       $ref: "paths/put/putStatusByClaimId.yaml"
@@ -41,12 +44,9 @@ paths:
   /claims/{claimId}/documentation/finish:
     post:
       $ref: "paths/post/postDocumentationFinish.yaml"
-  /claims/acquirer:
+  /claims/acquirer/{acquirerId}:
     get:
       $ref: "paths/get/getClaimsByAcquirerId.yaml"
-  /claims/{claimId}:
-    get:
-      $ref: "paths/get/getClaimById.yaml"
   /claims/acquirer/{acquirerId}/seen:
     post:
       $ref: "paths/post/postClaimsSeenByAcquirerId.yaml"
