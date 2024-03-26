@@ -30,7 +30,7 @@ paths:
   /partner/{partnerId}/subscriptions/test:
     post:
       $ref: "paths/post/postTestSubscription.yaml"
-  /claims/{claimId}/test:
+  /claims/{claimId}:
     get:
       $ref: "paths/get/getClaimById.yaml"
   /claims/{claimId}/status:
